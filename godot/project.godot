@@ -16,7 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot"
-config/icon="res://icon.png"
+run/main_scene="res://Assets/Scenes/GameMap.tscn"
+config/icon="res://Assets/Images/icon.png"
+
+[autoload]
+
+JsonTranslator="*res://Assets/Scripts/json_translator.gd"
 
 [rendering]
 
