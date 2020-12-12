@@ -18,10 +18,15 @@ _global_script_class_icons={
 config/name="Godot"
 run/main_scene="res://Assets/Scenes/GameMap.tscn"
 config/icon="res://Assets/Images/icon.png"
+run/main_loop_type="SceneTree"
 
 [autoload]
 
 JsonTranslator="*res://Assets/Scripts/json_translator.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "gut" )
 
 [rendering]
 

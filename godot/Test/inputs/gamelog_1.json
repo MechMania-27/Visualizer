@@ -1,0 +1,16 @@
+{
+	"tileMap": {
+		"mapHeight": 5,
+		"mapWidth": 4,
+		"tiles": [
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+			[0, 0, 0, 0],
+			[0, 0, 0, 0]
+		]
+	},
+	"playerNames": ["Player1", "Player2"],
+	"initPlayersPos": [{"x": 0, "y": 0}, {"x": 1, "y": 1}],
+	"states": []
+}
