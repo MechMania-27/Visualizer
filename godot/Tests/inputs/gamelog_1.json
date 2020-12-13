@@ -1,0 +1,16 @@
+{
+	"tileMap": {
+		"mapHeight": 5,
+		"mapWidth": 4,
+		"tiles": [
+			[{"type": 0}, {"type": 0}, {"type": 0}, {"type": 0}],
+			[{"type": 0}, {"type": 0}, {"type": 0}, {"type": 0}],
+			[{"type": 0}, {"type": 0}, {"type": 0}, {"type": 0}],
+			[{"type": 0}, {"type": 0}, {"type": 0}, {"type": 0}],
+			[{"type": 0}, {"type": 0}, {"type": 0}, {"type": 0}]
+		]
+	},
+	"playerNames": ["Player1", "Player2"],
+	"initPlayersPos": [{"x": 0, "y": 0}, {"x": 1, "y": 1}],
+	"states": []
+}
