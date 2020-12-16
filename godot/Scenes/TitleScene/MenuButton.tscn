@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Fonts/langar_32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/TitleScene/menu_button.gd" type="Script" id=2]
+
+[node name="MenuButton" type="Button"]
+margin_right = 12.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 0, 31 )
+flat = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonName" type="Label" parent="."]
+margin_right = 62.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Quit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
