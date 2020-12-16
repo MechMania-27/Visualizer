@@ -1,8 +1,29 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Assets/UrbanTileSet.tres" type="TileSet" id=1]
 
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+var gamelog: Dictionary
+
+signal game_started
+
+func _ready():
+	file_dialog.get_replay_file(self)
+	if(not JsonTranslator.valid_gamelog(gamelog)):
+		print(\"Invalid gamelog\")
+		get_tree().quit()
+	
+	print(gamelog)
+
+
+func get_replay_file(path: String):
+	gamelog = JsonTranslator.parse_json(path)
+"
+
 [node name="Node2D" type="Node2D"]
+script = SubResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
