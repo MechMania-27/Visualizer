@@ -32,6 +32,10 @@ __meta__ = {
 margin_right = 864.0
 margin_bottom = 57.0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.941176, 0.890196, 0.709804, 1 )
+custom_colors/font_color_shadow = Color( 0.2, 0.176471, 0.0980392, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 4
 text = "Coders of the Corn"
 align = 1
 
@@ -51,7 +55,7 @@ custom_constants/separation = 30
 alignment = 1
 
 [node name="StartButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 1 )]
-margin_top = 134.0
+margin_top = 125.0
 margin_right = 430.0
 margin_bottom = 165.0
 script = ExtResource( 6 )
@@ -60,7 +64,8 @@ scene_to_load = "res://Scenes/Game/Game.tscn"
 [node name="QuitButton" parent="Menu/CenterRow/Buttons" instance=ExtResource( 2 )]
 margin_top = 195.0
 margin_right = 430.0
-margin_bottom = 226.0
+margin_bottom = 235.0
+size_flags_vertical = 0
 script = ExtResource( 6 )
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]

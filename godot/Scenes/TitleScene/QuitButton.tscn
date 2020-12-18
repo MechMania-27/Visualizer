@@ -3,3 +3,8 @@
 [ext_resource path="res://Scenes/TitleScene/MenuButton.tscn" type="PackedScene" id=1]
 
 [node name="MenuButton" instance=ExtResource( 1 )]
+margin_right = 62.0
+
+[node name="ButtonName" parent="." index="0"]
+margin_right = 62.0
+text = "Quit"
