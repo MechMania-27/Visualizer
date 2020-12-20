@@ -48,4 +48,3 @@ __meta__ = {
 }
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="HUD/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="value_changed" from="HUD/Timeline" to="." method="_on_Timeline_value_changed"]

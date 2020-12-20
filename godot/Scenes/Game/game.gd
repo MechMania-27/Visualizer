@@ -5,6 +5,7 @@ var is_paused: bool = false
 func _ready():
 	fill_tilemaps()
 	init_ui()
+	update_state()
 	$Timer.start()
 
 
@@ -27,7 +28,7 @@ func end_of_game():
 
 
 func init_ui():
-	$HUD/Timeline.max_value = 5#len(Global.gamelog["states"])
+	$HUD/Timeline.max_value = len(Global.gamelog["states"]) - 1
 
 
 func fill_tilemaps():
@@ -56,8 +57,8 @@ func _on_Timer_timeout():
 	elif $HUD/Timeline.value == $HUD/Timeline.max_value:
 		end_of_game()
 	else:
-		update_state()
 		$HUD/Timeline.value += 1
+		update_state()
 
 
 func _on_PlayButton_pressed():

@@ -15,4 +15,4 @@ __meta__ = {
 _run_on_load = true
 _should_maximize = true
 _log_level = 2
-_directory1 = "res://Tests/unit"
+_directory1 = "res://Tests/Unit"
