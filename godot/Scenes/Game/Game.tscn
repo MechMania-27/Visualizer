@@ -22,3 +22,30 @@ tile_data = PoolIntArray( 589832, 5, 0, 720913, 6, 0 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="PlayButton" type="Button" parent="HUD"]
+margin_left = 2.014
+margin_top = 505.0
+margin_right = 92.014
+margin_bottom = 595.0
+text = "Pause"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timeline" type="HSlider" parent="HUD"]
+margin_left = 100.0
+margin_top = 505.0
+margin_right = 1010.0
+margin_bottom = 595.0
+scrollable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="HUD/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="value_changed" from="HUD/Timeline" to="." method="_on_Timeline_value_changed"]
