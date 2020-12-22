@@ -27,9 +27,9 @@ __meta__ = {
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="PlayButton" type="Button" parent="HUD"]
-margin_left = 2.014
-margin_top = 505.0
-margin_right = 92.014
+margin_left = 2.0
+margin_top = 553.0
+margin_right = 95.0
 margin_bottom = 595.0
 text = "Pause"
 __meta__ = {
@@ -37,10 +37,10 @@ __meta__ = {
 }
 
 [node name="Timeline" type="HSlider" parent="HUD"]
-margin_left = 100.0
-margin_top = 505.0
-margin_right = 1010.0
-margin_bottom = 595.0
+margin_left = 116.0
+margin_top = 566.0
+margin_right = 1003.0
+margin_bottom = 582.0
 scrollable = false
 __meta__ = {
 "_edit_use_anchors_": false

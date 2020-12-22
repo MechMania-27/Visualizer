@@ -13,31 +13,23 @@ func parse_json(filepath: String):
 ### Verification functions ###
 func valid_gamelog(gamelog: Dictionary) -> bool:
 	# Check that top-level dictionary keys are valid
-	var gamelog_keys = ["tileMap", "playerNames", "initPlayersPos", "states"]
+	var gamelog_keys = ["tileMap", "players", "states"]
 	for key in gamelog_keys:
 		if not gamelog.keys().has(key):
 			return false
-	
-	# Check playerNames
-	if len(gamelog["playerNames"]) != 2:
-		return false
-	if gamelog["playerNames"][0] == gamelog["playerNames"][1]:
-		return false
 	
 	# Check tileMap
 	if not valid_tile_map(gamelog["tileMap"]):
 		return false
 	
-	# Check initPlaysPos
-	if len(gamelog["initPlayersPos"]) != 2:
+	# Check players
+	if len(gamelog["players"]) != 2:
 		return false
-	for pos in gamelog["initPlayersPos"]:
-		if not (pos.keys().has("x") and pos.keys().has("y")):
+	for player in gamelog["players"]:
+		if not valid_player(player, gamelog["tileMap"]):
 			return false
-		if pos["x"] < 0 or pos["x"] >= gamelog["tileMap"]["mapWidth"]:
-			return false
-		if pos["y"] < 0 or pos["y"] >= gamelog["tileMap"]["mapHeight"]:
-			return false
+	if gamelog["players"][0]["name"] == gamelog["players"][1]["name"]:
+		return false
 	
 	for state in gamelog["states"]:
 		if not valid_game_state(state):
@@ -66,6 +58,49 @@ func valid_tile_map(tile_map: Dictionary) -> bool:
 	return true
 
 
+func valid_game_state(state: Dictionary) -> bool:
+	var keys = ["players", "tileMap"]
+	for key in keys:
+		if not state.keys().has(key):
+			return false
+	
+	if not valid_tile_map(state["tileMap"]):
+		return false
+	
+	if len(state["players"]) != 2:
+		return false
+	for player in state["players"]:
+		if not valid_player(player, state["tileMap"]):
+			return false
+	
+	return true
+
+
+func valid_player(player: Dictionary, tilemap: Dictionary) -> bool:
+	var keys = ["name", "position", "item", "upgrade"]
+	for key in keys:
+		if not player.keys().has(key):
+			return false
+	
+	if not valid_item(player["item"]) \
+			or not valid_position(player["position"], tilemap) \
+			or not valid_upgrade(player["upgrade"]):
+		return false
+	
+	return true
+
+
+func valid_position(pos: Dictionary, tilemap: Dictionary) -> bool:
+	if not (pos.keys().has("x") and pos.keys().has("y")):
+			return false
+	if pos["x"] < 0 or pos["x"] >= tilemap["mapWidth"]:
+		return false
+	if pos["y"] < 0 or pos["y"] >= tilemap["mapHeight"]:
+		return false
+	
+	return true
+
+
 func valid_tile(tile: Dictionary) -> bool:
 	var keys = ["type"]
 	for key in keys:
@@ -75,10 +110,17 @@ func valid_tile(tile: Dictionary) -> bool:
 	return true
 
 
-func valid_game_state(state: Dictionary) -> bool:
-	var keys = ["playersPos", "tileMap"]
+func valid_item(item: Dictionary) -> bool:
+	var keys = ["type"]
 	for key in keys:
-		if not state.keys().has(key):
+		if not item.keys().has(key):
 			return false
 	
-	return valid_tile_map(state["tileMap"])
+	# TODO: Check that ItemType is in enum range
+	
+	return true
+
+
+func valid_upgrade(upgrade: int) -> bool:
+	# TODO: Check that upgrade is in enum range
+	return true

@@ -45,7 +45,10 @@ func fill_tilemaps():
 	$Map/Base.update_bitmask_region()
 	
 	# Fill in character layer
-	var init_pos = Global.gamelog["initPlayersPos"]
+	var init_pos = [
+		Global.gamelog["players"][0]["position"],
+		Global.gamelog["players"][1]["position"]
+	]
 	var p1 = tileset.find_tile_by_name("Player 1")
 	var p2 = tileset.find_tile_by_name("Player 2")
 	$Map/Characters.set_cell(init_pos[0]["x"], init_pos[0]["y"], p1)

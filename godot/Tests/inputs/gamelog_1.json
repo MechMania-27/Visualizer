@@ -10,7 +10,19 @@
 			[{"type": 0}, {"type": 0}, {"type": 0}, {"type": 0}]
 		]
 	},
-	"playerNames": ["Player1", "Player2"],
-	"initPlayersPos": [{"x": 0, "y": 0}, {"x": 1, "y": 1}],
+	"players": [
+		{
+			"name": "Player 1",
+			"position": {"x": 0, "y": 0},
+			"item": {"type": 0},
+			"upgrade": 0
+		},
+		{
+			"name": "Player 2",
+			"position": {"x": 1, "y": 1},
+			"item": {"type": 0},
+			"upgrade": 0
+		}
+	],
 	"states": []
 }
