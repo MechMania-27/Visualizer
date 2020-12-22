@@ -28,10 +28,12 @@ func _input(event: InputEvent):
 		
 		# Keep camera in bounds
 		# (offset is positive going left or up)
-		var max_x = get_viewport_rect().end.x - tilemap_bounds.end.x
-		var min_x = get_viewport_rect().position.x - tilemap_bounds.position.x
-		var max_y = get_viewport_rect().end.y - tilemap_bounds.end.y
-		var min_y = get_viewport_rect().position.y - tilemap_bounds.position.y
+		# TODO: account for zoom level
+		var max_x = self.zoom.x * get_viewport_rect().end.x - tilemap_bounds.end.x
+		var min_x = self.zoom.x * get_viewport_rect().position.x - tilemap_bounds.position.x
+		var max_y = self.zoom.y * get_viewport_rect().end.y - tilemap_bounds.end.y
+		var min_y = self.zoom.y * get_viewport_rect().position.y - tilemap_bounds.position.y
+		
 		if -get_offset().x > max_x:
 			self.offset.x = -max_x
 		elif -get_offset().x < min_x:

@@ -13,23 +13,10 @@ func parse_json(filepath: String):
 ### Verification functions ###
 func valid_gamelog(gamelog: Dictionary) -> bool:
 	# Check that top-level dictionary keys are valid
-	var gamelog_keys = ["tileMap", "players", "states"]
+	var gamelog_keys = ["states"]
 	for key in gamelog_keys:
 		if not gamelog.keys().has(key):
 			return false
-	
-	# Check tileMap
-	if not valid_tile_map(gamelog["tileMap"]):
-		return false
-	
-	# Check players
-	if len(gamelog["players"]) != 2:
-		return false
-	for player in gamelog["players"]:
-		if not valid_player(player, gamelog["tileMap"]):
-			return false
-	if gamelog["players"][0]["name"] == gamelog["players"][1]["name"]:
-		return false
 	
 	for state in gamelog["states"]:
 		if not valid_game_state(state):

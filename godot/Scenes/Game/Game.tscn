@@ -26,21 +26,45 @@ __meta__ = {
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="PlayButton" type="Button" parent="HUD"]
-margin_left = 2.0
-margin_top = 553.0
-margin_right = 95.0
-margin_bottom = 595.0
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerInfo" type="HBoxContainer" parent="HUD/VBoxContainer"]
+margin_right = 1004.0
+
+[node name="Separator" type="HBoxContainer" parent="HUD/VBoxContainer"]
+margin_top = 4.0
+margin_right = 1004.0
+margin_bottom = 556.0
+size_flags_vertical = 3
+
+[node name="Controls" type="HBoxContainer" parent="HUD/VBoxContainer"]
+margin_top = 560.0
+margin_right = 1004.0
+margin_bottom = 580.0
+custom_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="HUD/VBoxContainer/Controls"]
+margin_right = 50.0
+margin_bottom = 20.0
 text = "Pause"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timeline" type="HSlider" parent="HUD"]
-margin_left = 116.0
-margin_top = 566.0
-margin_right = 1003.0
-margin_bottom = 582.0
+[node name="Timeline" type="HSlider" parent="HUD/VBoxContainer/Controls"]
+margin_left = 60.0
+margin_right = 1004.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
 scrollable = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,4 +75,5 @@ anchor_mode = 0
 current = true
 script = ExtResource( 3 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="HUD/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="HUD/VBoxContainer/Controls/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="value_changed" from="HUD/VBoxContainer/Controls/Timeline" to="." method="_on_Timeline_value_changed"]
