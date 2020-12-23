@@ -8,6 +8,7 @@ anchor_left = 0.01
 anchor_top = 0.02
 anchor_right = 0.99
 anchor_bottom = 0.25
+mouse_filter = 2
 custom_constants/separation = 150
 dragger_visibility = 1
 __meta__ = {

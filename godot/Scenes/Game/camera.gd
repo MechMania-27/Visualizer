@@ -13,8 +13,9 @@ var _current_zoom_level = 1
 var _drag = false
 var tilemap_bounds: Rect2
 
-
-func _input(event: InputEvent):
+# Use _unhandled_input so that we don't move camera if mouse-down is meant
+# for button or for timeline
+func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("cam_drag"):
 		_drag = true
 	elif event.is_action_released("cam_drag"):

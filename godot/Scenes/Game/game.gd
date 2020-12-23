@@ -12,6 +12,8 @@ func _ready():
 	$Timer.start()
 
 
+# Using _input because we want to pause the timer on ALL mouse down
+# (e.g. when user is scrubbing through timeline)
 func _input(event: InputEvent):
 	if event.is_action_pressed("cam_drag"):
 		$Timer.paused = true
