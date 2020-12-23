@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/GUI/ItemBox.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Images/icon.png" type="Texture" id=3]
-
-[sub_resource type="StreamTexture" id=1]
 
 [node name="PanelContainer" type="PanelContainer"]
 self_modulate = Color( 0.592157, 0.592157, 0.592157, 0.686275 )
@@ -15,9 +13,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-texture_node = NodePath("Item/TextureRect")
-text_node = NodePath("Item/ItemInfo")
-texture_sprite = SubResource( 1 )
 
 [node name="Item" type="HBoxContainer" parent="."]
 margin_left = 7.0

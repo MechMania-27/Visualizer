@@ -72,18 +72,21 @@ func _on_Timer_timeout():
 		timeline.value += 1
 
 
+func get_tilemap_bounds(tilemap: TileMap) -> Rect2:
+	var bounds = tilemap.get_used_rect()
+	var cell_to_pixel = Transform2D( \
+			Vector2(tilemap.cell_size.x * tilemap.scale.x, 0), \
+			Vector2(0, tilemap.cell_size.y * tilemap.scale.y), Vector2() \
+			)
+	return Rect2(cell_to_pixel * bounds.position, cell_to_pixel * bounds.size)
+
+
 func _on_PlayButton_pressed():
 	is_paused = not is_paused
 	if is_paused:
 		play_button.text = "Play"
 	else:
 		play_button.text = "Pause"
-
-
-func get_tilemap_bounds(tilemap: TileMap) -> Rect2:
-	var cell_bounds = tilemap.get_used_rect()
-	var cell_to_pixel = Transform2D(Vector2(tilemap.cell_size.x * tilemap.scale.x, 0), Vector2(0, tilemap.cell_size.y * tilemap.scale.y), Vector2())
-	return Rect2(cell_to_pixel * cell_bounds.position, cell_to_pixel * cell_bounds.size)
 
 
 func _on_Timeline_value_changed(value):
