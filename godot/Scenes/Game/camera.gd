@@ -29,7 +29,6 @@ func _unhandled_input(event: InputEvent):
 		
 		# Keep camera in bounds
 		# (offset is positive going left or up)
-		# TODO: account for zoom level
 		var max_x = self.zoom.x * get_viewport_rect().end.x - tilemap_bounds.end.x
 		var min_x = self.zoom.x * get_viewport_rect().position.x - tilemap_bounds.position.x
 		var max_y = self.zoom.y * get_viewport_rect().end.y - tilemap_bounds.end.y
