@@ -64,10 +64,14 @@ func valid_game_state(state: Dictionary) -> bool:
 
 
 func valid_player(player: Dictionary, tilemap: Dictionary) -> bool:
-	var keys = ["name", "position", "item", "upgrade"]
+	var keys = ["name", "position", "item", "upgrade", "money"]
 	for key in keys:
 		if not player.keys().has(key):
 			return false
+	
+	# JSON parsing will always interpret numbers as floats/reals
+	if typeof(player["money"]) != TYPE_REAL or player["money"] < 0:
+		return false
 	
 	if not valid_item(player["item"]) \
 			or not valid_position(player["position"], tilemap) \
