@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/GUI/ItemBox.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Images/icon.png" type="Texture" id=3]
+
+[sub_resource type="StreamTexture" id=1]
+
+[node name="PanelContainer" type="PanelContainer"]
+self_modulate = Color( 0.592157, 0.592157, 0.592157, 0.686275 )
+margin_right = 69.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 50, 10 )
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+texture_node = NodePath("Item/TextureRect")
+text_node = NodePath("Item/ItemInfo")
+texture_sprite = SubResource( 1 )
+
+[node name="Item" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 62.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Item"]
+margin_right = 15.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="ItemName" type="Label" parent="Item"]
+visible = false
+margin_left = 46.0
+margin_right = 257.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Item"
+
+[node name="ItemInfo" type="Label" parent="Item"]
+margin_left = 19.0
+margin_right = 55.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.47
+text = "info"

@@ -3,8 +3,8 @@ extends Node2D
 var is_paused: bool = false
 var cam_bounds: Rect2
 
-onready var timeline: Slider = $HUD/VBoxContainer/Controls/Timeline
-onready var play_button: Button = $HUD/VBoxContainer/Controls/PlayButton
+onready var timeline: Slider = $GUI/VBoxContainer/Controls/Timeline
+onready var play_button: Button = $GUI/VBoxContainer/Controls/PlayButton
 
 func _ready():
 	update_state(0)

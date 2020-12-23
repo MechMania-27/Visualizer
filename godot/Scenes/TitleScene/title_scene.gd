@@ -1,6 +1,5 @@
 extends Control
 
-signal in_focus
 
 func _ready():
 	pass

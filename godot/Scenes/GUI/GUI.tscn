@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/GUI/PlayerInfoUI.tscn" type="PackedScene" id=1]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerInfo" parent="VBoxContainer" instance=ExtResource( 1 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1004.0
+margin_bottom = 60.0
+
+[node name="Separator" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 64.0
+margin_right = 1004.0
+margin_bottom = 556.0
+size_flags_vertical = 3
+
+[node name="Controls" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 560.0
+margin_right = 1004.0
+margin_bottom = 580.0
+custom_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/Controls"]
+margin_right = 50.0
+margin_bottom = 20.0
+text = "Pause"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timeline" type="HSlider" parent="VBoxContainer/Controls"]
+margin_left = 60.0
+margin_right = 1004.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+scrollable = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
