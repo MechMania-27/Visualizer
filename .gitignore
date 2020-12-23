@@ -17,3 +17,7 @@ mono_crash.*.json
 # System/tool-specific ignores
 .directory
 *~
+
+# Output files
+godot/Scenes/MapEditor/maps/
+godot/Builds
