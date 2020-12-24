@@ -3,8 +3,8 @@ extends Node2D
 var is_paused: bool = false
 var cam_bounds: Rect2
 
-onready var timeline: Slider = $HUD/VBoxContainer/Controls/Timeline
-onready var play_button: Button = $HUD/VBoxContainer/Controls/PlayButton
+onready var timeline: Slider = $GUI/VBoxContainer/Controls/Timeline
+onready var play_button: Button = $GUI/VBoxContainer/Controls/PlayButton
 
 func _ready():
 	update_state(0)
@@ -12,6 +12,8 @@ func _ready():
 	$Timer.start()
 
 
+# Using _input because we want to pause the timer on ALL mouse down
+# (e.g. when user is scrubbing through timeline)
 func _input(event: InputEvent):
 	if event.is_action_pressed("cam_drag"):
 		$Timer.paused = true
@@ -72,18 +74,21 @@ func _on_Timer_timeout():
 		timeline.value += 1
 
 
+func get_tilemap_bounds(tilemap: TileMap) -> Rect2:
+	var bounds = tilemap.get_used_rect()
+	var cell_to_pixel = Transform2D( \
+			Vector2(tilemap.cell_size.x * tilemap.scale.x, 0), \
+			Vector2(0, tilemap.cell_size.y * tilemap.scale.y), Vector2() \
+			)
+	return Rect2(cell_to_pixel * bounds.position, cell_to_pixel * bounds.size)
+
+
 func _on_PlayButton_pressed():
 	is_paused = not is_paused
 	if is_paused:
 		play_button.text = "Play"
 	else:
 		play_button.text = "Pause"
-
-
-func get_tilemap_bounds(tilemap: TileMap) -> Rect2:
-	var cell_bounds = tilemap.get_used_rect()
-	var cell_to_pixel = Transform2D(Vector2(tilemap.cell_size.x * tilemap.scale.x, 0), Vector2(0, tilemap.cell_size.y * tilemap.scale.y), Vector2())
-	return Rect2(cell_to_pixel * cell_bounds.position, cell_to_pixel * cell_bounds.size)
 
 
 func _on_Timeline_value_changed(value):
