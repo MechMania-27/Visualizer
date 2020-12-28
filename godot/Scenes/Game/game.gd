@@ -1,46 +1,30 @@
 extends Node2D
 
-var is_paused: bool = false
 var cam_bounds: Rect2
-
-onready var timeline: Slider = $GUI/VBoxContainer/Controls/Timeline
-onready var play_button: Button = $GUI/VBoxContainer/Controls/PlayButton
 
 func _ready():
 	update_state(0)
-	init_ui()
-	$Timer.start()
 
 
 # Using _input because we want to pause the timer on ALL mouse down
 # (e.g. when user is scrubbing through timeline)
+var pause_cache: bool
 func _input(event: InputEvent):
 	if event.is_action_pressed("cam_drag"):
-		$Timer.paused = true
+		pause_cache = $GUI.get_paused()
+		$GUI.set_paused(true)
 	elif event.is_action_released("cam_drag"):
-		$Timer.paused = false
+		$GUI.set_paused(pause_cache)
 
 
 func update_state(state_num: int):
 	print("Updating to state: ", state_num)
 	
 	if state_num >= len(Global.gamelog["states"]):
-		return # Should never reach here if init_ui set max_value properly
+		return # Should never reach here if timeline max_value is set properly
 	
 	var state = Global.gamelog["states"][state_num]
 	fill_tilemaps(state["tileMap"], state["players"])
-
-
-func end_of_game():
-	# TODO: display some end-of-game thing
-	print("GAME OVER")
-	timeline.value = timeline.min_value # Loop for debugging
-	#get_tree().quit()
-
-
-func init_ui():
-	$Camera.tilemap_bounds = get_tilemap_bounds($Map/Base)
-	timeline.max_value = len(Global.gamelog["states"]) - 1
 
 
 func fill_tilemaps(map: Dictionary, players: Array):
@@ -65,31 +49,12 @@ func fill_tilemaps(map: Dictionary, players: Array):
 	$Map/Characters.set_cell(init_pos[1]["x"], init_pos[1]["y"], p2)
 
 
-func _on_Timer_timeout():
-	if is_paused:
-		return
-	elif timeline.value >= timeline.max_value:
-		end_of_game()
-	else:
-		timeline.value += 1
-
-
-func get_tilemap_bounds(tilemap: TileMap) -> Rect2:
-	var bounds = tilemap.get_used_rect()
-	var cell_to_pixel = Transform2D( \
-			Vector2(tilemap.cell_size.x * tilemap.scale.x, 0), \
-			Vector2(0, tilemap.cell_size.y * tilemap.scale.y), Vector2() \
-			)
-	return Rect2(cell_to_pixel * bounds.position, cell_to_pixel * bounds.size)
-
-
-func _on_PlayButton_pressed():
-	is_paused = not is_paused
-	if is_paused:
-		play_button.text = "Play"
-	else:
-		play_button.text = "Pause"
-
-
-func _on_Timeline_value_changed(value):
+func _on_GUI_timeline_changed(value):
 	update_state(value)
+
+
+func _on_GUI_game_over():
+	# TODO: display some end-of-game thing
+	print("GAME OVER")
+	$GUI.reset()
+	#get_tree().quit()
