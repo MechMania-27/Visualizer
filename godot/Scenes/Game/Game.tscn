@@ -3,10 +3,17 @@
 [ext_resource path="res://Assets/UrbanTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Game/game.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Game/camera.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/GUI/PlayerInfoUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/GUI/GUI.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+script = ExtResource( 3 )
+
+[node name="GUI" parent="." instance=ExtResource( 4 )]
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -22,66 +29,5 @@ format = 1
 __meta__ = {
 "_editor_description_": ""
 }
-
-[node name="Timer" type="Timer" parent="."]
-
-[node name="GUI" type="CanvasLayer" parent="."]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerInfo" parent="GUI/VBoxContainer" instance=ExtResource( 4 )]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1004.0
-margin_bottom = 60.0
-
-[node name="Separator" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_top = 64.0
-margin_right = 1004.0
-margin_bottom = 556.0
-mouse_filter = 2
-size_flags_vertical = 3
-
-[node name="Controls" type="HBoxContainer" parent="GUI/VBoxContainer"]
-margin_top = 560.0
-margin_right = 1004.0
-margin_bottom = 580.0
-custom_constants/separation = 10
-
-[node name="PlayButton" type="Button" parent="GUI/VBoxContainer/Controls"]
-margin_right = 50.0
-margin_bottom = 20.0
-text = "Pause"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Timeline" type="HSlider" parent="GUI/VBoxContainer/Controls"]
-margin_left = 60.0
-margin_right = 1004.0
-margin_bottom = 16.0
-size_flags_horizontal = 3
-scrollable = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Camera" type="Camera2D" parent="."]
-anchor_mode = 0
-current = true
-script = ExtResource( 3 )
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="GUI/VBoxContainer/Controls/PlayButton" to="." method="_on_PlayButton_pressed"]
-[connection signal="value_changed" from="GUI/VBoxContainer/Controls/Timeline" to="." method="_on_Timeline_value_changed"]
+[connection signal="game_over" from="GUI" to="." method="_on_GUI_game_over"]
+[connection signal="timeline_changed" from="GUI" to="." method="_on_GUI_timeline_changed"]
