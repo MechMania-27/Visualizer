@@ -18,6 +18,29 @@ mono_crash.*.json
 .directory
 *~
 
+# for projects that use SCons for building: http://http://www.scons.org/
+.sconsign.dblite
+
+# When configure fails, SCons outputs these
+config.log
+.sconf_temp
+
 # Output files
-godot/Scenes/MapEditor/maps/
-godot/Builds
+visualizer/Scenes/MapEditor/maps/
+visualizer/Builds
+visualizer/Scenes/StarterPack/Engine
+visualizer/Scenes/StarterPack/HumanStarterPack
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
