@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="MechMania27"
-run/main_scene="res://Scenes/StarterPack/StarterPack.tscn"
+run/main_scene="res://Scenes/TitleScene/TitleScene.tscn"
 config/icon="res://Assets/Images/icon.png"
 run/main_loop_type="SceneTree"
 
