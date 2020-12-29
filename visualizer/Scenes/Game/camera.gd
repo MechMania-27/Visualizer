@@ -13,9 +13,11 @@ var _current_zoom_level = 1
 var _drag = false
 var tilemap_bounds: Rect2
 
+onready var map: Node = get_node("../Map")
 
-func _ready():
-	tilemap_bounds = get_tilemap_bounds(get_node("../Map/Base"))
+
+func refresh_bounds():
+	tilemap_bounds = map.get_bounds()
 
 
 # Use _unhandled_input so that we don't move camera if mouse-down is meant
@@ -67,12 +69,3 @@ func _update_zoom(incr: float, zoom_anchor: Vector2):
 	
 	set_zoom(Vector2(_current_zoom_level, _current_zoom_level))
 	emit_signal("zoomed")
-
-
-func get_tilemap_bounds(tilemap: TileMap) -> Rect2:
-	var bounds = tilemap.get_used_rect()
-	var cell_to_pixel = Transform2D( \
-			Vector2(tilemap.cell_size.x * tilemap.scale.x, 0), \
-			Vector2(0, tilemap.cell_size.y * tilemap.scale.y), Vector2() \
-			)
-	return Rect2(cell_to_pixel * bounds.position, cell_to_pixel * bounds.size)

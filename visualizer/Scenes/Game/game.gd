@@ -4,6 +4,7 @@ var cam_bounds: Rect2
 
 func _ready():
 	$Map.update_state(0)
+	$Camera.refresh_bounds()
 
 
 # Using _input because we want to pause the timer on ALL mouse down

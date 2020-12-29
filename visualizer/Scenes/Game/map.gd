@@ -1,5 +1,14 @@
 extends Node2D
 
+func get_bounds() -> Rect2:
+	var tilemap = $Base
+	var bounds = tilemap.get_used_rect()
+	var cell_to_pixel = Transform2D( \
+			Vector2(tilemap.cell_size.x * tilemap.scale.x, 0), \
+			Vector2(0, tilemap.cell_size.y * tilemap.scale.y), Vector2() \
+			)
+	return Rect2(cell_to_pixel * bounds.position, cell_to_pixel * bounds.size)
+
 
 func update_state(state_num: int):
 	print("Updating to state: ", state_num)
