@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/UrbanTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Game/map.gd" type="Script" id=2]
+[ext_resource path="res://Assets/PlayerSpriteFrame.tres" type="SpriteFrames" id=3]
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 2 )
@@ -11,10 +12,20 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
-[node name="Characters" type="TileMap" parent="."]
-tile_set = ExtResource( 1 )
-cell_size = Vector2( 16, 16 )
-format = 1
-__meta__ = {
-"_editor_description_": ""
-}
+[node name="Player1" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = ExtResource( 3 )
+animation = "Left1"
+frame = 3
+playing = true
+centered = false
+
+[node name="Player2" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = ExtResource( 3 )
+animation = "Left2"
+frame = 1
+playing = true
+centered = false
+
+[node name="Tween" type="Tween" parent="."]

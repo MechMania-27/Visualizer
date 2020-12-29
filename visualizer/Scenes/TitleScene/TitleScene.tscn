@@ -99,8 +99,8 @@ resizable = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json ; JSON files" )
-current_dir = "/Users/sahil/Documents/GitHub/mm27-visualizer/visualizer"
-current_path = "/Users/sahil/Documents/GitHub/mm27-visualizer/visualizer/"
+current_dir = "/Users/Cam/Documents/GitHub/Visualizer/visualizer"
+current_path = "/Users/Cam/Documents/GitHub/Visualizer/visualizer/"
 script = ExtResource( 7 )
 [connection signal="pressed" from="Menu/CenterRow/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
