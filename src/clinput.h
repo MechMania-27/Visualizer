@@ -18,7 +18,6 @@ public:
     void _init(); // our initializer called by Godot
 
     String read_line();
-    String test();
 };
 
 }
