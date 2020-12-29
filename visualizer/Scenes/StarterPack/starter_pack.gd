@@ -10,11 +10,19 @@ extends Node2D
 
 onready var text_edit: TextEdit = $GUI/VBoxContainer/Controls/TextEdit
 
+var input: String
+
 
 func _ready():
-	print("stdin: ", $CLInput.read_line())
+	next()
+
+
+func next():
+	text_edit.text = ""
+	input = $CLInput.read_line()
 
 
 func _on_Button_pressed():
 	printerr("Text entered:\n", text_edit.text, "\n")
-	text_edit.text = ""
+	print(input)
+	next()
