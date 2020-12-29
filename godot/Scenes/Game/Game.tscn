@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/UrbanTileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Game/game.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Game/camera.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/GUI/GUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/PlayerSpriteFrame.tres" type="SpriteFrames" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
@@ -23,11 +24,34 @@ cell_size = Vector2( 16, 16 )
 format = 1
 
 [node name="Characters" type="TileMap" parent="Map"]
+visible = false
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="Player1" type="AnimatedSprite" parent="Map"]
+scale = Vector2( 2, 2 )
+frames = ExtResource( 5 )
+animation = "Left1"
+playing = true
+centered = false
+
+[node name="Tween" type="Tween" parent="Map/Player1"]
+
+[node name="Player2" type="AnimatedSprite" parent="Map"]
+position = Vector2( 66.7758, 3.77976 )
+scale = Vector2( 2, 2 )
+frames = ExtResource( 5 )
+animation = "Left2"
+frame = 2
+playing = true
+centered = false
+
+[node name="Tween" type="Tween" parent="Map/Player2"]
 [connection signal="game_over" from="GUI" to="." method="_on_GUI_game_over"]
+[connection signal="paused" from="GUI" to="." method="_on_pause_toggle" flags=3 binds= [ false ]]
+[connection signal="resumed" from="GUI" to="." method="_on_pause_toggle" flags=3 binds= [ true ]]
 [connection signal="timeline_changed" from="GUI" to="." method="_on_GUI_timeline_changed"]

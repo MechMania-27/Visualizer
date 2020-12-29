@@ -77,13 +77,12 @@ func valid_player(player: Dictionary, tilemap: Dictionary) -> bool:
 			or not valid_position(player["position"], tilemap) \
 			or not valid_upgrade(player["upgrade"]):
 		return false
-	
 	return true
 
 
 func valid_position(pos: Dictionary, tilemap: Dictionary) -> bool:
 	if not (pos.keys().has("x") and pos.keys().has("y")):
-			return false
+		return false
 	if pos["x"] < 0 or pos["x"] >= tilemap["mapWidth"]:
 		return false
 	if pos["y"] < 0 or pos["y"] >= tilemap["mapHeight"]:
