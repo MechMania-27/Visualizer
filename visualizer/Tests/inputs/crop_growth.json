@@ -5,7 +5,7 @@
 				"mapHeight": 5,
 				"mapWidth": 4,
 				"tiles": [
-					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
+					[{"type": 0, "soilQuality": 0, "crop": {"type": 0, "growthTimer": 0}}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
 					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
 					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
 					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
@@ -50,7 +50,7 @@
 				"mapHeight": 5,
 				"mapWidth": 4,
 				"tiles": [
-					[{"type": 0, "soilQuality": 1}, {"type": 0, "soilQuality": 1}, {"type": 0, "soilQuality": 1}, {"type": 0, "soilQuality": 1}],
+					[{"type": 0, "soilQuality": 1, "crop": {"type": 0, "growthTimer": 1}}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
 					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
 					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
 					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
@@ -79,8 +79,8 @@
 				"mapHeight": 5,
 				"mapWidth": 4,
 				"tiles": [
-					[{"type": 0, "soilQuality": 2}, {"type": 0, "soilQuality": 2}, {"type": 0, "soilQuality": 2}, {"type": 0, "soilQuality": 2}],
-					[{"type": 0, "soilQuality": 1}, {"type": 0, "soilQuality": 1}, {"type": 0, "soilQuality": 1}, {"type": 0, "soilQuality": 1}],
+					[{"type": 0, "soilQuality": 1, "crop": {"type": 0, "growthTimer": 2}}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
+					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
 					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
 					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
 					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}]
