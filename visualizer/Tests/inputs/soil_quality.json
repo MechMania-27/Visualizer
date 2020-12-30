@@ -15,7 +15,7 @@
 			"players": [
 				{
 					"name": "Player 1",
-					"position": {"x": 0, "y": 0},
+					"position": {"x": 1, "y": 1},
 					"item": {"type": 0},
 					"upgrade": 0,
 					"money": 0
@@ -33,7 +33,7 @@
 			"players": [
 				{
 					"name": "Player 1",
-					"position": {"x": 0, "y": 0},
+					"position": {"x": 1, "y": 1},
 					"item": {"type": 0},
 					"upgrade": 0,
 					"money": 0
@@ -62,7 +62,7 @@
 			"players": [
 				{
 					"name": "Player 1",
-					"position": {"x": 0, "y": 0},
+					"position": {"x": 1, "y": 1},
 					"item": {"type": 0},
 					"upgrade": 0,
 					"money": 0

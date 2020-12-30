@@ -27,10 +27,19 @@ func update_state(state_num: int):
 		return # Should never reach here if timeline max_value is set properly
 	
 	var state = Global.gamelog["states"][state_num]
-	fill_tilemaps(state["tileMap"], state["players"])
+	fill_tilemaps(state["tileMap"])
+	update_players(state["players"])
 
 
-func fill_tilemaps(map: Dictionary, players: Array):	
+func update_players(players: Array):
+	var pos = Vector2(players[0]["position"]["x"], players[0]["position"]["y"])
+	$Player1.global_transform.origin = $Base.map_to_world(pos)
+	
+	pos = Vector2(players[1]["position"]["x"], players[1]["position"]["y"])
+	$Player2.global_transform.origin = $Base.map_to_world(pos)
+
+
+func fill_tilemaps(map: Dictionary):
 	# Fill in base layer
 	for x in range(0, map["mapWidth"]):
 		for y in range(0, map["mapHeight"]):
