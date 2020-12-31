@@ -25,6 +25,11 @@ run/main_loop_type="SceneTree"
 JsonTranslator="*res://Assets/Scripts/json_translator.gd"
 Global="*res://Assets/Scripts/global.gd"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "gut" )

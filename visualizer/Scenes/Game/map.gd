@@ -36,7 +36,11 @@ func fill_tilemaps(map: Dictionary, players: Array, instant : bool = false):
 	# Applies auto-tiling rules
 	Base.update_bitmask_region()
 	
-	# Move characters
+	move_characters(0 if instant else update_time * 0.5, players)
+	
+
+
+func move_characters(duration : float, players: Array):
 	player_tween.remove_all()
 	for i in range(player_sprites.size()):
 		var player : AnimatedSprite = player_sprites[i]
@@ -48,10 +52,11 @@ func fill_tilemaps(map: Dictionary, players: Array, instant : bool = false):
 		var new_world_pos = Base.map_to_world(new_map_pos)
 		
 		var direction = new_world_pos - player.position
-		if direction == Vector2.ZERO: return #if not moving
+		if direction == Vector2.ZERO: continue #if not moving
 		
 		if player_tween.interpolate_property(player, 'position', 
-		player.position, new_world_pos, 0.0 if instant else update_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT):
+		player.position, new_world_pos, duration, 
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT):
 			pass
 			var anim
 			if abs(direction.y) - abs(direction.x) > 0:
@@ -69,3 +74,4 @@ func fill_tilemaps(map: Dictionary, players: Array, instant : bool = false):
 func _on_pause_toggle(playing : bool):
 	for p in player_sprites:
 		p.playing = playing
+	

@@ -7,7 +7,7 @@ onready var camera = $Camera
 
 func _ready():
 	Map.update_time = GUI.timer.wait_time
-	Map.update_state(0)
+	Map.update_state(0, true)
 	camera.refresh_bounds()
 
 
