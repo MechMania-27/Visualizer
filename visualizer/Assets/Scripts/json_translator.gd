@@ -93,7 +93,8 @@ func valid_position(pos: Dictionary, tilemap: Dictionary) -> bool:
 
 
 func valid_tile(tile: Dictionary) -> bool:
-	var keys = ["type"]
+	# TODO: require and vet crop, item, etc fields
+	var keys = ["type", "soilQuality"]
 	for key in keys:
 		if not tile.keys().has(key):
 			return false

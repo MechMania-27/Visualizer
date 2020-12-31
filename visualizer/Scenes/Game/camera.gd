@@ -2,7 +2,7 @@ extends Camera2D
 
 # From https://www.braindead.bzh/entry/godot-interactive-camera2d
 
-export var MAX_ZOOM_LEVEL = 0.25
+export var MAX_ZOOM_LEVEL = 0.5
 export var MIN_ZOOM_LEVEL = 1.0
 export var ZOOM_INCREMENT = 0.05
 
