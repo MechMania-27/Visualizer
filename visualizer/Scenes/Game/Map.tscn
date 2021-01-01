@@ -1,31 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/UrbanTileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://Assets/Images/FakeTileSet_Crops.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Game/map.gd" type="Script" id=2]
-[ext_resource path="res://Assets/PlayerSpriteFrame.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://Scenes/Game/Players.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Images/FakeTileSet_Base.tres" type="TileSet" id=4]
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Base" type="TileMap" parent="."]
-tile_set = ExtResource( 1 )
-cell_size = Vector2( 16, 16 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 32, 32 )
 format = 1
 
-[node name="Player1" type="AnimatedSprite" parent="."]
-scale = Vector2( 2, 2 )
-frames = ExtResource( 3 )
-animation = "Left1"
-frame = 3
-playing = true
-centered = false
+[node name="Crops" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
 
-[node name="Player2" type="AnimatedSprite" parent="."]
-scale = Vector2( 2, 2 )
-frames = ExtResource( 3 )
-animation = "Left2"
-frame = 1
-playing = true
-centered = false
-
-[node name="Tween" type="Tween" parent="."]
+[node name="Players" parent="." instance=ExtResource( 3 )]

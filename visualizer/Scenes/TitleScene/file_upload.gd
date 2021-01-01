@@ -22,7 +22,7 @@ func _on_FileDialog_file_selected(path):
 	var _gamelog = JsonTranslator.parse_json(path)
 	if _gamelog == null or not JsonTranslator.valid_gamelog(_gamelog):
 		print("Invalid Game Log")
-		$FileDialog.set_title("Select a Valid Game Log")
+		#$FileDialog.set_title("Select a Valid Game Log")
 	else:
 		Global.gamelog = _gamelog
 		emit_signal("gamelog_ready")
