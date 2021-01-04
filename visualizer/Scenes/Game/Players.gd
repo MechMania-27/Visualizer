@@ -1,10 +1,10 @@
 extends Node2D
 
 onready var player_sprites = [$Player1, $Player2]
-onready var move_speed: float = 1 setget change_speed
+onready var speed: float = 1 setget change_speed
 
 # Move each player to new position, 
-# by default taking 0.5 seconds to move to new position (done in PlayerSprite.gd)
+# by default taking 0.5 seconds to move to new position (value in PlayerSprite.gd)
 func move_characters(player_info: Array):
 	if !get_parent().get_node("Base"): return
 	
@@ -23,7 +23,7 @@ func move_characters(player_info: Array):
 # 1 = 0.5 seconds
 # 2 = 0.25 seconds
 func change_speed(new: float):
-	move_speed = new
+	speed = new
 	for p in player_sprites:
 		p.tween.playback_speed = new
 
@@ -36,6 +36,7 @@ func move_instant(player_info: Array):
 		if !player_info[i] or !player_sprites[i] is PlayerSprite: break
 		
 		var new_world_pos = _get_player_position(player_info[i])
+		if !new_world_pos: break
 		player_sprites[i].position = new_world_pos
 		
 	
