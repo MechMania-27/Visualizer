@@ -40,3 +40,7 @@ func fill_tilemaps(map: Dictionary):
 	# Applies auto-tiling rules
 	Base.update_bitmask_region()
 	
+
+
+func _on_paused():
+	Players.smooth_instant()

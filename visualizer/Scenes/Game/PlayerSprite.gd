@@ -1,8 +1,9 @@
 extends AnimatedSprite
 class_name PlayerSprite
 
+const DEFAULT_DURATION : float = 0.7
 onready var tween = $Tween
-const DEFAULT_DURATION : float = 0.5
+onready var next_pos : Vector2 = position
 
 # Moves player to new x pos first
 func move_to(new_pos: Vector2):
@@ -26,6 +27,7 @@ func move_to(new_pos: Vector2):
 		[new_pos, DEFAULT_DURATION - duration], CONNECT_ONESHOT + CONNECT_DEFERRED)
 		
 		tween.start()
+		next_pos = new_pos
 		
 	
 

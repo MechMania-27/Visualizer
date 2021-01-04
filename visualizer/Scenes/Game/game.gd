@@ -8,6 +8,7 @@ onready var camera = $Camera
 func _ready():
 	Map.update_state(0, true)
 	camera.refresh_bounds()
+	GUI.connect("paused", Map, "_on_paused")
 
 
 # Using _input because we want to pause the timer on ALL mouse down
@@ -23,7 +24,7 @@ func _input(event: InputEvent):
 var prev_value = 0
 func _on_GUI_timeline_changed(value):
 	var instant = abs(value - prev_value) > 1
-	Map.update_state(value, instant)
+	Map.update_state(value, instant or GUI.timer.paused)
 	prev_value = value
 
 
