@@ -1,10 +1,5 @@
 extends Node2D
 
-enum TileType {
-	SOIL = 0,
-	GREEN_GROCER = 1
-}
-
 # Maps from crop growth stage to atlas sprite coordinate
 func get_crop(stage: int) -> Vector2:
 	return Vector2(stage, 0)
@@ -28,14 +23,14 @@ func update_state(state_num: int):
 	
 	var state = Global.gamelog["states"][state_num]
 	fill_tilemaps(state["tileMap"])
-	update_players(state["players"])
+	update_players(state["p1"], state["p2"])
 
 
-func update_players(players: Array):
-	var pos = Vector2(players[0]["position"]["x"], players[0]["position"]["y"])
+func update_players(p1: Dictionary, p2: Dictionary):
+	var pos = Vector2(p1["position"]["x"], p1["position"]["y"])
 	$Player1.global_transform.origin = $Base.map_to_world(pos)
 	
-	pos = Vector2(players[1]["position"]["x"], players[1]["position"]["y"])
+	pos = Vector2(p2["position"]["x"], p2["position"]["y"])
 	$Player2.global_transform.origin = $Base.map_to_world(pos)
 
 
@@ -44,16 +39,13 @@ func fill_tilemaps(map: Dictionary):
 	for x in range(0, map["mapWidth"]):
 		for y in range(0, map["mapHeight"]):
 			var tile: Dictionary = map["tiles"][y][x]
-			match int(tile["type"]):
-				TileType.SOIL:
-					$Base.set_cell(x, y, tile["soilQuality"])
-				TileType.GREEN_GROCER:
-					$Base.set_cell(x, y, \
-							$Base.tile_set.find_tile_by_name("Green Grocer"))
+			$Base.set_cell(x, y, Global.TileType.get(tile["type"]))
 			
-			# TODO: require a crop field
-			if tile.keys().has("crop"):
-				$Crops.set_cell(x, y, tile["crop"]["type"], false, false, \
+			var crop_type = Global.CropType.get(tile["crop"]["type"])
+			if crop_type == Global.CropType.NONE:
+				$Crops.set_cell(x, y, -1)
+			else:
+				$Crops.set_cell(x, y, crop_type, false, false, \
 						false, get_crop(tile["crop"]["growthTimer"]))
 	
 	# Applies auto-tiling rules
