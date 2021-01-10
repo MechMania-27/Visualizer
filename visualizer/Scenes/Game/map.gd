@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var Base = $Base
-onready var Players = $Players
+onready var PlayerController = $Crops/PlayerController
 
 func get_bounds() -> Rect2:
 	var tilemap = Base
@@ -23,9 +23,9 @@ func update_state(state_num: int, instant_update: bool = false):
 	fill_tilemaps(state["tileMap"])
 	
 	if instant_update:
-		Players.move_instant(state["players"])
+		PlayerController.move_instant(state["players"])
 	else:
-		Players.move_characters(state["players"])
+		PlayerController.move_characters(state["players"])
 	
 
 
@@ -43,4 +43,4 @@ func fill_tilemaps(map: Dictionary):
 
 
 func _on_paused():
-	Players.smooth_instant()
+	PlayerController.smooth_instant()

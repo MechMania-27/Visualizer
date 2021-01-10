@@ -1,13 +1,28 @@
 extends Node2D
 
 onready var player_sprites = [$Player1, $Player2]
+onready var Base = get_node('../../Base')
+
 var speed: float = 1 setget change_speed
 const POS_ERROR = Vector2(-1,-1)
+
+
+func _ready():
+	call_deferred("move_children")
+
+
+# Moves players into parent node of this node, ideally
+# tilemap with y sort enabled
+func move_children():
+	for p in player_sprites:
+		remove_child(p)
+		get_parent().add_child(p)
+
 
 # Move each player to new position smoothly, 
 # by default taking 0.7 seconds to move to new position (value in PlayerSprite.gd)
 func move_characters(player_info: Array):
-	if !get_parent().get_node("Base"): return
+	if !Base is TileMap: return
 	
 	for i in range(player_sprites.size()):
 		
@@ -46,13 +61,13 @@ func smooth_instant():
 
 
 func _get_player_position(player_info: Dictionary) -> Vector2:
-	if !get_parent().get_node("Base"): return POS_ERROR
+	if !Base: return POS_ERROR
 	
 	var new_board_pos = player_info["position"]
 	if !new_board_pos: return POS_ERROR
 	
 	new_board_pos = Vector2(new_board_pos['x'], new_board_pos['y'])
-	return get_parent().Base.map_to_world(new_board_pos)
+	return Base.map_to_world(new_board_pos)
 
 
 # Changes time for players to move
