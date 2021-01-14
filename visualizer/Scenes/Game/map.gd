@@ -23,9 +23,9 @@ func update_state(state_num: int, instant_update: bool = false):
 	fill_tilemaps(state["tileMap"])
 	
 	if instant_update:
-		PlayerController.move_instant(state["players"])
+		PlayerController.move_instant(state["players"], Base)
 	else:
-		PlayerController.move_characters(state["players"])
+		PlayerController.move_characters(state["players"], Base)
 	
 
 

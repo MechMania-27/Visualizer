@@ -1,34 +1,33 @@
 extends Node2D
 
-onready var player_sprites = [$Player1, $Player2]
-onready var Base = get_node('../../Base')
+export(Array, NodePath) var player_nodes
 
+var player_sprites: Array = []
 var speed: float = 1 setget change_speed
-const POS_ERROR = Vector2(-1,-1)
+const POS_ERROR = Vector2.INF
 
 
 func _ready():
-	call_deferred("move_children")
-
-
-# Moves players into parent node of this node, ideally
-# tilemap with y sort enabled
-func move_children():
-	for p in player_sprites:
-		remove_child(p)
-		get_parent().add_child(p)
+	
+	for path in player_nodes:
+		if !path: continue
+		var p = get_node(path)
+		if p is PlayerSprite:
+			player_sprites.append(p)
+			
+		
+	
 
 
 # Move each player to new position smoothly, 
 # by default taking 0.7 seconds to move to new position (value in PlayerSprite.gd)
-func move_characters(player_info: Array):
-	if !Base is TileMap: return
+func move_characters(player_info: Array, tilemap: TileMap):
 	
 	for i in range(player_sprites.size()):
 		
 		if !player_info[i] or !player_sprites[i] is PlayerSprite: break
 		
-		var new_world_pos = _get_player_position(player_info[i])
+		var new_world_pos = _get_player_position(player_info[i], tilemap)
 		if new_world_pos == POS_ERROR: break
 		player_sprites[i].move_to(new_world_pos)
 		
@@ -36,14 +35,14 @@ func move_characters(player_info: Array):
 
 
 # Instantly update positions
-func move_instant(player_info: Array):
+func move_instant(player_info: Array, tilemap: TileMap):
 	
 	for i in range(player_sprites.size()):
 		
 		if !player_info[i] or !player_sprites[i] is PlayerSprite: break
 		var player : PlayerSprite = player_sprites[i]
 		
-		var new_world_pos = _get_player_position(player_info[i])
+		var new_world_pos = _get_player_position(player_info[i], tilemap)
 		if new_world_pos == POS_ERROR: break
 		
 		player.tween.remove_all()
@@ -60,20 +59,16 @@ func smooth_instant():
 		p.position = p.next_pos
 
 
-func _get_player_position(player_info: Dictionary) -> Vector2:
-	if !Base: return POS_ERROR
+func _get_player_position(player_info: Dictionary, tilemap: TileMap) -> Vector2:
 	
 	var new_board_pos = player_info["position"]
 	if !new_board_pos: return POS_ERROR
 	
 	new_board_pos = Vector2(new_board_pos['x'], new_board_pos['y'])
-	return Base.map_to_world(new_board_pos)
+	return tilemap.map_to_world(new_board_pos)
 
 
 # Changes time for players to move
-# Ex: 
-# 1 = 0.7 seconds
-# 2 = 0.35 seconds
 func change_speed(new: float):
 	speed = new
 	for p in player_sprites:
