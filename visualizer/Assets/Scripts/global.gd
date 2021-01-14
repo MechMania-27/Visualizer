@@ -14,9 +14,10 @@ enum PlayerEndState {
 	ERROR,
 }
 
-# TODO: Give values that correspond to TileSet index
+# Values correspond to TileSet index
 enum TileType {
-	GREEN_GROCER = -1,
+	GREEN_GROCER = 5,
+	GRASS = 4,
 	ARID = 3,
 	SOIL = 3,
 	F_BAND_OUTER = 2,

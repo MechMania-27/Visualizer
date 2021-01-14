@@ -2,7 +2,8 @@ extends Node2D
 
 # Maps from crop growth stage to atlas sprite coordinate
 func get_crop(stage: int) -> Vector2:
-	return Vector2(stage, 0)
+	# TODO: This will have to be changed for the final sprite sheet
+	return Vector2(2 - stage, 0)
 
 
 func get_bounds() -> Rect2:
