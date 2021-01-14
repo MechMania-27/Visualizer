@@ -11,18 +11,17 @@ enum PlayerEndState {
 	WON,
 	LOST,
 	TIED,
-	TIMED_OUT,
 	ERROR,
 }
 
 # TODO: Give values that correspond to TileSet index
 enum TileType {
-	SOIL_0,
-	SOIL_1,
-	SOIL_2,
-	SOIL_3,
-	SOIL_4,
-	GREEN_GROCER,
+	GREEN_GROCER = -1,
+	ARID = 3,
+	SOIL = 3,
+	F_BAND_OUTER = 2,
+	F_BAND_MID = 1,
+	F_BAND_INNER = 0,
 }
 
 # Values correspond to TileSet index

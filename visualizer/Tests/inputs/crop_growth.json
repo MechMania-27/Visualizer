@@ -8,34 +8,34 @@
 				"mapWidth": 4,
 				"tiles": [
 					[
-						{"type": "SOIL_0", "crop": {"type": "CORN", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "GRAPE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "POTATO", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "CORN", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "GRAPE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "POTATO", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					]
 				]
 			},
@@ -60,34 +60,34 @@
 				"mapWidth": 4,
 				"tiles": [
 					[
-						{"type": "SOIL_0", "crop": {"type": "CORN", "growthTimer": 1}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "GRAPE", "growthTimer": 1}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "POTATO", "growthTimer": 1}, "p1_item": "NONE", "p2_item": "NONE"},  
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "CORN", "growthTimer": 1}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "GRAPE", "growthTimer": 1}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "POTATO", "growthTimer": 1}, "p1_item": "NONE", "p2_item": "NONE"},  
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					]
 				]
 			},
@@ -112,34 +112,34 @@
 				"mapWidth": 4,
 				"tiles": [
 					[
-						{"type": "SOIL_0", "crop": {"type": "CORN", "growthTimer": 2}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "GRAPE", "growthTimer": 2}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "POTATO", "growthTimer": 2}, "p1_item": "NONE", "p2_item": "NONE"},  
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "CORN", "growthTimer": 2}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "GRAPE", "growthTimer": 2}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "POTATO", "growthTimer": 2}, "p1_item": "NONE", "p2_item": "NONE"},  
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					]
 				]
 			},
@@ -164,34 +164,34 @@
 				"mapWidth": 4,
 				"tiles": [
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},  
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},  
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					],
 					[
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
-						{"type": "SOIL_0", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
 					]
 				]
 			},
