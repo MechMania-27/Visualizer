@@ -23,7 +23,7 @@ func _on_GUI_timeline_changed(value):
 
 
 func _on_GUI_game_over():
-	# TODO: display some end-of-game thing
+	# TODO: display some end-of-game thing with gamelog's PlayerEndStates
 	print("GAME OVER")
 	$GUI.reset()
 	#get_tree().quit()
