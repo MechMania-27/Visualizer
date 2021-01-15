@@ -19,10 +19,19 @@ func _ready():
 
 
 func _on_FileDialog_file_selected(path):
-	var _gamelog = JsonTranslator.parse_json(path)
-	if _gamelog == null or not JsonTranslator.valid_gamelog(_gamelog):
-		print("Invalid Game Log")
-		#$FileDialog.set_title("Select a Valid Game Log")
+	# Read file
+	var file = File.new()
+	file.open(path, file.READ)
+	var json_result = JSON.parse(file.get_as_text())
+	if json_result.error != OK:
+		return null
+	file.close()
+	
+	# Check validity
+	var _gamelog = json_result.result
+	if _gamelog == null or not Global.valid_gamelog(_gamelog):
+		printerr("Invalid Game Log")
+		set_title("Select a Valid Game Log")
 	else:
 		Global.gamelog = _gamelog
 		emit_signal("gamelog_ready")
@@ -67,7 +76,7 @@ func load_file():
 	if parse.error != OK:
 		return
 	
-	if parse.result == null or not JsonTranslator.valid_gamelog(parse.result):
+	if parse.result == null or not Global.valid_gamelog(parse.result):
 		print("Invalid Game Log")
 	else:
 		Global.gamelog = parse.result

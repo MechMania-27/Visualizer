@@ -4,4 +4,3 @@
 
 [node name="PlayerController" type="Node2D"]
 script = ExtResource( 2 )
-player_nodes = [ NodePath(""), NodePath("") ]

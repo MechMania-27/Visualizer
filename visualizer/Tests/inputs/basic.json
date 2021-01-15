@@ -1,33 +1,58 @@
 {
+	"p1_status": "TIED",
+	"p2_status": "TIED",
 	"states": [
 		{
 			"tileMap": {
 				"mapHeight": 5,
 				"mapWidth": 4,
 				"tiles": [
-					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
-					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
-					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
-					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}],
-					[{"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}, {"type": 0, "soilQuality": 0}]
+					[
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+					],
+					[
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"},
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+					],
+					[
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+					],
+					[
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+					],
+					[
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}, 
+						{"type": "SOIL", "crop": {"type": "NONE", "growthTimer": 0}, "p1_item": "NONE", "p2_item": "NONE"}
+					]
 				]
 			},
-			"players": [
-				{
-					"name": "Player 1",
-					"position": {"x": 0, "y": 0},
-					"item": {"type": 0},
-					"upgrade": 0,
-					"money": 0
-				},
-				{
-					"name": "Player 2",
-					"position": {"x": 1, "y": 1},
-					"item": {"type": 0},
-					"upgrade": 0,
-					"money": 0
-				}
-			],
+			"p1": {
+				"name": "Player 1",
+				"position": {"x": 0, "y": 0},
+				"item": "NONE",
+				"upgrade": "NONE",
+				"money": 0
+			},
+			"p2": {
+				"name": "Player 2",
+				"position": {"x": 1, "y": 1},
+				"item": "NONE",
+				"upgrade": "NONE",
+				"money": 0
+			}
 		}
 	]
 }
