@@ -3,38 +3,21 @@ extends FileDialog
 # Code modified from https://github.com/Pukkah/HTML5-File-Exchange-for-Godot/
 #  (linked addon only supports images... re-writing code to serve our purposes)
 
-signal gamelog_ready
+signal file_read(data)
 signal in_focus
+signal reading_begun
+
+var use_js = OS.get_name() == "HTML5" and OS.has_feature('JavaScript')
+
 
 func _notification(notification: int):
 	if notification == MainLoop.NOTIFICATION_WM_FOCUS_IN:
 		emit_signal("in_focus")
 
 
-var use_js = OS.get_name() == "HTML5" and OS.has_feature('JavaScript')
-
 func _ready():
 	if use_js:
 		_define_js()
-
-
-func _on_FileDialog_file_selected(path):
-	# Read file
-	var file = File.new()
-	file.open(path, file.READ)
-	var json_result = JSON.parse(file.get_as_text())
-	if json_result.error != OK:
-		return null
-	file.close()
-	
-	# Check validity
-	var _gamelog = json_result.result
-	if _gamelog == null or not Global.valid_gamelog(_gamelog):
-		printerr("Invalid Game Log")
-		set_title("Select a Valid Game Log")
-	else:
-		Global.gamelog = _gamelog
-		emit_signal("gamelog_ready")
 
 
 var default: Rect2
@@ -61,6 +44,8 @@ func load_file():
 	if JavaScript.eval("canceled;", true):
 		return
 	
+	emit_signal("reading_begun")
+	
 	# Wait until full data has loaded
 	var file_data: PoolByteArray
 	while true:
@@ -72,15 +57,7 @@ func load_file():
 	# Optionally check file type
 	#var file_type = JavaScript.eval("fileType;", true)
 	
-	var parse = JSON.parse(file_data.get_string_from_utf8())
-	if parse.error != OK:
-		return
-	
-	if parse.result == null or not Global.valid_gamelog(parse.result):
-		print("Invalid Game Log")
-	else:
-		Global.gamelog = parse.result
-		emit_signal("gamelog_ready")
+	emit_signal("file_read", file_data)
 
 
 func _define_js():

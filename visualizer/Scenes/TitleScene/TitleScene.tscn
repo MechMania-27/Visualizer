@@ -85,10 +85,25 @@ rect_clip_content = true
 texture = ExtResource( 4 )
 stretch_mode = 6
 
-[node name="Version" type="Label" parent="Menu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu"]
 margin_top = 426.0
 margin_right = 864.0
 margin_bottom = 440.0
+
+[node name="Status" type="Label" parent="Menu/HBoxContainer"]
+margin_bottom = 14.0
+
+[node name="Separator" type="Control" parent="Menu/HBoxContainer"]
+margin_left = 4.0
+margin_right = 668.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Version" type="Label" parent="Menu/HBoxContainer"]
+margin_left = 672.0
+margin_right = 864.0
+margin_bottom = 14.0
 text = "MechMania 27 | Version 0.0.0"
 
 [node name="FileDialog" type="FileDialog" parent="."]
@@ -104,5 +119,6 @@ current_path = "/Users/sahil/Documents/GitHub/MechMania27/mm27-visualizer/visual
 script = ExtResource( 7 )
 [connection signal="pressed" from="Menu/CenterRow/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_FileDialog_file_selected"]
-[connection signal="gamelog_ready" from="FileDialog" to="." method="_on_FileDialog_gamelog_ready"]
+[connection signal="file_read" from="FileDialog" to="." method="_on_FileDialog_file_read"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="reading_begun" from="FileDialog" to="." method="_on_FileDialog_reading_begun"]
