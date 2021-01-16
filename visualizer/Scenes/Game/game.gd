@@ -60,13 +60,21 @@ func game_over():
 
 
 # Only allow one "move_completed" to pend a resume at a time
-# (Tried to do this using a Mutex, but couldn't get it to work)
 var pause_locked: bool = false
 func _on_Map_move_completed():
+	# Check pause state before and after any yields
+	if paused:
+		if !pause_locked:
+			pause_locked = true
+			yield(self, "resumed")
+			pause_locked = false
+		else:
+			# There is already a move_completed pending a resume, so quit
+			return
+	
 	yield(get_tree().create_timer(TURN_SEPARATOR), "timeout")
 	
-	# This pause check MUST be the last yield statement in this function
-	# Otherwise pausing during that yield will cause an extra turn to run on!
+	# Check pause state before and after any yields
 	if paused:
 		if !pause_locked:
 			pause_locked = true
