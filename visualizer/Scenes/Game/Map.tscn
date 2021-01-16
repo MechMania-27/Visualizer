@@ -19,6 +19,7 @@ format = 1
 [node name="Crops" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
+cell_y_sort = true
 format = 1
 
 [node name="PlayerController" parent="Crops" instance=ExtResource( 6 )]

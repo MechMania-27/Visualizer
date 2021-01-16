@@ -38,6 +38,9 @@ func _input(event: InputEvent):
 			emit_signal("resumed")
 
 func update_state(value, instant_update = false):
+	if paused:
+		yield(self, "resumed")
+	
 	if value < len(Global.gamelog["states"]):
 		Map.update_state(value, instant_update)
 	else:
