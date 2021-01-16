@@ -10,9 +10,13 @@ onready var next_pos : Vector2 = position
 
 signal move_completed
 
+# Offset to fix a bug creating inconsistent YSorting when a player is in the 
+# exact same position as a tile
+const POSITION_OFFSET = Vector2(0, -0.01)
 
 # Moves player to new x pos first
 func move_to(new_pos: Vector2):
+	new_pos += POSITION_OFFSET
 	var x_distance = abs(position.x - new_pos.x) 
 	var y_distance = abs(position.y - new_pos.y)
 	
