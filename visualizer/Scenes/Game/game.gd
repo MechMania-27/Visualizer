@@ -38,8 +38,8 @@ func _input(event: InputEvent):
 			emit_signal("resumed")
 
 func update_state(value, instant_update = false):
-	if paused:
-		yield(self, "resumed")
+	#if paused:
+	#	yield(self, "resumed")
 	
 	if value < len(Global.gamelog["states"]):
 		Map.update_state(value, instant_update)
@@ -63,6 +63,10 @@ func game_over():
 # (Tried to do this using a Mutex, but couldn't get it to work)
 var pause_locked: bool = false
 func _on_Map_move_completed():
+	yield(get_tree().create_timer(TURN_SEPARATOR), "timeout")
+	
+	# This pause check MUST be the last yield statement in this function
+	# Otherwise pausing during that yield will cause an extra turn to run on!
 	if paused:
 		if !pause_locked:
 			pause_locked = true
@@ -71,8 +75,6 @@ func _on_Map_move_completed():
 		else:
 			# There is already a move_completed pending a resume, so quit
 			return
-	
-	yield(get_tree().create_timer(TURN_SEPARATOR), "timeout")
 	
 	var new_val = GUI.timeline.value + 1
 	

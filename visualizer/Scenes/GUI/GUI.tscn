@@ -40,15 +40,16 @@ margin_bottom = 580.0
 custom_constants/separation = 10
 
 [node name="PlayButton" type="Button" parent="VBoxContainer/Controls"]
-margin_right = 50.0
+margin_right = 75.0
 margin_bottom = 20.0
+rect_min_size = Vector2( 75, 0 )
 text = "Pause"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Timeline" type="HSlider" parent="VBoxContainer/Controls"]
-margin_left = 60.0
+margin_left = 85.0
 margin_right = 1004.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
