@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "ItemBox",
+"language": "GDScript",
+"path": "res://Scenes/GUI/ItemBox.gd"
+}, {
 "base": "AnimatedSprite",
 "class": "PlayerSprite",
 "language": "GDScript",
 "path": "res://Scenes/Game/PlayerSprite.gd"
 } ]
 _global_script_class_icons={
+"ItemBox": "",
 "PlayerSprite": ""
 }
 
