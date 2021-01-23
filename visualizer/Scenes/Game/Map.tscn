@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Images/FakeTileSet_Crops.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Game/map.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Images/FakeTileSet_Base.tres" type="TileSet" id=3]
 [ext_resource path="res://Assets/Images/OrangeFarmer.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Images/BlueFarmer.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Game/PlayerController.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Game/PlayerSprite.tscn" type="PackedScene" id=7]
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 2 )
@@ -17,14 +19,28 @@ format = 1
 [node name="Crops" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
+cell_y_sort = true
 format = 1
 
+[node name="PlayerController" parent="Crops" instance=ExtResource( 6 )]
+p1_node = NodePath("../Player1")
+p2_node = NodePath("../Player2")
+tilemap_node = NodePath("../../Base")
+
+[node name="Player1" parent="Crops" instance=ExtResource( 7 )]
+
+[node name="Player2" parent="Crops" instance=ExtResource( 7 )]
+animation = "Orange"
+
 [node name="Player1" type="Sprite" parent="."]
+visible = false
 position = Vector2( 117.858, 51.0719 )
 texture = ExtResource( 4 )
 centered = false
 
 [node name="Player2" type="Sprite" parent="."]
+visible = false
 position = Vector2( 169.831, 72.2112 )
 texture = ExtResource( 5 )
 centered = false
+[connection signal="move_completed" from="Crops/PlayerController" to="." method="_on_PlayerController_move_completed"]

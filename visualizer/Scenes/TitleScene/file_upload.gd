@@ -3,11 +3,8 @@ extends FileDialog
 # Code modified from https://github.com/Pukkah/HTML5-File-Exchange-for-Godot/
 #  (linked addon only supports images... re-writing code to serve our purposes)
 
-signal file_read(data)
+signal gamelog_ready
 signal in_focus
-signal reading_begun
-
-var use_js = OS.get_name() == "HTML5" and OS.has_feature('JavaScript')
 
 
 func _notification(notification: int):
@@ -15,9 +12,32 @@ func _notification(notification: int):
 		emit_signal("in_focus")
 
 
+var use_js = OS.get_name() == "HTML5" and OS.has_feature('JavaScript')
+
 func _ready():
 	if use_js:
 		_define_js()
+	var _err = Global.connect("gamelog_check_completed",self,"_on_gamelog_valid")
+
+
+func _on_FileDialog_file_selected(path):
+	Global.emit_signal("verify_gamelog_start")
+	
+	# Read file
+	var file = File.new()
+	file.open(path, file.READ)
+	var json_result = JSON.parse(file.get_as_text())
+	if json_result.error != OK:
+		return null
+	file.close()
+	
+	# Check validity
+	var _gamelog = json_result.result
+	if _gamelog == null:
+		printerr("Invalid Game Log")
+		set_title("Select a Valid Game Log")
+	
+	Global.valid_gamelog(_gamelog)
 
 
 var default: Rect2
@@ -44,8 +64,6 @@ func load_file():
 	if JavaScript.eval("canceled;", true):
 		return
 	
-	emit_signal("reading_begun")
-	
 	# Wait until full data has loaded
 	var file_data: PoolByteArray
 	while true:
@@ -54,10 +72,30 @@ func load_file():
 			break
 		yield(get_tree().create_timer(1), "timeout")
 	
+	Global.emit_signal("verify_gamelog_start")
+	
+	yield(get_tree(), "idle_frame")
+	
 	# Optionally check file type
 	#var file_type = JavaScript.eval("fileType;", true)
 	
-	emit_signal("file_read", file_data)
+	var gamelog_file = JSON.parse(file_data.get_string_from_utf8())
+	if gamelog_file.error != OK:
+		return
+	
+	if gamelog_file.result == null:
+		print("Invalid Game Log")
+		Global.set_progress_text("Invalid Game Log")
+		return
+	
+	Global.valid_gamelog(gamelog_file.result)
+	
+
+
+func _on_gamelog_valid():
+	if !Global.gamelog: return
+	emit_signal("gamelog_ready")
+
 
 
 func _define_js():

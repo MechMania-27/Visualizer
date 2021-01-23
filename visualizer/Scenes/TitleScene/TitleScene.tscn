@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/TitleScene/StartButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/TitleScene/QuitButton.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/TitleScene/title_scene.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/TitleScene/menu_button.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/TitleScene/file_upload.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/TitleScene/LoadProgress.tscn" type="PackedScene" id=8]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -85,25 +86,10 @@ rect_clip_content = true
 texture = ExtResource( 4 )
 stretch_mode = 6
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu"]
+[node name="Version" type="Label" parent="Menu"]
 margin_top = 426.0
 margin_right = 864.0
 margin_bottom = 440.0
-
-[node name="Status" type="Label" parent="Menu/HBoxContainer"]
-margin_bottom = 14.0
-
-[node name="Separator" type="Control" parent="Menu/HBoxContainer"]
-margin_left = 4.0
-margin_right = 668.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Version" type="Label" parent="Menu/HBoxContainer"]
-margin_left = 672.0
-margin_right = 864.0
-margin_bottom = 14.0
 text = "MechMania 27 | Version 0.0.0"
 
 [node name="FileDialog" type="FileDialog" parent="."]
@@ -114,11 +100,13 @@ resizable = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json ; JSON files" )
-current_dir = "/Users/sahil/Documents/GitHub/MechMania27/mm27-visualizer/visualizer"
-current_path = "/Users/sahil/Documents/GitHub/MechMania27/mm27-visualizer/visualizer/"
+current_dir = "/Users/Cameron/Documents/GitHub/Visualizer/visualizer"
+current_path = "/Users/Cameron/Documents/GitHub/Visualizer/visualizer/"
 script = ExtResource( 7 )
+
+[node name="LoadProgress" parent="." instance=ExtResource( 8 )]
+visible = false
 [connection signal="pressed" from="Menu/CenterRow/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="file_read" from="FileDialog" to="." method="_on_FileDialog_file_read"]
-[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
-[connection signal="reading_begun" from="FileDialog" to="." method="_on_FileDialog_reading_begun"]
+[connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_FileDialog_file_selected"]
+[connection signal="gamelog_ready" from="FileDialog" to="." method="_on_FileDialog_gamelog_ready"]
