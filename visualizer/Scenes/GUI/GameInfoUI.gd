@@ -12,6 +12,8 @@ onready var PhaseLabel: Label = $TurnInfo/VBoxContainer/PhaseLabel
 func _ready():
 	PhaseLabel.set_visible(use_phase_label)
 	
+	Player1Info.set_name("Player 1")
+	Player2Info.set_name("Player 2")
 	set_turn(0)
 
 
