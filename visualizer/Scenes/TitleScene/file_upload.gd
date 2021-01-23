@@ -20,10 +20,18 @@ func _ready():
 	var _err = Global.connect("gamelog_check_completed",self,"_on_gamelog_valid")
 
 
+var thread := Thread.new()
 func _on_FileDialog_file_selected(path):
 	Global.emit_signal("verify_gamelog_start")
 	
-	# Read file
+	if thread.is_active():
+		thread.wait_to_finish()
+	
+	thread.start(self, "_read_file", path)
+
+
+func _read_file(path):
+	# Open and read file
 	var file = File.new()
 	file.open(path, file.READ)
 	var json_result = JSON.parse(file.get_as_text())
@@ -133,3 +141,8 @@ func _define_js():
 		}
 		"""
 	, true)
+
+
+func _exit_tree():
+	if thread.is_active():
+		thread.wait_to_finish()
