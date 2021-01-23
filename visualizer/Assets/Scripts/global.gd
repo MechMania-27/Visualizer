@@ -69,10 +69,10 @@ func set_progress_text(new: String):
 
 
 # Checks a game state every frame
-# Checking more than one causes a small backlog
 func _process(_delta):
-	var t = OS.get_ticks_msec()
-	# Each iterations take 9-13 msec
+	#var t = OS.get_ticks_msec()
+	
+	# Each iteration take 9-13 msec
 	for _i in range(3):
 		if gamelog_states.empty():
 			emit_signal("gamelog_check_completed")
@@ -88,7 +88,7 @@ func _process(_delta):
 			return
 		
 		set_current_progress(current_progress + progress_increment)
-	print(OS.get_ticks_msec() - t)
+	#print(OS.get_ticks_msec() - t)
 
 
 func valid_gamelog(_gamelog: Dictionary):
@@ -108,7 +108,7 @@ func valid_gamelog(_gamelog: Dictionary):
 
 
 func valid_keys(_gamelog: Dictionary) -> bool:
-	set_progress_text("Verifying Keys")
+	set_progress_text("Verifying Keys...")
 	
 	var gamelog_keys = ["states", "p1_status", "p2_status"]
 	for key in gamelog_keys:
@@ -120,7 +120,7 @@ func valid_keys(_gamelog: Dictionary) -> bool:
 
 
 func valid_end_states(_gamelog: Dictionary) -> bool:
-	set_progress_text("Verifying Player End States")
+	set_progress_text("Verifying Player End States...")
 	
 	if PlayerEndState.get(_gamelog["p1_status"]) == null:
 		printerr("Invalid PlayerEndState for p1")
