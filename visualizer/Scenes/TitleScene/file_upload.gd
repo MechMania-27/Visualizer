@@ -66,12 +66,10 @@ func load_file():
 	# Wait for prompt to close and for async data load 
 	yield(self, "in_focus")
 	while not (JavaScript.eval("done;", true)):
-		print("Not done")
 		yield(get_tree().create_timer(1.0), "timeout")
 	
 	# Check that upload wasn't canceled
 	if JavaScript.eval("canceled;", true):
-		print("Cancelled")
 		return
 		
 	
@@ -120,7 +118,6 @@ func _define_js():
 		var canceled;
 		var done;
 		function upload(){
-			console.log("uploaded")
 			fileData = null;
 			fileType = null;
 			fileName = null;
