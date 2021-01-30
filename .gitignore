@@ -28,8 +28,6 @@ config.log
 # Output files
 visualizer/Scenes/MapEditor/maps/
 visualizer/Builds
-visualizer/Scenes/StarterPack/Engine
-visualizer/Scenes/StarterPack/HumanStarterPack
 
 # Executables
 *.exe
