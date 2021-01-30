@@ -49,3 +49,4 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.47
 text = "info"
+align = 2

@@ -37,12 +37,18 @@ func _input(event: InputEvent):
 		if !paused:
 			emit_signal("resumed")
 
-func update_state(value, instant_update = false):
-	#if paused:
-	#	yield(self, "resumed")
-	
+
+func update_state(value: int, instant_update: bool = false):
 	if value < len(Global.gamelog["states"]):
+		# Update Map
 		Map.update_state(value, instant_update)
+		
+		# Update GUI
+		GUI.GameInfo.Player1Info.set_info(Global.gamelog["states"][value]["p1"])
+		GUI.GameInfo.Player2Info.set_info(Global.gamelog["states"][value]["p2"])
+		
+		# TODO: Should I use the GameState["turn"]?
+		GUI.GameInfo.set_turn(value + 1)
 	else:
 		game_over()
 
