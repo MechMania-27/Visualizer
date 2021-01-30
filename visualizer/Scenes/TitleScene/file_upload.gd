@@ -63,14 +63,17 @@ func load_file():
 	
 	# Call our upload function
 	JavaScript.eval("upload();", true)
-	
 	# Wait for prompt to close and for async data load 
 	yield(self, "in_focus")
-	yield(get_tree().create_timer(0.5), "timeout")
+	while not (JavaScript.eval("done;", true)):
+		print("Not done")
+		yield(get_tree().create_timer(1.0), "timeout")
 	
 	# Check that upload wasn't canceled
 	if JavaScript.eval("canceled;", true):
+		print("Cancelled")
 		return
+		
 	
 	# Wait until full data has loaded
 	var file_data: PoolByteArray
@@ -115,11 +118,14 @@ func _define_js():
 		var fileType;
 		var fileName;
 		var canceled;
+		var done;
 		function upload(){
+			console.log("uploaded")
 			fileData = null;
 			fileType = null;
 			fileName = null;
 			canceled = true;
+			done = false;
 			var input = document.createElement('INPUT'); 
 			input.setAttribute("type", "file");
 			input.click();
@@ -135,6 +141,7 @@ func _define_js():
 				reader.onloadend = function (evt) {
 					if (evt.target.readyState == FileReader.DONE) {
 						fileData = evt.target.result;
+						done = true;
 					}
 				}
 			});
