@@ -41,27 +41,95 @@ enum Upgrade {
 	NONE,
 }
 
+func _ready():
+	set_process(false)
 
 ### Verification functions ###
 
-func valid_gamelog(_gamelog: Dictionary) -> bool:
-	# Check that top-level dictionary keys are valid
+var gamelog_states: Array
+var progress_increment: float
+var progress_text: String setget set_progress_text
+var current_progress: float setget set_current_progress
+signal progress_changed
+signal progress_text_changed
+signal verify_gamelog_start
+signal gamelog_check_completed
+signal gamelog_check_failed
+
+# Changes recorded progression of verification
+func set_current_progress(new: float):
+	current_progress = new
+	emit_signal("progress_changed", new)
+
+
+# Changes text explaining current step in verifictation
+func set_progress_text(new: String):
+	progress_text = new
+	emit_signal("progress_text_changed", new)
+
+
+# Checks a game state every frame
+func _process(_delta):
+	#var t = OS.get_ticks_msec()
+	
+	# Each iteration take 9-13 msec
+	for _i in range(3):
+		if gamelog_states.empty():
+			emit_signal("gamelog_check_completed")
+			set_progress_text("Verification complete")
+			set_process(false)
+			return
+		
+		var state = gamelog_states.pop_front()
+		if not valid_game_state(state):
+			emit_signal("gamelog_check_failed")
+			set_progress_text("Invalid gamelog")
+			set_process(false)
+			return
+		
+		set_current_progress(current_progress + progress_increment)
+	#print(OS.get_ticks_msec() - t)
+
+
+func valid_gamelog(_gamelog: Dictionary):
+	#emit_signal("verify_gamelog_start")
+	
+	if not valid_keys(_gamelog) or not valid_end_states(_gamelog):
+		emit_signal("gamelog_check_failed")
+		return
+	
+	gamelog = _gamelog
+	gamelog_states = gamelog["states"].duplicate(false)
+	set_progress_text("Verifying game log...")
+	progress_increment = 1.0 / gamelog_states.size()
+	
+	set_process(true)
+	
+
+
+func valid_keys(_gamelog: Dictionary) -> bool:
+	set_progress_text("Verifying Keys...")
+	
 	var gamelog_keys = ["states", "p1_status", "p2_status"]
 	for key in gamelog_keys:
 		if not _gamelog.keys().has(key):
 			printerr("Gamelog doesn't contain key: ", key)
+			set_progress_text("File Error: Invalid keys")
 			return false
-	
-	for state in _gamelog["states"]:
-		if not valid_game_state(state):
-			return false
+	return true
+
+
+func valid_end_states(_gamelog: Dictionary) -> bool:
+	set_progress_text("Verifying Player End States...")
 	
 	if PlayerEndState.get(_gamelog["p1_status"]) == null:
 		printerr("Invalid PlayerEndState for p1")
+		set_progress_text("File Error: Invalid PlayerEndState for p1")
 		return false
 	
 	if PlayerEndState.get(_gamelog["p2_status"]) == null:
 		printerr("Invalid PlayerEndState for p2")
+		set_progress_text("File Error: Invalid PlayerEndState for p2")
 		return false
 	
 	return true

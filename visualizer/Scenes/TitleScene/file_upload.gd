@@ -6,6 +6,7 @@ extends FileDialog
 signal gamelog_ready
 signal in_focus
 
+
 func _notification(notification: int):
 	if notification == MainLoop.NOTIFICATION_WM_FOCUS_IN:
 		emit_signal("in_focus")
@@ -16,10 +17,21 @@ var use_js = OS.get_name() == "HTML5" and OS.has_feature('JavaScript')
 func _ready():
 	if use_js:
 		_define_js()
+	var _err = Global.connect("gamelog_check_completed",self,"_on_gamelog_valid")
 
 
+var thread := Thread.new()
 func _on_FileDialog_file_selected(path):
-	# Read file
+	Global.emit_signal("verify_gamelog_start")
+	
+	if thread.is_active():
+		thread.wait_to_finish()
+	
+	thread.start(self, "_read_file", path)
+
+
+func _read_file(path):
+	# Open and read file
 	var file = File.new()
 	file.open(path, file.READ)
 	var json_result = JSON.parse(file.get_as_text())
@@ -29,12 +41,11 @@ func _on_FileDialog_file_selected(path):
 	
 	# Check validity
 	var _gamelog = json_result.result
-	if _gamelog == null or not Global.valid_gamelog(_gamelog):
+	if _gamelog == null:
 		printerr("Invalid Game Log")
 		set_title("Select a Valid Game Log")
-	else:
-		Global.gamelog = _gamelog
-		emit_signal("gamelog_ready")
+	
+	Global.valid_gamelog(_gamelog)
 
 
 var default: Rect2
@@ -52,14 +63,15 @@ func load_file():
 	
 	# Call our upload function
 	JavaScript.eval("upload();", true)
-	
 	# Wait for prompt to close and for async data load 
 	yield(self, "in_focus")
-	yield(get_tree().create_timer(0.5), "timeout")
+	while not (JavaScript.eval("done;", true)):
+		yield(get_tree().create_timer(1.0), "timeout")
 	
 	# Check that upload wasn't canceled
 	if JavaScript.eval("canceled;", true):
 		return
+		
 	
 	# Wait until full data has loaded
 	var file_data: PoolByteArray
@@ -69,18 +81,30 @@ func load_file():
 			break
 		yield(get_tree().create_timer(1), "timeout")
 	
+	Global.emit_signal("verify_gamelog_start")
+	
+	yield(get_tree(), "idle_frame")
+	
 	# Optionally check file type
 	#var file_type = JavaScript.eval("fileType;", true)
 	
-	var parse = JSON.parse(file_data.get_string_from_utf8())
-	if parse.error != OK:
+	var gamelog_file = JSON.parse(file_data.get_string_from_utf8())
+	if gamelog_file.error != OK:
 		return
 	
-	if parse.result == null or not Global.valid_gamelog(parse.result):
+	if gamelog_file.result == null:
 		print("Invalid Game Log")
-	else:
-		Global.gamelog = parse.result
-		emit_signal("gamelog_ready")
+		Global.set_progress_text("Invalid Game Log")
+		return
+	
+	Global.valid_gamelog(gamelog_file.result)
+	
+
+
+func _on_gamelog_valid():
+	if !Global.gamelog: return
+	emit_signal("gamelog_ready")
+
 
 
 func _define_js():
@@ -92,11 +116,13 @@ func _define_js():
 		var fileType;
 		var fileName;
 		var canceled;
+		var done;
 		function upload(){
 			fileData = null;
 			fileType = null;
 			fileName = null;
 			canceled = true;
+			done = false;
 			var input = document.createElement('INPUT'); 
 			input.setAttribute("type", "file");
 			input.click();
@@ -112,9 +138,15 @@ func _define_js():
 				reader.onloadend = function (evt) {
 					if (evt.target.readyState == FileReader.DONE) {
 						fileData = evt.target.result;
+						done = true;
 					}
 				}
 			});
 		}
 		"""
 	, true)
+
+
+func _exit_tree():
+	if thread.is_active():
+		thread.wait_to_finish()
