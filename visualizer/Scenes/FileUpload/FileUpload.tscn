@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/FileUpload/file_dialog.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/FileUpload/file_upload.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_right = 500.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 400, 140 )
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+current_dir = "/Users/Fizag/Docs/Extracurriculars/Mechmania/MM27/Visualizer/visualizer"
+current_path = "/Users/Fizag/Docs/Extracurriculars/Mechmania/MM27/Visualizer/visualizer/"
+script = ExtResource( 1 )
+[connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_FileDialog_file_selected"]
