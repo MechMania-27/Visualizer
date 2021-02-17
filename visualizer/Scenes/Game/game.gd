@@ -21,6 +21,7 @@ func _ready():
 	
 	update_state(0, true)
 	camera.refresh_bounds()
+	
 
 
 # Using _input because we specifically want to pause specifically when the
@@ -60,7 +61,7 @@ func _on_GUI_timeline_changed(value):
 
 func game_over():
 	# TODO: display some end-of-game thing with gamelog's PlayerEndStates
-	print("GAME OVER")
+	#print("GAME OVER")
 	GUI.timeline.value = 0
 	#get_tree().quit()
 

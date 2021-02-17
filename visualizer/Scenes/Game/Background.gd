@@ -1,0 +1,125 @@
+extends TileMap
+# Taken and edited from https://github.com/gingerageous/OpenSimplexNoiseTilemapTutorial
+
+const PAST_BOUNDS_EXTEND: Vector2 = Vector2(40, 10)
+const GRASS_CAP = Vector2(-0.03, 0.08)
+const BUSH_CAP = Vector2(0.2, 0.4)
+const TREE_CAP = Vector2(0.4, 1)
+const FOREST_TILE_EXTEND = Vector2(2,2)
+
+export(NodePath) var Base_Node
+var Base
+
+enum {GRASS = 0, TREE = 1, FOREST = 3, BUSH = 2, FENCE = 1}
+
+# OpenSimplexNoise Texture
+onready var noise = load("res://Assets/Images/Background_Tilemap_Noise.tres").noise
+
+onready var Map = get_parent()
+onready var tree_types = [TREE, FOREST]
+var bounds: Rect2
+var edges
+var game_area
+var fence_bounds
+
+
+func _ready():
+	randomize()
+	print(randi())
+	noise.seed = randi()
+	
+	yield(get_tree(), "idle_frame")
+	
+	if !Base_Node or !has_node(Base_Node): return
+	Base = get_node(Base_Node)
+	
+	bounds = Map.get_bounds()
+	edges = Map.TILE_BOUNDS_EXTEND
+	
+	game_area = Global.gamelog["states"][0]["tileMap"]
+	game_area = Vector2(game_area['mapWidth'],game_area['mapHeight'])
+	fence_bounds = Rect2(Vector2(-1,-1), game_area)
+	generate_background()
+	
+
+
+func generate_background():
+	if !Base: return
+	
+	_create_fence()
+	_generate_forest()
+	
+
+
+# Places fence tiles surrounding the field
+func _create_fence():
+	
+	for x in range(fence_bounds.position.x, fence_bounds.size.x):
+		set_cell(x, fence_bounds.position.y, FENCE)
+		set_cell(x, fence_bounds.size.y, FENCE)
+	
+	for y in range(fence_bounds.position.y, fence_bounds.size.y + 1):
+		set_cell(fence_bounds.position.x, y, FENCE)
+		set_cell(fence_bounds.size.x, y, FENCE)
+		
+	
+	update_bitmask_region()
+	
+
+# Uses noise texture to generate a environment around the field
+func _generate_forest():
+	var map_bounds = Map.get_bounds()
+	var bound_pos_map = Base.world_to_map(map_bounds.position)
+	var bound_size_map = Base.world_to_map(map_bounds.size + map_bounds.position)
+	
+		# North section
+	for x in range(bound_pos_map.x - PAST_BOUNDS_EXTEND.x, bound_size_map.x + PAST_BOUNDS_EXTEND.x):
+		for y in range(bound_pos_map.y - PAST_BOUNDS_EXTEND.y, bound_pos_map.y + Map.TILE_BOUNDS_EXTEND.y - 1):
+			#Base.set_cell(x, y, 4)
+			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
+			set_cell(x,y, tile)
+			if tile == FOREST:
+				pass
+			
+		
+	
+		# South section
+	for x in range(bound_pos_map.x - PAST_BOUNDS_EXTEND.x, bound_size_map.x + PAST_BOUNDS_EXTEND.x):
+		for y in range(bound_size_map.y - Map.TILE_BOUNDS_EXTEND.y + 1, bound_size_map.y + PAST_BOUNDS_EXTEND.y):
+			#Base.set_cell(x, y, 4)
+			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
+			set_cell(x,y, tile)
+			if tile == FOREST:
+				pass
+		
+	
+	# West section
+	for x in range(bound_pos_map.x - PAST_BOUNDS_EXTEND.x, bound_pos_map.x + Map.TILE_BOUNDS_EXTEND.x - 1):
+		for y in range(bound_pos_map.y + Map.TILE_BOUNDS_EXTEND.y - 1, bound_size_map.y - Map.TILE_BOUNDS_EXTEND.y + 1):
+			#Base.set_cell(x, y, 4)
+			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
+			set_cell(x,y, tile)
+			if tile == FOREST:
+				pass
+		
+	
+	# East section
+	for x in range(bound_size_map.x - Map.TILE_BOUNDS_EXTEND.x + 1, bound_size_map.x + PAST_BOUNDS_EXTEND.x):
+		for y in range(bound_pos_map.y + Map.TILE_BOUNDS_EXTEND.y - 1, bound_size_map.y - Map.TILE_BOUNDS_EXTEND.y + 1):
+			#Base.set_cell(x, y, 4)
+			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
+			set_cell(x,y, tile)
+			if tile == FOREST:
+				pass
+		
+	
+
+func _noise_to_tile(var value: float):
+	
+	if value >= GRASS_CAP.x and value <= GRASS_CAP.y:
+		return GRASS
+	if value >= BUSH_CAP.x and value <= BUSH_CAP.y:
+		return BUSH
+	if value >= TREE_CAP.x and value <= TREE_CAP.y:
+		return tree_types[randi() % tree_types.size()]
+	return -1
