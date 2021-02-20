@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/GUI/tick_painter.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Images/wheat_chopped.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/tractor_small.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Images/wheat.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Images/tick.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="Timeline" type="HSlider"]
+margin_left = 85.0
+margin_right = 1004.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+custom_icons/tick = ExtResource( 5 )
+custom_icons/grabber_highlight = ExtResource( 3 )
+custom_icons/grabber = ExtResource( 3 )
+custom_styles/slider = SubResource( 1 )
+tick_count = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TickPainter" type="Container" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+past_tick = ExtResource( 2 )
+future_tick = ExtResource( 4 )
+grabber = ExtResource( 3 )
+[connection signal="value_changed" from="." to="TickPainter" method="_on_Timeline_value_changed"]

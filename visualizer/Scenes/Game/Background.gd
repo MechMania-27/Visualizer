@@ -1,7 +1,7 @@
 extends TileMap
 # Taken and edited from https://github.com/gingerageous/OpenSimplexNoiseTilemapTutorial
 
-const PAST_BOUNDS_EXTEND: Vector2 = Vector2(40, 10)
+const BOUNDS_EXTENSION: Vector2 = Vector2(40, 10)
 const GRASS_CAP = Vector2(-0.03, 0.08)
 const BUSH_CAP = Vector2(0.2, 0.4)
 const TREE_CAP = Vector2(0.4, 1)
@@ -28,6 +28,7 @@ func _ready():
 	print(randi())
 	noise.seed = randi()
 	
+	# 200 iq solution is to wait for map to be set up first
 	yield(get_tree(), "idle_frame")
 	
 	if !Base_Node or !has_node(Base_Node): return
@@ -73,47 +74,40 @@ func _generate_forest():
 	var bound_size_map = Base.world_to_map(map_bounds.size + map_bounds.position)
 	
 		# North section
-	for x in range(bound_pos_map.x - PAST_BOUNDS_EXTEND.x, bound_size_map.x + PAST_BOUNDS_EXTEND.x):
-		for y in range(bound_pos_map.y - PAST_BOUNDS_EXTEND.y, bound_pos_map.y + Map.TILE_BOUNDS_EXTEND.y - 1):
-			#Base.set_cell(x, y, 4)
+	for x in range(bound_pos_map.x - BOUNDS_EXTENSION.x, bound_size_map.x + BOUNDS_EXTENSION.x):
+		for y in range(bound_pos_map.y - BOUNDS_EXTENSION.y, bound_pos_map.y + Map.TILE_BOUNDS_EXTEND.y - 1):
+			if !check_valid_position(x,y): continue
 			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
 			set_cell(x,y, tile)
-			if tile == FOREST:
-				pass
 			
 		
 	
 		# South section
-	for x in range(bound_pos_map.x - PAST_BOUNDS_EXTEND.x, bound_size_map.x + PAST_BOUNDS_EXTEND.x):
-		for y in range(bound_size_map.y - Map.TILE_BOUNDS_EXTEND.y + 1, bound_size_map.y + PAST_BOUNDS_EXTEND.y):
-			#Base.set_cell(x, y, 4)
+	for x in range(bound_pos_map.x - BOUNDS_EXTENSION.x, bound_size_map.x + BOUNDS_EXTENSION.x):
+		for y in range(bound_size_map.y - Map.TILE_BOUNDS_EXTEND.y + 1, bound_size_map.y + BOUNDS_EXTENSION.y):
+			if !check_valid_position(x,y): continue
 			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
 			set_cell(x,y, tile)
-			if tile == FOREST:
-				pass
 		
 	
 	# West section
-	for x in range(bound_pos_map.x - PAST_BOUNDS_EXTEND.x, bound_pos_map.x + Map.TILE_BOUNDS_EXTEND.x - 1):
+	for x in range(bound_pos_map.x - BOUNDS_EXTENSION.x, bound_pos_map.x + Map.TILE_BOUNDS_EXTEND.x - 1):
 		for y in range(bound_pos_map.y + Map.TILE_BOUNDS_EXTEND.y - 1, bound_size_map.y - Map.TILE_BOUNDS_EXTEND.y + 1):
-			#Base.set_cell(x, y, 4)
+			if !check_valid_position(x,y): continue
 			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
 			set_cell(x,y, tile)
-			if tile == FOREST:
-				pass
 		
 	
 	# East section
-	for x in range(bound_size_map.x - Map.TILE_BOUNDS_EXTEND.x + 1, bound_size_map.x + PAST_BOUNDS_EXTEND.x):
+	for x in range(bound_size_map.x - Map.TILE_BOUNDS_EXTEND.x + 1, bound_size_map.x + BOUNDS_EXTENSION.x):
 		for y in range(bound_pos_map.y + Map.TILE_BOUNDS_EXTEND.y - 1, bound_size_map.y - Map.TILE_BOUNDS_EXTEND.y + 1):
-			#Base.set_cell(x, y, 4)
+			if !check_valid_position(x,y): continue
 			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
 			set_cell(x,y, tile)
-			if tile == FOREST:
-				pass
 		
 	
 
+# Takes a noise value and converts it to a tile
 func _noise_to_tile(var value: float):
 	
 	if value >= GRASS_CAP.x and value <= GRASS_CAP.y:
@@ -123,3 +117,16 @@ func _noise_to_tile(var value: float):
 	if value >= TREE_CAP.x and value <= TREE_CAP.y:
 		return tree_types[randi() % tree_types.size()]
 	return -1
+
+
+# Checks if tile overlaps with a bigger tile,
+# Currently checks every surrounding tile, which is
+# unnecessary for only single tiles
+func check_valid_position(x, y):
+	for i in range(x-1, x + 2):
+		for j in range(y - 1, y + 2):
+			if i == x and j == y: continue
+			if get_cell(i, j) == FOREST: 
+				return false
+	return true
+	

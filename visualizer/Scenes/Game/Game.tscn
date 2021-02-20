@@ -25,7 +25,7 @@ centered = false
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="GrassbgNoise" type="Sprite" parent="."]
 position = Vector2( -80.8524, 213.693 )
 scale = Vector2( 0.263827, 0.263827 )
 texture = ExtResource( 6 )

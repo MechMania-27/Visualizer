@@ -38,7 +38,6 @@ animation = "Orange"
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 65548, 3, 0 )
 script = ExtResource( 8 )
 Base_Node = NodePath("../Base")
 
@@ -54,7 +53,7 @@ position = Vector2( 169.831, 72.2112 )
 texture = ExtResource( 5 )
 centered = false
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="BgForestNoise" type="Sprite" parent="."]
 position = Vector2( -81.3971, 72.9025 )
 texture = ExtResource( 9 )
 [connection signal="move_completed" from="Crops/PlayerController" to="." method="_on_PlayerController_move_completed"]
