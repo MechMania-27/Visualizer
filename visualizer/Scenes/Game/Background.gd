@@ -76,8 +76,8 @@ func _generate_forest():
 		# North section
 	for x in range(bound_pos_map.x - BOUNDS_EXTENSION.x, bound_size_map.x + BOUNDS_EXTENSION.x):
 		for y in range(bound_pos_map.y - BOUNDS_EXTENSION.y, bound_pos_map.y + Map.TILE_BOUNDS_EXTEND.y - 1):
-			if !check_valid_position(x,y): continue
 			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
+			if !check_valid_position(x,y, tile): continue
 			set_cell(x,y, tile)
 			
 		
@@ -85,24 +85,24 @@ func _generate_forest():
 		# South section
 	for x in range(bound_pos_map.x - BOUNDS_EXTENSION.x, bound_size_map.x + BOUNDS_EXTENSION.x):
 		for y in range(bound_size_map.y - Map.TILE_BOUNDS_EXTEND.y + 1, bound_size_map.y + BOUNDS_EXTENSION.y):
-			if !check_valid_position(x,y): continue
 			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
+			if !check_valid_position(x,y, tile): continue
 			set_cell(x,y, tile)
 		
 	
 	# West section
 	for x in range(bound_pos_map.x - BOUNDS_EXTENSION.x, bound_pos_map.x + Map.TILE_BOUNDS_EXTEND.x - 1):
 		for y in range(bound_pos_map.y + Map.TILE_BOUNDS_EXTEND.y - 1, bound_size_map.y - Map.TILE_BOUNDS_EXTEND.y + 1):
-			if !check_valid_position(x,y): continue
 			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
+			if !check_valid_position(x,y, tile): continue
 			set_cell(x,y, tile)
 		
 	
 	# East section
 	for x in range(bound_size_map.x - Map.TILE_BOUNDS_EXTEND.x + 1, bound_size_map.x + BOUNDS_EXTENSION.x):
 		for y in range(bound_pos_map.y + Map.TILE_BOUNDS_EXTEND.y - 1, bound_size_map.y - Map.TILE_BOUNDS_EXTEND.y + 1):
-			if !check_valid_position(x,y): continue
 			var tile = _noise_to_tile(noise.get_noise_2d(x, y))
+			if !check_valid_position(x,y, tile): continue
 			set_cell(x,y, tile)
 		
 	
@@ -120,13 +120,13 @@ func _noise_to_tile(var value: float):
 
 
 # Checks if tile overlaps with a bigger tile,
-# Currently checks every surrounding tile, which is
-# unnecessary for only single tiles
-func check_valid_position(x, y):
-	for i in range(x-1, x + 2):
-		for j in range(y - 1, y + 2):
+func check_valid_position(x, y, tile):
+	var end = 2 if tile == FOREST else 1
+	for i in range(x - 1, x + end):
+		for j in range(y - 1, y + end):
 			if i == x and j == y: continue
-			if get_cell(i, j) == FOREST: 
+			var c = get_cell(i, j)
+			if c == FOREST or (c == FENCE and tile == FOREST): 
 				return false
 	return true
 	

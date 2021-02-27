@@ -54,6 +54,7 @@ texture = ExtResource( 5 )
 centered = false
 
 [node name="BgForestNoise" type="Sprite" parent="."]
+visible = false
 position = Vector2( -81.3971, 72.9025 )
 texture = ExtResource( 9 )
 [connection signal="move_completed" from="Crops/PlayerController" to="." method="_on_PlayerController_move_completed"]
