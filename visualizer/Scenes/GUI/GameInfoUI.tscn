@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/GUI/PlayerInfoUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/GUI/VerticalGUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GUI/GameInfoUI.gd" type="Script" id=3]
 
 [node name="GameInfo" type="HBoxContainer"]
@@ -15,13 +16,23 @@ __meta__ = {
 }
 
 [node name="Player1Info" parent="." instance=ExtResource( 1 )]
-margin_right = 314.0
+visible = false
+margin_right = 482.0
+margin_bottom = 706.0
 size_flags_vertical = 3
 
+[node name="Player1Info2" parent="." instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 182.0
+margin_bottom = 706.0
+
 [node name="TurnInfo" type="PanelContainer" parent="."]
-margin_left = 329.0
-margin_right = 429.0
-margin_bottom = 60.0
+anchor_left = 0.333
+anchor_right = 0.379
+margin_left = 197.0
+margin_right = 262.132
+margin_bottom = 50.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 0
 
@@ -29,13 +40,13 @@ size_flags_horizontal = 0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 93.0
-margin_bottom = 53.0
+margin_bottom = 43.0
 alignment = 1
 
 [node name="TurnLabel" type="Label" parent="TurnInfo/VBoxContainer"]
-margin_top = 16.0
+margin_top = 11.0
 margin_right = 86.0
-margin_bottom = 30.0
+margin_bottom = 25.0
 text = "Turn: 0"
 align = 1
 
@@ -48,6 +59,16 @@ text = "Phase: "
 align = 1
 
 [node name="Player2Info" parent="." instance=ExtResource( 1 )]
-margin_left = 444.0
-margin_right = 758.0
+visible = false
+margin_left = 115.0
+margin_right = 1094.0
+margin_bottom = 706.0
 size_flags_vertical = 3
+
+[node name="Player2Info2" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.693
+anchor_right = 0.693
+margin_left = 312.0
+margin_top = 0.0
+margin_right = 494.0
+margin_bottom = 706.0
