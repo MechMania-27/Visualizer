@@ -3,7 +3,7 @@ extends Camera2D
 # Adapted from https://www.braindead.bzh/entry/godot-interactive-camera2d
 
 export var MAX_ZOOM_LEVEL = 0.1
-export var MIN_ZOOM_LEVEL = 1.0
+export var MIN_ZOOM_LEVEL = 2.0
 export var ZOOM_INCREMENT = 0.1
 
 signal moved

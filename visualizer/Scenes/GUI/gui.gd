@@ -6,7 +6,7 @@ signal game_over
 signal paused
 signal resumed
 
-onready var GameInfo = $VBoxContainer/GameInfo
+onready var GameInfo = $VBoxContainer/GameInfoUI
 
 onready var timeline: Slider = $VBoxContainer/Controls/Timeline
 onready var play_button: Button = $VBoxContainer/Controls/PlayButton
