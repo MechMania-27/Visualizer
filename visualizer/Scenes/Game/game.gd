@@ -44,11 +44,11 @@ func update_state(value: int, instant_update: bool = false):
 		Map.update_state(value, instant_update)
 		
 		# Update GUI
-		#GUI.GameInfo.Player1Info.set_info(Global.gamelog["states"][value]["p1"])
-		#GUI.GameInfo.Player2Info.set_info(Global.gamelog["states"][value]["p2"])
+		GUI.set_player_info(1, Global.gamelog["states"][value]["p1"])
+		GUI.set_player_info(2, Global.gamelog["states"][value]["p2"])
 		
 		# TODO: Should I use the GameState["turn"]?
-		#GUI.GameInfo.set_turn(value + 1)
+		GUI.GameInfo.set_turn(value + 1)
 	else:
 		game_over()
 

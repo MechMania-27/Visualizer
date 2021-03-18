@@ -13,7 +13,12 @@ onready var play_button: Button = $VBoxContainer/Controls/PlayButton
 
 
 func _ready():
-	timeline.max_value = len(Global.gamelog["states"])
+	# timeline.max_value = len(Global.gamelog["states"])
+	pass
+
+
+func set_player_info(num, player_info):
+	GameInfo.set_player_info(num, player_info)
 
 
 func _on_Timeline_value_changed(value):

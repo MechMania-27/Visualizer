@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/GUI/PlayerInfoUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/GUI/gameInfoUI.gd" type="Script" id=2]
 
 [node name="GameInfoUI" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -13,30 +15,30 @@ __meta__ = {
 [node name="Player1Info" parent="." instance=ExtResource( 1 )]
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 130.0
+margin_right = 125.0
 margin_bottom = 600.0
 
 [node name="GameInfo" type="VBoxContainer" parent="."]
-margin_left = 134.0
-margin_right = 890.0
+margin_left = 129.0
+margin_right = 895.0
 margin_bottom = 600.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameInfo"]
-margin_right = 756.0
+margin_right = 766.0
 margin_bottom = 50.0
 mouse_filter = 2
 alignment = 1
 
 [node name="Label" type="PanelContainer" parent="GameInfo/HBoxContainer"]
-margin_left = 328.0
-margin_right = 428.0
+margin_left = 333.0
+margin_right = 433.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 size_flags_horizontal = 5
 
-[node name="Label" type="Label" parent="GameInfo/HBoxContainer/Label"]
+[node name="Turn" type="Label" parent="GameInfo/HBoxContainer/Label"]
 margin_left = 7.0
 margin_top = 18.0
 margin_right = 93.0
@@ -45,7 +47,7 @@ text = "Turn: 100"
 align = 1
 
 [node name="Player2Info" parent="." instance=ExtResource( 1 )]
-margin_left = 894.0
+margin_left = 899.0
 margin_top = 0.0
 margin_right = 1024.0
 margin_bottom = 600.0

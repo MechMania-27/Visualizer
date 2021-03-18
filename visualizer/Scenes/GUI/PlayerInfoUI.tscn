@@ -1,179 +1,206 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/GUI/ItemBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Images/OrangeFarmer.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/GUI/playerInfoUI.gd" type="Script" id=3]
 
-[node name="PlayerInfoUI" type="MarginContainer"]
+[node name="PlayerInfoUI" type="VBoxContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 175.0
-margin_bottom = 593.0
+margin_right = 123.0
+margin_bottom = 498.0
+rect_min_size = Vector2( 110, 0 )
 size_flags_vertical = 3
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 165.0
-margin_bottom = 583.0
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_right = 165.0
+[node name="NameContainer" type="PanelContainer" parent="."]
+margin_right = 113.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer"]
+[node name="Name" type="Label" parent="NameContainer"]
 margin_left = 7.0
 margin_top = 18.0
-margin_right = 158.0
+margin_right = 106.0
 margin_bottom = 32.0
-text = "Character Name"
+text = "Bot1"
 align = 1
 uppercase = true
 max_lines_visible = 1
 
-[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer"]
+[node name="MoneyContainer" type="PanelContainer" parent="."]
 margin_top = 54.0
-margin_right = 165.0
+margin_right = 113.0
 margin_bottom = 82.0
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer3"]
+[node name="Money" type="Label" parent="MoneyContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 158.0
+margin_right = 106.0
 margin_bottom = 21.0
 text = "$$"
 align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="AttributeContainer" type="HBoxContainer" parent="."]
 margin_top = 86.0
-margin_right = 165.0
+margin_right = 113.0
 margin_bottom = 118.0
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
-margin_right = 80.0
+[node name="Item" type="TextureRect" parent="AttributeContainer"]
+margin_right = 54.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
 stretch_mode = 4
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
-margin_left = 84.0
-margin_right = 165.0
+[node name="Upgrade" type="TextureRect" parent="AttributeContainer"]
+margin_left = 58.0
+margin_right = 113.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
 stretch_mode = 4
 
-[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
+[node name="Inventory" type="PanelContainer" parent="."]
 margin_top = 122.0
-margin_right = 165.0
-margin_bottom = 583.0
+margin_right = 113.0
+margin_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 158.0
-margin_bottom = 454.0
+margin_right = 106.0
+margin_bottom = 359.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/HBoxContainer"]
-margin_right = 73.0
-margin_bottom = 447.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/HBoxContainer"]
+margin_right = 47.0
+margin_bottom = 352.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PanelContainer" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_right = 73.0
-margin_bottom = 60.0
+[node name="PanelContainer" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_right = 47.0
+margin_bottom = 46.0
 rect_scale = Vector2( 1, 1 )
 size_flags_vertical = 7
 
-[node name="PanelContainer2" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 64.0
-margin_right = 73.0
-margin_bottom = 124.0
+[node name="PanelContainer2" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 50.0
+margin_right = 47.0
+margin_bottom = 97.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer3" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 128.0
-margin_right = 73.0
-margin_bottom = 189.0
+[node name="PanelContainer3" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 101.0
+margin_right = 47.0
+margin_bottom = 148.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer4" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 193.0
-margin_right = 73.0
-margin_bottom = 253.0
+[node name="PanelContainer4" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 152.0
+margin_right = 47.0
+margin_bottom = 199.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer5" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 257.0
-margin_right = 73.0
-margin_bottom = 318.0
+[node name="PanelContainer5" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 203.0
+margin_right = 47.0
+margin_bottom = 250.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer6" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 322.0
-margin_right = 73.0
-margin_bottom = 382.0
+[node name="PanelContainer6" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 254.0
+margin_right = 47.0
+margin_bottom = 301.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer7" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 386.0
-margin_right = 73.0
-margin_bottom = 447.0
+[node name="PanelContainer7" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 305.0
+margin_right = 47.0
+margin_bottom = 352.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/HBoxContainer"]
-margin_left = 77.0
-margin_right = 151.0
-margin_bottom = 447.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="Inventory/HBoxContainer"]
+margin_left = 51.0
+margin_right = 99.0
+margin_bottom = 352.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PanelContainer" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" instance=ExtResource( 1 )]
-margin_right = 74.0
-margin_bottom = 60.0
+[node name="PanelContainer" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_right = 48.0
+margin_bottom = 46.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer2" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" instance=ExtResource( 1 )]
-margin_top = 64.0
-margin_right = 74.0
-margin_bottom = 124.0
+[node name="PanelContainer2" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 50.0
+margin_right = 48.0
+margin_bottom = 97.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer3" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" instance=ExtResource( 1 )]
-margin_top = 128.0
-margin_right = 74.0
-margin_bottom = 189.0
+[node name="PanelContainer3" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 101.0
+margin_right = 48.0
+margin_bottom = 148.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer4" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" instance=ExtResource( 1 )]
-margin_top = 193.0
-margin_right = 74.0
-margin_bottom = 253.0
+[node name="PanelContainer4" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 152.0
+margin_right = 48.0
+margin_bottom = 199.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer5" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" instance=ExtResource( 1 )]
-margin_top = 257.0
-margin_right = 74.0
-margin_bottom = 318.0
+[node name="PanelContainer5" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 203.0
+margin_right = 48.0
+margin_bottom = 250.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer6" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" instance=ExtResource( 1 )]
-margin_top = 322.0
-margin_right = 74.0
-margin_bottom = 382.0
+[node name="PanelContainer6" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 254.0
+margin_right = 48.0
+margin_bottom = 301.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer7" parent="VBoxContainer/PanelContainer2/HBoxContainer/VBoxContainer2" instance=ExtResource( 1 )]
-margin_top = 386.0
-margin_right = 74.0
-margin_bottom = 447.0
+[node name="PanelContainer7" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
+"items",
+] instance=ExtResource( 1 )]
+margin_top = 305.0
+margin_right = 48.0
+margin_bottom = 352.0
 rect_scale = Vector2( 1, 1 )
