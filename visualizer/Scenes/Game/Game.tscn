@@ -16,4 +16,8 @@ script = ExtResource( 2 )
 anchor_mode = 0
 current = true
 script = ExtResource( 3 )
+[connection signal="paused" from="." to="Map" method="_on_Game_paused"]
+[connection signal="resumed" from="." to="Map" method="_on_Game_resumed"]
+[connection signal="paused" from="GUI" to="." method="_on_GUI_paused"]
+[connection signal="resumed" from="GUI" to="." method="_on_GUI_resumed"]
 [connection signal="move_completed" from="Map" to="." method="_on_Map_move_completed"]

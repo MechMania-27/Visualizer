@@ -15,10 +15,7 @@ signal paused
 signal resumed
 
 
-func _ready():
-	self.connect("paused", Map, "_on_paused")
-	self.connect("resumed", Map, "_on_resumed")
-	
+func _ready():	
 	update_state(0, true)
 	camera.refresh_bounds()
 

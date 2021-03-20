@@ -223,7 +223,8 @@ func valid_crop(crop: Dictionary) -> bool:
 
 
 func valid_player(player: Dictionary, tilemap: Dictionary) -> bool:
-	var keys = ["name", "position", "item", "upgrade", "money"]
+	var keys = ["name", "position", "item", "upgrade", "money", 
+				"seedInventory", "harvestedInventory"]
 	for key in keys:
 		if not player.keys().has(key):
 			printerr("Player missing key: ", key)
@@ -243,6 +244,22 @@ func valid_player(player: Dictionary, tilemap: Dictionary) -> bool:
 	if Upgrade.get(player["upgrade"]) == null:
 		printerr("Invalid player upgrade: ", player["upgrade"])
 		return false
+	
+	# Validate seed inventory
+	# Because of pass-by-reference, we can add some aggregate data here
+	player["harvestedInventoryTotals"] = Dictionary()
+	for key in CropType.keys():
+		player["harvestedInventoryTotals"][key] = 0
+		if not player["seedInventory"].keys().has(key):
+			printerr("Player seedInventory missing key: %s" % key)
+	
+	# Validate harversted inventory and collect aggregates
+	for crop in player["harvestedInventory"]:
+		if not valid_crop(crop):
+			printerr("Invalid crop in player harvestedInventory: %s" % crop)
+			return false
+		
+		player["harvestedInventoryTotals"][crop["type"]] += 1 
 	
 	return true
 

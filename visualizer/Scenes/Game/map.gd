@@ -54,10 +54,10 @@ func fill_tilemaps(map: Dictionary):
 	$Base.update_bitmask_region()
 
 
-func _on_paused():
+func _on_Game_paused():
 	PlayerController.pause()
 
-func _on_resumed():
+func _on_Game_resumed():
 	PlayerController.resume()
 
 

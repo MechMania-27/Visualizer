@@ -35,12 +35,15 @@ mouse_filter = 2
 custom_constants/separation = 20
 
 [node name="PlayButton" type="Button" parent="VBoxContainer/Controls"]
-margin_right = 38.0
+margin_right = 60.0
 margin_bottom = 20.0
-text = "Play"
+rect_min_size = Vector2( 60, 0 )
+text = "Pause"
 
 [node name="Timeline" type="HSlider" parent="VBoxContainer/Controls"]
-margin_left = 58.0
+margin_left = 80.0
 margin_right = 984.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
+[connection signal="pressed" from="VBoxContainer/Controls/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="value_changed" from="VBoxContainer/Controls/Timeline" to="." method="_on_Timeline_value_changed"]

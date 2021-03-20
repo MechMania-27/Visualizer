@@ -15,30 +15,30 @@ __meta__ = {
 [node name="Player1Info" parent="." instance=ExtResource( 1 )]
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 125.0
+margin_right = 110.0
 margin_bottom = 600.0
 
 [node name="GameInfo" type="VBoxContainer" parent="."]
-margin_left = 129.0
-margin_right = 895.0
+margin_left = 114.0
+margin_right = 910.0
 margin_bottom = 600.0
 mouse_filter = 2
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameInfo"]
-margin_right = 766.0
+margin_right = 796.0
 margin_bottom = 50.0
 mouse_filter = 2
 alignment = 1
 
-[node name="Label" type="PanelContainer" parent="GameInfo/HBoxContainer"]
-margin_left = 333.0
-margin_right = 433.0
+[node name="TurnLabel" type="PanelContainer" parent="GameInfo/HBoxContainer"]
+margin_left = 348.0
+margin_right = 448.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 100, 50 )
 size_flags_horizontal = 5
 
-[node name="Turn" type="Label" parent="GameInfo/HBoxContainer/Label"]
+[node name="Turn" type="Label" parent="GameInfo/HBoxContainer/TurnLabel"]
 margin_left = 7.0
 margin_top = 18.0
 margin_right = 93.0
@@ -47,7 +47,7 @@ text = "Turn: 100"
 align = 1
 
 [node name="Player2Info" parent="." instance=ExtResource( 1 )]
-margin_left = 899.0
+margin_left = 914.0
 margin_top = 0.0
 margin_right = 1024.0
 margin_bottom = 600.0

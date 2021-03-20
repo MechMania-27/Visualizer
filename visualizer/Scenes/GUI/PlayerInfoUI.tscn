@@ -81,125 +81,97 @@ margin_bottom = 359.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/HBoxContainer"]
+[node name="SeedInventory" type="VBoxContainer" parent="Inventory/HBoxContainer"]
 margin_right = 47.0
 margin_bottom = 352.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PanelContainer" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="CORN" parent="Inventory/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_right = 47.0
 margin_bottom = 46.0
 rect_scale = Vector2( 1, 1 )
 size_flags_vertical = 7
 
-[node name="PanelContainer2" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="GRAPE" parent="Inventory/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_top = 50.0
 margin_right = 47.0
 margin_bottom = 97.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer3" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="POTATO" parent="Inventory/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_top = 101.0
 margin_right = 47.0
 margin_bottom = 148.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer4" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="PanelContainer4" parent="Inventory/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_top = 152.0
 margin_right = 47.0
 margin_bottom = 199.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer5" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="PanelContainer5" parent="Inventory/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_top = 203.0
 margin_right = 47.0
 margin_bottom = 250.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer6" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="PanelContainer6" parent="Inventory/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_top = 254.0
 margin_right = 47.0
 margin_bottom = 301.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer7" parent="Inventory/HBoxContainer/VBoxContainer" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="PanelContainer7" parent="Inventory/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_top = 305.0
 margin_right = 47.0
 margin_bottom = 352.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Inventory/HBoxContainer"]
+[node name="HarvestedInventory" type="VBoxContainer" parent="Inventory/HBoxContainer"]
 margin_left = 51.0
 margin_right = 99.0
 margin_bottom = 352.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PanelContainer" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="CORN" parent="Inventory/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_right = 48.0
 margin_bottom = 46.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer2" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="GRAPE" parent="Inventory/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_top = 50.0
 margin_right = 48.0
 margin_bottom = 97.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer3" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="POTATO" parent="Inventory/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_top = 101.0
 margin_right = 48.0
 margin_bottom = 148.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer4" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="PanelContainer4" parent="Inventory/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_top = 152.0
 margin_right = 48.0
 margin_bottom = 199.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer5" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="PanelContainer5" parent="Inventory/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_top = 203.0
 margin_right = 48.0
 margin_bottom = 250.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer6" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="PanelContainer6" parent="Inventory/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_top = 254.0
 margin_right = 48.0
 margin_bottom = 301.0
 rect_scale = Vector2( 1, 1 )
 
-[node name="PanelContainer7" parent="Inventory/HBoxContainer/VBoxContainer2" groups=[
-"items",
-] instance=ExtResource( 1 )]
+[node name="PanelContainer7" parent="Inventory/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_top = 305.0
 margin_right = 48.0
 margin_bottom = 352.0
