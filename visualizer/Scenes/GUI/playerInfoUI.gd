@@ -1,7 +1,7 @@
 extends VBoxContainer
 
-onready var SeedInventory = $Inventory/HBoxContainer/SeedInventory
-onready var HarvestedInventory = $Inventory/HBoxContainer/HarvestedInventory
+onready var SeedInventory = $Inventory/MarginContainer/HBoxContainer/SeedInventory
+onready var HarvestedInventory = $Inventory/MarginContainer/HBoxContainer/HarvestedInventory
 
 func set_player_info(player_info):
 	# Fill in Player Name text
