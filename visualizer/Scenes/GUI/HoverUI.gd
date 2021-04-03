@@ -5,6 +5,7 @@ export(Array, NodePath) var Player_Nodes
 
 const SNAP = Vector2(32, 32)
 const OFFSET = Vector2(25,5)
+const PLAYERSPRITE_SIZE = Vector2(32, 32)
 const ANIM_ENTER = "Enter"
 const ANIM_EXIT = "Exit"
 
@@ -22,7 +23,7 @@ onready var appear_radius = Box.rect_size.x * 1.5
 
 var Crops
 var players = []
-var prev_showed = false
+#var prev_showed = false
 
 
 func _ready():
@@ -47,6 +48,7 @@ func select_object():
 	LeftInfoBox.hide()
 	
 	var showing = false
+	var box_length = 0
 	
 	# Finds if a crop is selected
 	var selected_crop = Crops.get_cellv(tilemap_pos)
@@ -56,19 +58,21 @@ func select_object():
 		
 		var tile = Global.gamelog["states"][Global.current_turn]["tileMap"]["tiles"]
 		tile = tile[tilemap_pos.y][tilemap_pos.x]
-		prints(tile, tilemap_pos.y, tilemap_pos.x, selected_crop)
+		
 		CropInfo.set_name(tile["crop"]["type"].to_lower().capitalize())
 		CropInfo.set_stage(tile["crop"]["growthTimer"])
 		# No price found in gamelog, need something with price data
 		#CropInfo.set_price(123)
 		
 		showing = true
+		box_length += LeftInfoBox.rect_size.x
+		
 		
 	
 	# Finds if a player is selected
 	for player in players:
 		var pos = player.position
-		var collision = Rect2(pos, Vector2(pos.x + 32, pos.y + 32))
+		var collision = Rect2(pos, Vector2(pos.x + PLAYERSPRITE_SIZE.x, pos.y + PLAYERSPRITE_SIZE.y))
 		
 		var x = collision.position.x <= local_pos.x and collision.size.x >= local_pos.x
 		var y = collision.position.y <= local_pos.y and collision.size.y >= local_pos.y
@@ -79,28 +83,33 @@ func select_object():
 			RightInfoBox.show()
 			
 			var node_name = player.name
-			var player_state = Global.gamelog["states"][Global.current_turn]['p' + node_name.right(node_name.length() - 1)]
+			var player_state = Global.gamelog["states"][Global.current_turn]\
+			['p' + node_name.right(node_name.length() - 1)]
 			
 			PlayerInfo.set_name(player_state["name"])
 			PlayerInfo.set_money(player_state["money"])
 			
 			showing = true
+			box_length += RightInfoBox.rect_size.x
+			
 			
 		
 	
-	
 	Positioner.global_position = (global_pos + OFFSET)
 	
-	var maximum = get_viewport().get_visible_rect().size - Box.rect_size - OFFSET
+	# max func is a quick bug fix where var maximum 
+	# would be incorrect first time since text hadn't updated to change size yet
+	var box_size = Vector2(max(box_length, 155), Box.rect_size.y)
+	var maximum = get_viewport().get_visible_rect().size - box_size - OFFSET
+	
 	Positioner.global_position.x = clamp(Positioner.global_position.x, 0, maximum.x)
 	Positioner.global_position.y = clamp(Positioner.global_position.y, 0, maximum.y)
-	prints(LeftInfoBox.rect_size, RightInfoBox.rect_size)
 	
 	if showing:
 		Anim.stop(true)
 		Anim.play(ANIM_ENTER)
 	
-	prev_showed = showing
+	#prev_showed = showing
 	
 
 
