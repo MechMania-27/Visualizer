@@ -3,7 +3,7 @@ extends Node
 
 # gamelog used to udpate visualization
 var gamelog: Dictionary
-
+var current_turn: int
 
 ### Enum Types ###
 

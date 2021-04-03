@@ -25,6 +25,7 @@ func update_state(state_num: int, instant_update: bool = false):
 	if state_num >= len(Global.gamelog["states"]):
 		return # Should never reach here if timeline max_value is set properly
 	
+	Global.current_turn = state_num
 	var state = Global.gamelog["states"][state_num]
 	fill_tilemaps(state["tileMap"])
 	

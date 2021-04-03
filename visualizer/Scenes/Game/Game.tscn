@@ -10,6 +10,10 @@ script = ExtResource( 2 )
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
 
+[node name="HoverUI" parent="GUI" index="1"]
+Crop_Tilemap = NodePath("../../Map/Crops")
+Player_Nodes = [ NodePath("../../Map/Crops/Player1"), NodePath("../../Map/Crops/Player2") ]
+
 [node name="Map" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -21,3 +25,7 @@ script = ExtResource( 3 )
 [connection signal="paused" from="GUI" to="." method="_on_GUI_paused"]
 [connection signal="resumed" from="GUI" to="." method="_on_GUI_resumed"]
 [connection signal="move_completed" from="Map" to="." method="_on_Map_move_completed"]
+
+[editable path="GUI"]
+
+[editable path="Map"]
