@@ -25,12 +25,12 @@ __meta__ = {
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 984.0
-margin_bottom = 519.0
+margin_bottom = 516.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Controls" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 540.0
+margin_top = 537.0
 margin_right = 984.0
 margin_bottom = 560.0
 mouse_filter = 2
@@ -38,14 +38,15 @@ custom_constants/separation = 20
 
 [node name="PlayButton" type="Button" parent="VBoxContainer/Controls"]
 margin_right = 60.0
-margin_bottom = 20.0
+margin_bottom = 23.0
 rect_min_size = Vector2( 60, 0 )
 text = "Pause"
 
 [node name="Timeline" type="HSlider" parent="VBoxContainer/Controls"]
 margin_left = 80.0
 margin_right = 984.0
-margin_bottom = 16.0
+margin_bottom = 23.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 [connection signal="pressed" from="VBoxContainer/Controls/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="value_changed" from="VBoxContainer/Controls/Timeline" to="." method="_on_Timeline_value_changed"]

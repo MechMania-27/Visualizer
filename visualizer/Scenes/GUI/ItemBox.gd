@@ -2,8 +2,7 @@ extends Node
 class_name ItemBox
 
 onready var _texture_node : TextureRect = $TextureRect
-onready var _text_node : Label = $ItemInfo
-
+onready var _text_node : Label = $MarginContainer/ItemInfo
 
 func set_texture(t : Texture) -> void:
 	if _texture_node:
