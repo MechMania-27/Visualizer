@@ -23,7 +23,7 @@ border_color = Color( 0.933594, 0.818383, 0.671021, 1 )
 [sub_resource type="DynamicFont" id=4]
 size = 24
 outline_size = 1
-outline_color = Color( 0.560784, 0.294118, 0.0588235, 1 )
+outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = -3
 font_data = ExtResource( 3 )
 

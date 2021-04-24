@@ -18,37 +18,37 @@ __meta__ = {
 
 [node name="NameContainer" type="PanelContainer" parent="."]
 margin_right = 113.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+margin_bottom = 45.0
+rect_min_size = Vector2( 0, 45 )
 
 [node name="Name" type="Label" parent="NameContainer"]
 margin_left = 7.0
-margin_top = 18.0
+margin_top = 15.0
 margin_right = 106.0
-margin_bottom = 32.0
+margin_bottom = 29.0
 text = "Bot1"
 align = 1
 uppercase = true
 max_lines_visible = 1
 
 [node name="MoneyContainer" type="PanelContainer" parent="."]
-margin_top = 54.0
+margin_top = 49.0
 margin_right = 113.0
-margin_bottom = 82.0
-rect_min_size = Vector2( 0, 25 )
+margin_bottom = 79.0
+rect_min_size = Vector2( 0, 30 )
 
 [node name="Money" type="Label" parent="MoneyContainer"]
 margin_left = 7.0
-margin_top = 7.0
+margin_top = 8.0
 margin_right = 106.0
-margin_bottom = 21.0
+margin_bottom = 22.0
 text = "$$"
 align = 1
 
 [node name="AttributeContainer" type="HBoxContainer" parent="."]
-margin_top = 86.0
+margin_top = 83.0
 margin_right = 113.0
-margin_bottom = 118.0
+margin_bottom = 115.0
 
 [node name="Item" type="TextureRect" parent="AttributeContainer"]
 margin_right = 54.0
@@ -68,7 +68,7 @@ texture = ExtResource( 2 )
 stretch_mode = 4
 
 [node name="Inventory" type="PanelContainer" parent="."]
-margin_top = 122.0
+margin_top = 119.0
 margin_right = 113.0
 margin_bottom = 488.0
 size_flags_horizontal = 3
@@ -78,7 +78,7 @@ size_flags_vertical = 3
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 106.0
-margin_bottom = 359.0
+margin_bottom = 362.0
 custom_constants/margin_right = 5
 custom_constants/margin_top = 5
 custom_constants/margin_left = 5
@@ -88,13 +88,13 @@ custom_constants/margin_bottom = 5
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 94.0
-margin_bottom = 347.0
+margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="SeedInventory" type="VBoxContainer" parent="Inventory/MarginContainer/HBoxContainer"]
 margin_right = 42.0
-margin_bottom = 342.0
+margin_bottom = 345.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -108,42 +108,42 @@ size_flags_vertical = 7
 margin_left = 0.0
 margin_top = 49.0
 margin_right = 42.0
-margin_bottom = 94.0
+margin_bottom = 95.0
 
 [node name="POTATO" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 98.0
+margin_top = 99.0
 margin_right = 42.0
-margin_bottom = 144.0
+margin_bottom = 145.0
 
 [node name="PanelContainer4" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 148.0
+margin_top = 149.0
 margin_right = 42.0
-margin_bottom = 193.0
+margin_bottom = 195.0
 
 [node name="PanelContainer5" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 197.0
+margin_top = 199.0
 margin_right = 42.0
-margin_bottom = 243.0
+margin_bottom = 245.0
 
 [node name="PanelContainer6" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 247.0
+margin_top = 249.0
 margin_right = 42.0
-margin_bottom = 292.0
+margin_bottom = 295.0
 
 [node name="PanelContainer7" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 296.0
+margin_top = 299.0
 margin_right = 42.0
-margin_bottom = 342.0
+margin_bottom = 345.0
 
 [node name="HarvestedInventory" type="VBoxContainer" parent="Inventory/MarginContainer/HBoxContainer"]
 margin_left = 46.0
 margin_right = 89.0
-margin_bottom = 342.0
+margin_bottom = 345.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -156,34 +156,34 @@ margin_bottom = 45.0
 margin_left = 0.0
 margin_top = 49.0
 margin_right = 43.0
-margin_bottom = 94.0
+margin_bottom = 95.0
 
 [node name="POTATO" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 98.0
+margin_top = 99.0
 margin_right = 43.0
-margin_bottom = 144.0
+margin_bottom = 145.0
 
 [node name="PanelContainer4" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 148.0
+margin_top = 149.0
 margin_right = 43.0
-margin_bottom = 193.0
+margin_bottom = 195.0
 
 [node name="PanelContainer5" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 197.0
+margin_top = 199.0
 margin_right = 43.0
-margin_bottom = 243.0
+margin_bottom = 245.0
 
 [node name="PanelContainer6" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 247.0
+margin_top = 249.0
 margin_right = 43.0
-margin_bottom = 292.0
+margin_bottom = 295.0
 
 [node name="PanelContainer7" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 296.0
+margin_top = 299.0
 margin_right = 43.0
-margin_bottom = 342.0
+margin_bottom = 345.0
