@@ -8,16 +8,16 @@
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Map" parent="." instance=ExtResource( 1 )]
-
 [node name="GUI" parent="." instance=ExtResource( 4 )]
+
+[node name="Map" parent="." instance=ExtResource( 1 )]
 
 [node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
 script = ExtResource( 3 )
-[connection signal="move_completed" from="Map" to="." method="_on_Map_move_completed"]
-[connection signal="game_over" from="GUI" to="." method="_on_GUI_game_over"]
+[connection signal="paused" from="." to="Map" method="_on_Game_paused"]
+[connection signal="resumed" from="." to="Map" method="_on_Game_resumed"]
 [connection signal="paused" from="GUI" to="." method="_on_GUI_paused"]
 [connection signal="resumed" from="GUI" to="." method="_on_GUI_resumed"]
-[connection signal="timeline_changed" from="GUI" to="." method="_on_GUI_timeline_changed"]
+[connection signal="move_completed" from="Map" to="." method="_on_Map_move_completed"]

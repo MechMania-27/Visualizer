@@ -6,14 +6,19 @@ signal game_over
 signal paused
 signal resumed
 
-onready var GameInfo = $VBoxContainer/GameInfo
+onready var GameInfo = $VBoxContainer/GameInfoUI
 
 onready var timeline: Slider = $VBoxContainer/Controls/Timeline
 onready var play_button: Button = $VBoxContainer/Controls/PlayButton
 
 
 func _ready():
-	timeline.max_value = len(Global.gamelog["states"])
+	# timeline.max_value = len(Global.gamelog["states"])
+	pass
+
+
+func set_player_info(num, player_info):
+	GameInfo.set_player_info(num, player_info)
 
 
 func _on_Timeline_value_changed(value):
