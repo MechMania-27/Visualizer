@@ -6,10 +6,12 @@ signal game_over
 signal paused
 signal resumed
 
-onready var GameInfo = $VBoxContainer/GameInfoUI
+onready var GameInfo = $Container/HUD/GameInfoUI
 
-onready var timeline: Slider = $VBoxContainer/Controls/Timeline
-onready var play_button: Button = $VBoxContainer/Controls/PlayButton
+onready var timeline: Slider = $Container/HUD/Controls/Timeline
+onready var play_button: Button = $Container/HUD/Controls/PlayButton
+
+onready var EscapeMenu = $Container/EscapeMenu
 
 
 func _ready():
@@ -32,3 +34,9 @@ func _on_PlayButton_pressed():
 	elif play_button.text == "Pause":
 		play_button.text = "Play"
 		emit_signal("paused")
+
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		if not EscapeMenu.is_visible():
+			EscapeMenu.call_deferred("popup_centered")
