@@ -30,15 +30,48 @@ enum CropType {
 	NONE = -1,
 	CORN,
 	GRAPE,
-	POTATO
+	POTATO,
+	JOGAN_FRUIT,
+	PEANUT,
+	QUADROTRITICALE,
+	DUCHAM_FRUIT,
+	GOLDEN_CORN,
 }
 
 enum Item {
 	NONE,
+	RAIN_TOTEM,
+	FERTILITY_IDOL,
+	PESTICIDE,
+	SCARECROW,
+	DELIVERY_DRONE,
+	COFFEE_THERMOS,
 }
 
 enum Upgrade {
 	NONE,
+}
+
+var item_descriptions = {
+	Item.NONE : "",
+	Item.RAIN_TOTEM : "Causes each crop in a 5x5 square centered on the farmer’s position to grow up to three times this turn only.",
+	Item.FERTILITY_IDOL : "Doubles the fertility of all tiles within radius 2 for the next growth step.",
+	Item.PESTICIDE : "Decrease the current value of all crops within 1 radius by 20%.",
+	Item.SCARECROW : "Protects tiles within radius 2 from harvest or planting by the opponent.(5x5)",
+	Item.DELIVERY_DRONE : "Allows the farmer to buy and sell crops and seeds from anywhere on the farm for one turn.",
+	Item.COFFEE_THERMOS : "Triples the farmer’s MAX_MOVEMENT for the next turn",
+}
+
+var crop_prices = {
+	CropType.NONE : 0,
+	CropType.CORN : 5,
+	CropType.GRAPE : 15,
+	CropType.POTATO : 5,
+	CropType.JOGAN_FRUIT : 20,
+	CropType.PEANUT : 5,
+	CropType.QUADROTRITICALE : 30,
+	CropType.DUCHAM_FRUIT : 100,
+	CropType.GOLDEN_CORN : 1000,
 }
 
 func _ready():

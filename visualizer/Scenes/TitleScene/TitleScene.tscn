@@ -101,12 +101,13 @@ resizable = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json ; JSON files" )
-current_dir = "/Users/Cameron/Documents/GitHub/Visualizer/visualizer"
-current_path = "/Users/Cameron/Documents/GitHub/Visualizer/visualizer/"
+current_dir = "/Github/Mechmania/Visualizer/visualizer"
+current_path = "/Github/Mechmania/Visualizer/visualizer/"
 script = ExtResource( 7 )
 
 [node name="LoadProgress" parent="." instance=ExtResource( 8 )]
 visible = false
+
 [connection signal="pressed" from="Menu/CenterRow/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_FileDialog_file_selected"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/GUI/HoverUI.gd" type="Script" id=1]
 
@@ -30,6 +30,16 @@ func set_name(n: String):
 
 func set_money(m):
 	Money.text = '$' + str(m)
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends VBoxContainer
+
+func set_name(var n: String):
+	$Name.text = n
+
+func set_description(var n: String):
+	$Description.text = n
 "
 
 [sub_resource type="Animation" id=3]
@@ -88,7 +98,7 @@ script = ExtResource( 1 )
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Node2D"]
-margin_right = 116.0
+anchor_right = 1.0
 margin_bottom = 46.0
 mouse_filter = 2
 custom_constants/separation = 8
@@ -96,7 +106,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftBox" type="PanelContainer" parent="Node2D/HBoxContainer"]
+[node name="CropPanel" type="PanelContainer" parent="Node2D/HBoxContainer"]
 margin_right = 56.0
 margin_bottom = 46.0
 mouse_filter = 2
@@ -104,7 +114,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CropInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/LeftBox"]
+[node name="CropInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/CropPanel"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 49.0
@@ -112,33 +122,33 @@ margin_bottom = 39.0
 mouse_filter = 2
 script = SubResource( 1 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/HBoxContainer/LeftBox/CropInfo"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Node2D/HBoxContainer/CropPanel/CropInfo"]
 margin_right = 42.0
 margin_bottom = 14.0
 mouse_filter = 2
 custom_constants/separation = 25
 
-[node name="Price" type="Label" parent="Node2D/HBoxContainer/LeftBox/CropInfo/HBoxContainer"]
+[node name="Price" type="Label" parent="Node2D/HBoxContainer/CropPanel/CropInfo/HBoxContainer"]
 margin_right = 8.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "$"
 
-[node name="Stage" type="Label" parent="Node2D/HBoxContainer/LeftBox/CropInfo/HBoxContainer"]
+[node name="Stage" type="Label" parent="Node2D/HBoxContainer/CropPanel/CropInfo/HBoxContainer"]
 margin_left = 33.0
 margin_right = 42.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "#"
 
-[node name="Name" type="Label" parent="Node2D/HBoxContainer/LeftBox/CropInfo"]
+[node name="Name" type="Label" parent="Node2D/HBoxContainer/CropPanel/CropInfo"]
 margin_top = 18.0
 margin_right = 42.0
 margin_bottom = 32.0
 text = "Crop"
 align = 1
 
-[node name="RightBox" type="PanelContainer" parent="Node2D/HBoxContainer"]
+[node name="PlayerPanel" type="PanelContainer" parent="Node2D/HBoxContainer"]
 self_modulate = Color( 1, 0, 0, 1 )
 margin_left = 64.0
 margin_right = 116.0
@@ -148,7 +158,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/RightBox"]
+[node name="PlayerInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/PlayerPanel"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 45.0
@@ -156,29 +166,76 @@ margin_bottom = 39.0
 mouse_filter = 2
 script = SubResource( 2 )
 
-[node name="Name" type="Label" parent="Node2D/HBoxContainer/RightBox/PlayerInfo"]
+[node name="Name" type="Label" parent="Node2D/HBoxContainer/PlayerPanel/PlayerInfo"]
 margin_right = 38.0
 margin_bottom = 14.0
 text = "Name"
 align = 1
 
-[node name="Money" type="Label" parent="Node2D/HBoxContainer/RightBox/PlayerInfo"]
+[node name="Money" type="Label" parent="Node2D/HBoxContainer/PlayerPanel/PlayerInfo"]
 margin_top = 18.0
 margin_right = 38.0
 margin_bottom = 32.0
 text = "$"
 align = 1
 
-[node name="ItemInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/RightBox"]
-visible = false
+[node name="ItemPanel" type="PanelContainer" parent="Node2D/HBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_left = 124.0
+margin_right = 176.0
+margin_bottom = 46.0
+mouse_filter = 2
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="P1ItemInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/ItemPanel"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 45.0
 margin_bottom = 39.0
 mouse_filter = 2
+script = SubResource( 5 )
+
+[node name="Name" type="Label" parent="Node2D/HBoxContainer/ItemPanel/P1ItemInfo"]
+margin_right = 38.0
+margin_bottom = 14.0
+text = "Name"
+align = 1
+
+[node name="Description" type="Label" parent="Node2D/HBoxContainer/ItemPanel/P1ItemInfo"]
+margin_top = 18.0
+margin_right = 38.0
+margin_bottom = 32.0
+align = 1
+autowrap = true
+
+[node name="P2ItemInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/ItemPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 45.0
+margin_bottom = 39.0
+mouse_filter = 2
+script = SubResource( 5 )
+
+[node name="Name" type="Label" parent="Node2D/HBoxContainer/ItemPanel/P2ItemInfo"]
+margin_right = 38.0
+margin_bottom = 14.0
+text = "Name"
+align = 1
+
+[node name="Description" type="Label" parent="Node2D/HBoxContainer/ItemPanel/P2ItemInfo"]
+margin_top = 18.0
+margin_right = 38.0
+margin_bottom = 32.0
+text = "Desc."
+align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enter = SubResource( 3 )
 anims/Exit = SubResource( 4 )
-[connection signal="resized" from="Node2D/HBoxContainer/LeftBox" to="." method="_on_PanelContainer_resized"]
-[connection signal="resized" from="Node2D/HBoxContainer/RightBox" to="." method="_on_PanelContainer_resized"]
+
+[connection signal="resized" from="Node2D/HBoxContainer/CropPanel" to="." method="_on_PanelContainer_resized"]
+[connection signal="resized" from="Node2D/HBoxContainer/PlayerPanel" to="." method="_on_PanelContainer_resized"]
+[connection signal="resized" from="Node2D/HBoxContainer/ItemPanel" to="." method="_on_PanelContainer_resized"]

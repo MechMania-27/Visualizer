@@ -10,16 +10,19 @@ const ANIM_ENTER = "Enter"
 const ANIM_EXIT = "Exit"
 
 onready var Anim = $AnimationPlayer
-onready var CropInfo = $Node2D/HBoxContainer/LeftBox/CropInfo
-onready var PlayerInfo = $Node2D/HBoxContainer/RightBox/PlayerInfo
-onready var ItemInfo = $Node2D/HBoxContainer/RightBox/ItemInfo
 onready var Box = $Node2D/HBoxContainer
-onready var LeftInfoBox = $Node2D/HBoxContainer/LeftBox
-onready var RightInfoBox = $Node2D/HBoxContainer/RightBox
+onready var CropInfo = $Node2D/HBoxContainer/CropPanel/CropInfo
+onready var PlayerInfo = $Node2D/HBoxContainer/PlayerPanel/PlayerInfo
+onready var P1ItemInfo = $Node2D/HBoxContainer/ItemPanel/P1ItemInfo
+onready var P2ItemInfo = $Node2D/HBoxContainer/ItemPanel/P2ItemInfo
+onready var CropInfoBox = $Node2D/HBoxContainer/CropPanel
+onready var PlayerInfoBox = $Node2D/HBoxContainer/PlayerPanel
+onready var ItemInfoBox = $Node2D/HBoxContainer/ItemPanel
 onready var Positioner = $Node2D
-onready var info_boxes = [CropInfo, PlayerInfo, ItemInfo]
 
 onready var appear_radius = Box.rect_size.x * 1.5
+
+onready var item_names = Global.Item.keys()
 
 var Crops
 var players = []
@@ -27,7 +30,6 @@ var players = []
 
 
 func _ready():
-	#if !Crop_Tilemap or !has_node(Crop_Tilemap): pass
 	Box.hide()
 	Crops = get_node(Crop_Tilemap)
 	for p in Player_Nodes:
@@ -41,11 +43,14 @@ func select_object():
 	var local_pos = Crops.get_local_mouse_position() # Game position
 	var tilemap_pos = Crops.world_to_map(local_pos) # Tilemap position
 	
+	Positioner.global_position = (global_pos + OFFSET)
 	
-	for i in range(0, info_boxes.size()):
-		info_boxes[i].hide()
-	RightInfoBox.hide()
-	LeftInfoBox.hide()
+	var tile = Global.gamelog["states"][Global.current_turn]["tileMap"]["tiles"]
+	tile = tile[tilemap_pos.y][tilemap_pos.x]
+	
+	PlayerInfoBox.hide()
+	CropInfoBox.hide()
+	ItemInfoBox.hide()
 	
 	var showing = false
 	var box_length = 0
@@ -53,11 +58,7 @@ func select_object():
 	# Finds if a crop is selected
 	var selected_crop = Crops.get_cellv(tilemap_pos)
 	if selected_crop != -1:
-		CropInfo.show()
-		LeftInfoBox.show()
-		
-		var tile = Global.gamelog["states"][Global.current_turn]["tileMap"]["tiles"]
-		tile = tile[tilemap_pos.y][tilemap_pos.x]
+		CropInfoBox.show()
 		
 		CropInfo.set_name(tile["crop"]["type"].to_lower().capitalize())
 		CropInfo.set_stage(tile["crop"]["growthTimer"])
@@ -65,8 +66,7 @@ func select_object():
 		#CropInfo.set_price(123)
 		
 		showing = true
-		box_length += LeftInfoBox.rect_size.x
-		
+		box_length += CropInfoBox.rect_size.x
 		
 	
 	# Finds if a player is selected
@@ -79,8 +79,7 @@ func select_object():
 		
 		if x and y: #collision.has_point(local_pos): does not always work properly
 			
-			PlayerInfo.show()
-			RightInfoBox.show()
+			PlayerInfoBox.show()
 			
 			var node_name = player.name
 			var player_state = Global.gamelog["states"][Global.current_turn]\
@@ -90,15 +89,24 @@ func select_object():
 			PlayerInfo.set_money(player_state["money"])
 			
 			showing = true
-			box_length += RightInfoBox.rect_size.x
-			
+			box_length += PlayerInfoBox.rect_size.x
 			
 		
 	
-	Positioner.global_position = (global_pos + OFFSET)
+	# Finds items selected
+	var p1_item = Global.Item.get(tile["p1_item"], -1)
+	var p2_item = Global.Item.get(tile["p2_item"], -1)
+	if p1_item > 0:
+		ItemInfoBox.show()
+		P1ItemInfo.set_name(tile["p1_item"].capitalize())
+		P1ItemInfo.set_description(Global.item_descriptions[p1_item])
+		
+	if p2_item > 0:
+		ItemInfoBox.show()
+		P2ItemInfo.set_name(tile["p2_item"].capitalize())
+		P2ItemInfo.set_description(Global.item_descriptions[p2_item])
 	
-	# max func is a quick bug fix where var maximum 
-	# would be incorrect first time since text hadn't updated to change size yet
+	
 	var box_size = Vector2(max(box_length, 155), Box.rect_size.y)
 	var maximum = get_viewport().get_visible_rect().size - box_size - OFFSET
 	
