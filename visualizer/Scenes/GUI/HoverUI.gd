@@ -13,8 +13,8 @@ onready var Anim = $AnimationPlayer
 onready var Box = $Node2D/HBoxContainer
 onready var CropInfo = $Node2D/HBoxContainer/CropPanel/CropInfo
 onready var PlayerInfo = $Node2D/HBoxContainer/PlayerPanel/PlayerInfo
-onready var P1ItemInfo = $Node2D/HBoxContainer/ItemPanel/P1ItemInfo
-onready var P2ItemInfo = $Node2D/HBoxContainer/ItemPanel/P2ItemInfo
+onready var P1ItemInfo = $Node2D/HBoxContainer/ItemPanel/VBoxContainer/P1ItemInfo
+onready var P2ItemInfo = $Node2D/HBoxContainer/ItemPanel/VBoxContainer/P2ItemInfo
 onready var CropInfoBox = $Node2D/HBoxContainer/CropPanel
 onready var PlayerInfoBox = $Node2D/HBoxContainer/PlayerPanel
 onready var ItemInfoBox = $Node2D/HBoxContainer/ItemPanel
@@ -23,6 +23,7 @@ onready var Positioner = $Node2D
 onready var appear_radius = Box.rect_size.x * 1.5
 
 onready var item_names = Global.Item.keys()
+
 
 var Crops
 var players = []
@@ -43,11 +44,16 @@ func select_object():
 	var local_pos = Crops.get_local_mouse_position() # Game position
 	var tilemap_pos = Crops.world_to_map(local_pos) # Tilemap position
 	
-	Positioner.global_position = (global_pos + OFFSET)
-	
 	var tile = Global.gamelog["states"][Global.current_turn]["tileMap"]["tiles"]
+	
+	# returns if clicking off the field
+	if tilemap_pos.y >= tile.size() or tilemap_pos.x >= tile[tilemap_pos.y].size(): return
+	
 	tile = tile[tilemap_pos.y][tilemap_pos.x]
 	
+	Positioner.global_position = (global_pos + OFFSET)
+	
+	Box.hide()
 	PlayerInfoBox.hide()
 	CropInfoBox.hide()
 	ItemInfoBox.hide()
@@ -62,8 +68,7 @@ func select_object():
 		
 		CropInfo.set_name(tile["crop"]["type"].to_lower().capitalize())
 		CropInfo.set_stage(tile["crop"]["growthTimer"])
-		# No price found in gamelog, need something with price data
-		#CropInfo.set_price(123)
+		CropInfo.set_price(Global.crop_prices[selected_crop])
 		
 		showing = true
 		box_length += CropInfoBox.rect_size.x
@@ -98,24 +103,28 @@ func select_object():
 	var p2_item = Global.Item.get(tile["p2_item"], -1)
 	if p1_item > 0:
 		ItemInfoBox.show()
-		P1ItemInfo.set_name(tile["p1_item"].capitalize())
+		P1ItemInfo.set_item_name(tile["p1_item"].capitalize(), 1)
 		P1ItemInfo.set_description(Global.item_descriptions[p1_item])
 		
 	if p2_item > 0:
 		ItemInfoBox.show()
-		P2ItemInfo.set_name(tile["p2_item"].capitalize())
+		P2ItemInfo.set_item_name(tile["p2_item"].capitalize(), 2)
 		P2ItemInfo.set_description(Global.item_descriptions[p2_item])
+		
+	if p1_item > 0 or p2_item > 0: 
+		box_length += ItemInfoBox.rect_size.x
+		showing = true
 	
-	
-	var box_size = Vector2(max(box_length, 155), Box.rect_size.y)
+	# clamps menu so it doesn't go outside game window
+	var box_size = Vector2(max(box_length, 15), Box.rect_size.y)
 	var maximum = get_viewport().get_visible_rect().size - box_size - OFFSET
-	
 	Positioner.global_position.x = clamp(Positioner.global_position.x, 0, maximum.x)
 	Positioner.global_position.y = clamp(Positioner.global_position.y, 0, maximum.y)
 	
 	if showing:
 		Anim.stop(true)
 		Anim.play(ANIM_ENTER)
+		Box.show()
 	
 	#prev_showed = showing
 	

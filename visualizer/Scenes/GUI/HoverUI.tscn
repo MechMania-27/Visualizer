@@ -1,8 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/GUI/HoverUI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Fonts/langar_16.tres" type="DynamicFont" id=2]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.713726, 0.505882, 0.207843, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.560784, 0.294118, 0.0588235, 1 )
+
+[sub_resource type="GDScript" id=2]
 script/source = "extends VBoxContainer
 
 onready var Name = $Name
@@ -19,7 +28,7 @@ func set_stage(s):
 	Stage.text = \"Growth: \" + str(s)
 "
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=3]
 script/source = "extends VBoxContainer
 
 onready var Name = $Name
@@ -32,18 +41,17 @@ func set_money(m):
 	Money.text = '$' + str(m)
 "
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=4]
 script/source = "extends VBoxContainer
 
-func set_name(var n: String):
-	$Name.text = n
+func set_item_name(var n: String, var p: int):
+	$Name.text = \"Player %d: \" % p + n
 
 func set_description(var n: String):
 	$Description.text = n
 "
 
-[sub_resource type="Animation" id=3]
-resource_name = "Enter"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Node2D:scale:x")
 tracks/0/interp = 1
@@ -67,8 +75,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Exit"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Node2D:scale:x")
 tracks/0/interp = 1
@@ -110,131 +117,147 @@ __meta__ = {
 margin_right = 56.0
 margin_bottom = 46.0
 mouse_filter = 2
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CropInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/CropPanel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 49.0
-margin_bottom = 39.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 51.0
+margin_bottom = 41.0
 mouse_filter = 2
-script = SubResource( 1 )
+script = SubResource( 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Node2D/HBoxContainer/CropPanel/CropInfo"]
-margin_right = 42.0
-margin_bottom = 14.0
+margin_right = 46.0
+margin_bottom = 16.0
 mouse_filter = 2
 custom_constants/separation = 25
 
 [node name="Price" type="Label" parent="Node2D/HBoxContainer/CropPanel/CropInfo/HBoxContainer"]
-margin_right = 8.0
-margin_bottom = 14.0
+margin_right = 9.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
 text = "$"
 
 [node name="Stage" type="Label" parent="Node2D/HBoxContainer/CropPanel/CropInfo/HBoxContainer"]
-margin_left = 33.0
-margin_right = 42.0
-margin_bottom = 14.0
+margin_left = 34.0
+margin_right = 46.0
+margin_bottom = 16.0
 size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
 text = "#"
 
 [node name="Name" type="Label" parent="Node2D/HBoxContainer/CropPanel/CropInfo"]
-margin_top = 18.0
-margin_right = 42.0
-margin_bottom = 32.0
+margin_top = 20.0
+margin_right = 46.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
 text = "Crop"
 align = 1
 
 [node name="PlayerPanel" type="PanelContainer" parent="Node2D/HBoxContainer"]
-self_modulate = Color( 1, 0, 0, 1 )
 margin_left = 64.0
 margin_right = 116.0
 margin_bottom = 46.0
 mouse_filter = 2
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PlayerInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/PlayerPanel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 45.0
-margin_bottom = 39.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 47.0
+margin_bottom = 41.0
 mouse_filter = 2
-script = SubResource( 2 )
+script = SubResource( 3 )
 
 [node name="Name" type="Label" parent="Node2D/HBoxContainer/PlayerPanel/PlayerInfo"]
-margin_right = 38.0
-margin_bottom = 14.0
+margin_right = 42.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 2 )
 text = "Name"
 align = 1
 
 [node name="Money" type="Label" parent="Node2D/HBoxContainer/PlayerPanel/PlayerInfo"]
-margin_top = 18.0
-margin_right = 38.0
-margin_bottom = 32.0
+margin_top = 20.0
+margin_right = 42.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
 text = "$"
 align = 1
 
 [node name="ItemPanel" type="PanelContainer" parent="Node2D/HBoxContainer"]
-self_modulate = Color( 1, 0, 0, 1 )
 margin_left = 124.0
 margin_right = 176.0
-margin_bottom = 46.0
+margin_bottom = 86.0
 mouse_filter = 2
 size_flags_horizontal = 3
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="P1ItemInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/ItemPanel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 45.0
-margin_bottom = 39.0
-mouse_filter = 2
-script = SubResource( 5 )
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/HBoxContainer/ItemPanel"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 47.0
+margin_bottom = 81.0
 
-[node name="Name" type="Label" parent="Node2D/HBoxContainer/ItemPanel/P1ItemInfo"]
-margin_right = 38.0
-margin_bottom = 14.0
+[node name="P1ItemInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/ItemPanel/VBoxContainer"]
+margin_right = 42.0
+margin_bottom = 36.0
+mouse_filter = 2
+script = SubResource( 4 )
+
+[node name="Name" type="Label" parent="Node2D/HBoxContainer/ItemPanel/VBoxContainer/P1ItemInfo"]
+margin_right = 42.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 2 )
 text = "Name"
 align = 1
 
-[node name="Description" type="Label" parent="Node2D/HBoxContainer/ItemPanel/P1ItemInfo"]
-margin_top = 18.0
-margin_right = 38.0
-margin_bottom = 32.0
+[node name="Description" type="Label" parent="Node2D/HBoxContainer/ItemPanel/VBoxContainer/P1ItemInfo"]
+margin_top = 20.0
+margin_right = 42.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
+text = "desc"
 align = 1
 autowrap = true
 
-[node name="P2ItemInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/ItemPanel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 45.0
-margin_bottom = 39.0
+[node name="P2ItemInfo" type="VBoxContainer" parent="Node2D/HBoxContainer/ItemPanel/VBoxContainer"]
+margin_top = 40.0
+margin_right = 42.0
+margin_bottom = 76.0
 mouse_filter = 2
-script = SubResource( 5 )
+script = SubResource( 4 )
 
-[node name="Name" type="Label" parent="Node2D/HBoxContainer/ItemPanel/P2ItemInfo"]
-margin_right = 38.0
-margin_bottom = 14.0
+[node name="Name" type="Label" parent="Node2D/HBoxContainer/ItemPanel/VBoxContainer/P2ItemInfo"]
+margin_right = 42.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 2 )
 text = "Name"
 align = 1
 
-[node name="Description" type="Label" parent="Node2D/HBoxContainer/ItemPanel/P2ItemInfo"]
-margin_top = 18.0
-margin_right = 38.0
-margin_bottom = 32.0
+[node name="Description" type="Label" parent="Node2D/HBoxContainer/ItemPanel/VBoxContainer/P2ItemInfo"]
+margin_top = 20.0
+margin_right = 42.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 2 )
 text = "Desc."
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Enter = SubResource( 3 )
-anims/Exit = SubResource( 4 )
+anims/Enter = SubResource( 5 )
+anims/Exit = SubResource( 6 )
 
 [connection signal="resized" from="Node2D/HBoxContainer/CropPanel" to="." method="_on_PanelContainer_resized"]
 [connection signal="resized" from="Node2D/HBoxContainer/PlayerPanel" to="." method="_on_PanelContainer_resized"]
