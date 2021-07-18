@@ -9,7 +9,6 @@ extends Node2D
 # stderr is reserved for debugging
 
 onready var text_edit: TextEdit = $GUI/VBoxContainer/Controls/TextEdit
-
 var input: String
 
 
@@ -20,9 +19,9 @@ func _ready():
 func next():
 	text_edit.text = ""
 	input = $CLInput.read_line()
+	print(input)
 
 
 func _on_Button_pressed():
 	printerr("Text entered:\n", text_edit.text, "\n")
-	print(input)
 	next()
