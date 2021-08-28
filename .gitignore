@@ -36,6 +36,7 @@ visualizer/Builds
 *.i*86
 *.x86_64
 *.hex
+*.obj
 
 # Debug files
 *.dSYM/

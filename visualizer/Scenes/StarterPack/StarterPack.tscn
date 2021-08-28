@@ -21,7 +21,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Split" parent="GUI/VBoxContainer" instance=ExtResource( 3 )]
+[node name="GameInfoUI" parent="GUI/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0
