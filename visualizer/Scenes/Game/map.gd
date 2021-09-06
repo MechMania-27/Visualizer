@@ -27,7 +27,7 @@ func get_bounds() -> Rect2:
 			Vector2(0, tilemap.cell_size.y * tilemap.scale.y), Vector2() \
 			)
 	
-	var global_bounds_extend = TILE_BOUNDS_EXTEND * tilemap.cell_size
+	var global_bounds_extend = TILE_BOUNDS_EXTEND * tilemap.cell_size * tilemap.scale
 	map_bounds = Rect2((cell_to_pixel * bounds.position) - global_bounds_extend, 
 			(cell_to_pixel * bounds.size) + (global_bounds_extend * 2))
 	

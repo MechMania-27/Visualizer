@@ -10,7 +10,7 @@ const FOREST_TILE_EXTEND = Vector2(2,2)
 export(NodePath) var Base_Node
 var Base
 
-enum {GRASS = 0, TREE = 1, FOREST = 3, BUSH = 2, FENCE = 1}
+enum {GRASS = 0, TREE = 1, FOREST = 3, BUSH = 2, FENCE = 8}
 
 # OpenSimplexNoise Texture
 onready var noise = load("res://Assets/Images/Background_Tilemap_Noise.tres").noise
@@ -25,7 +25,7 @@ var fence_bounds
 
 func _ready():
 	randomize()
-	print(randi())
+	#print(randi())
 	noise.seed = randi()
 	
 	# 200 iq solution is to wait for map to be set up first
@@ -48,21 +48,24 @@ func generate_background():
 	if !Base: return
 	
 	_create_fence()
-	_generate_forest()
+	#_generate_forest()
 	
 
 
 # Places fence tiles surrounding the field
 func _create_fence():
+	set_cell(fence_bounds.position.x, fence_bounds.size.y, Global.TileType.FENCE_CORNER_S)
+	set_cell(fence_bounds.size.x, fence_bounds.size.y, Global.TileType.FENCE_CORNER_S, true)
+	set_cell(fence_bounds.position.x, fence_bounds.position.y, Global.TileType.FENCE_CORNER_N)
+	set_cell(fence_bounds.size.x, fence_bounds.position.y, Global.TileType.FENCE_CORNER_N, true)
 	
-	for x in range(fence_bounds.position.x, fence_bounds.size.x):
-		set_cell(x, fence_bounds.position.y, FENCE)
-		set_cell(x, fence_bounds.size.y, FENCE)
-	
-	for y in range(fence_bounds.position.y, fence_bounds.size.y + 1):
-		set_cell(fence_bounds.position.x, y, FENCE)
-		set_cell(fence_bounds.size.x, y, FENCE)
-		
+	for x in range(fence_bounds.position.x+1, fence_bounds.size.x):
+		set_cell(x, fence_bounds.position.y, Global.TileType.FENCE_MID)
+		set_cell(x, fence_bounds.size.y, Global.TileType.FENCE_S)
+
+	for y in range(fence_bounds.position.y+1, fence_bounds.size.y):
+		set_cell(fence_bounds.position.x, y, Global.TileType.FENCE_SIDE)
+		set_cell(fence_bounds.size.x, y, Global.TileType.FENCE_SIDE)
 	
 	update_bitmask_region()
 	

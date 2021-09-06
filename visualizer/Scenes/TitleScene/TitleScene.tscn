@@ -125,6 +125,7 @@ script = ExtResource( 7 )
 
 [node name="LoadProgress" parent="." instance=ExtResource( 8 )]
 visible = false
+
 [connection signal="pressed" from="Menu/CenterRow/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/Button" to="Menu/CenterRow/Buttons/Button" method="_on_Button_pressed"]

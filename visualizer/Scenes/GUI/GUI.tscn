@@ -52,5 +52,6 @@ scrollable = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="VBoxContainer/Controls/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="value_changed" from="VBoxContainer/Controls/Timeline" to="." method="_on_Timeline_value_changed"]
