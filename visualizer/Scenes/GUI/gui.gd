@@ -15,12 +15,13 @@ onready var EscapeMenu = $Container/EscapeMenu
 
 
 func _ready():
-	# timeline.max_value = len(Global.gamelog["states"])
+	timeline.max_value = len(Global.gamelog["states"])
 	pass
 
 
 func set_player_info(num, player_info):
 	GameInfo.set_player_info(num, player_info)
+	EscapeMenu.set_player_info(num, player_info)
 
 
 func _on_Timeline_value_changed(value):
@@ -40,3 +41,11 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if not EscapeMenu.is_visible():
 			EscapeMenu.call_deferred("popup_centered")
+
+
+func game_over():
+	if play_button.text == "Pause":
+		_on_PlayButton_pressed()
+	
+	if not EscapeMenu.is_visible():
+		EscapeMenu.call_deferred("popup_centered")
