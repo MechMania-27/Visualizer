@@ -67,7 +67,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="EscapeMenu" type="PopupPanel" parent="Container"]
-visible = true
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 510.0
@@ -188,13 +187,6 @@ text = "Player 2: $100"
 align = 1
 autowrap = true
 max_lines_visible = 2
-
-[node name="WinnerContainer" type="Container" parent="Container/EscapeMenu/MarginContainer/VBoxContainer/Scoreboard/CenterContainer"]
-visible = false
-margin_left = 238.0
-margin_top = 122.0
-margin_right = 238.0
-margin_bottom = 122.0
 
 [node name="ExitToTitle" type="Button" parent="Container/EscapeMenu/MarginContainer/VBoxContainer"]
 margin_top = 324.0

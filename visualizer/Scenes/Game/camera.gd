@@ -79,3 +79,7 @@ func _constrain_view():
 			self.offset.y +=  map.end.y - view.end.y
 		else:
 			self.offset.y += map.position.y - view.position.y
+
+
+func _on_GUI_event(event: InputEvent):
+	_unhandled_input(event)
