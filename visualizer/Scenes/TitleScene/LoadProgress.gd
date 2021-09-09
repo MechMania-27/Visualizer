@@ -3,7 +3,7 @@ extends BoxContainer
 
 onready var Text = $HBoxContainer/VBoxContainer/Label
 onready var Progress = $HBoxContainer/VBoxContainer/ProgressBar
-onready var Anim = $HBoxContainer/TextureRect/AnimationPlayer
+onready var Anim = $HBoxContainer/CenterContainer/TextureRect/AnimationPlayer
 
 func _ready():
 	hide()

@@ -3,7 +3,7 @@ extends Node
 
 # gamelog used to udpate visualization
 var gamelog: Dictionary
-var turn: int
+var current_turn: int
 
 ### Enum Types ###
 
@@ -16,29 +16,67 @@ enum PlayerEndState {
 
 # Values correspond to TileSet index
 enum TileType {
-	GREEN_GROCER = 5,
+	GREEN_GROCER = 2,
 	GRASS = 4,
-	ARID = 3,
-	SOIL = 3,
-	F_BAND_OUTER = 2,
-	F_BAND_MID = 1,
-	F_BAND_INNER = 0,
+	ARID = 6,
+	SOIL = 6,
+	F_BAND_OUTER = 5,
+	F_BAND_MID = 4,
+	F_BAND_INNER = 3,
+	FENCE_CORNER_N = 8,
+	FENCE_MID = 9,
+	FENCE_CORNER_S = 10,
+	FENCE_SIDE = 11,
+	FENCE_S = 12,
 }
 
 # Values correspond to TileSet index
 enum CropType {
 	NONE = -1,
-	CORN,
-	GRAPE,
-	POTATO
+	CORN = 1,
+	GRAPE = 2,
+	POTATO = 5,
+	JOGAN_FRUIT = 3,
+	PEANUT = 4,
+	QUADROTRITICALE,
+	DUCHAM_FRUIT,
+	GOLDEN_CORN,
 }
 
 enum Item {
 	NONE,
+	RAIN_TOTEM,
+	FERTILITY_IDOL,
+	PESTICIDE,
+	SCARECROW,
+	DELIVERY_DRONE,
+	COFFEE_THERMOS,
 }
 
 enum Upgrade {
 	NONE,
+}
+
+var item_descriptions = {
+	Item.NONE : "",
+	Item.RAIN_TOTEM : "Causes each crop in a 5x5 square centered on the farmer’s position to grow up to three times this turn only.",
+	Item.FERTILITY_IDOL : "Doubles the fertility of all tiles within radius 2 for the next growth step.",
+	Item.PESTICIDE : "Decrease the current value of all crops within 1 radius by 20%.",
+	Item.SCARECROW : "Protects tiles within radius 2 from harvest or planting by the opponent.(5x5)",
+	Item.DELIVERY_DRONE : "Allows the farmer to buy and sell crops and seeds from anywhere on the farm for one turn.",
+	Item.COFFEE_THERMOS : "Triples the farmer’s MAX_MOVEMENT for the next turn",
+}
+
+var crop_prices = {
+	CropType.NONE : 0,
+	CropType.CORN : 5,
+	CropType.GRAPE : 15,
+	CropType.POTATO : 5,
+	CropType.JOGAN_FRUIT : 20,
+	CropType.PEANUT : 5,
+	CropType.QUADROTRITICALE : 30,
+	CropType.DUCHAM_FRUIT : 100,
+	CropType.GOLDEN_CORN : 1000,
 }
 
 func _ready():

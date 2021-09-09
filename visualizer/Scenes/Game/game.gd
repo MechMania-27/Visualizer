@@ -18,6 +18,7 @@ signal resumed
 func _ready():	
 	update_state(0, true)
 	camera.refresh_bounds()
+	
 
 
 # Using _input because we specifically want to pause specifically when the
@@ -37,7 +38,7 @@ func _input(event: InputEvent):
 
 func update_state(value: int, instant_update: bool = false):
 	if value < len(Global.gamelog["states"]):
-		Global.turn = value
+		Global.current_turn = value
 		
 		# Update Map
 		Map.update_state(value, instant_update)

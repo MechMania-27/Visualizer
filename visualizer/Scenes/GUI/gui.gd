@@ -16,7 +16,9 @@ onready var EscapeMenu = $Container/EscapeMenu
 
 
 func _ready():
-	timeline.max_value = len(Global.gamelog["states"])
+	# This check allows this scene to run independently
+	if Global.gamelog.keys().has("states"):
+		timeline.max_value = len(Global.gamelog["states"])
 	pass
 
 

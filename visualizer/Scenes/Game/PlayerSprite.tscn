@@ -6,7 +6,6 @@
 [node name="Player1" type="AnimatedSprite"]
 frames = ExtResource( 2 )
 animation = "Blue"
-playing = true
 centered = false
 script = ExtResource( 1 )
 

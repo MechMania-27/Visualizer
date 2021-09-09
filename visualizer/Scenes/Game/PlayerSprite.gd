@@ -12,7 +12,11 @@ signal move_completed
 
 # Offset to fix a bug creating inconsistent YSorting when a player is in the 
 # exact same position as a tile
-const POSITION_OFFSET = Vector2(0, -0.01)
+const POSITION_OFFSET = Vector2(128, -70)
+const SPRITE_FRONT = 0
+const SPRITE_BACK = 1
+const SPRITE_LEFT = 2
+const SPRITE_RIGHT = 3
 
 # Moves player to new x pos first
 func move_to(new_pos: Vector2):
@@ -43,6 +47,7 @@ func move_to(new_pos: Vector2):
 		tween.connect("tween_all_completed", self, "_secondary", 
 				[new_pos, y_duration], CONNECT_ONESHOT + CONNECT_DEFERRED)
 		tween.start()
+		frame = SPRITE_LEFT if position.x - new_pos.x > 0 else SPRITE_RIGHT
 	else:
 		# X delta is ~0, skip to _secondary
 		_secondary(new_pos, y_duration)
@@ -57,6 +62,7 @@ func _secondary(new_pos: Vector2, duration: float):
 		tween.connect("tween_all_completed", self, "emit_signal", 
 				["move_completed"], CONNECT_ONESHOT + CONNECT_DEFERRED)
 		tween.start()
+		frame = SPRITE_BACK if position.y - new_pos.y > 0 else SPRITE_FRONT
 	else:
 		# Y delta is ~0, we're done
 		emit_signal("move_completed")
