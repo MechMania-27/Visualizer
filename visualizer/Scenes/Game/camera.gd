@@ -101,3 +101,8 @@ func _constrain_view():
 	# lack of world vertexes in shader language
 	Background.position = offset
 	Background.material.set_shader_param("global_transform", Background.get_global_transform())
+
+
+func _on_GUI_event(event: InputEvent):
+	_unhandled_input(event)
+

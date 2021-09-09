@@ -23,8 +23,8 @@ centered = false
 [node name="Map" parent="." instance=ExtResource( 1 )]
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
-
 [connection signal="move_completed" from="Map" to="." method="_on_Map_move_completed"]
+[connection signal="event" from="GUI" to="Camera" method="_on_GUI_event"]
 [connection signal="game_over" from="GUI" to="." method="_on_GUI_game_over"]
 [connection signal="paused" from="GUI" to="." method="_on_GUI_paused"]
 [connection signal="resumed" from="GUI" to="." method="_on_GUI_resumed"]
