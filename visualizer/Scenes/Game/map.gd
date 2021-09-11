@@ -1,9 +1,26 @@
 extends Node2D
 
+export var TILE_BOUNDS_EXTEND: Vector2 = Vector2(10, 10)
+
+onready var Game = get_parent()
 onready var Base = $Base
 onready var PlayerController = $Crops/PlayerController
+onready var Crops = $Crops
+onready var Player1 = $Crops/Player1
+onready var Player2 = $Crops/Player2
+
+var map_bounds
 
 signal move_completed
+
+
+func get_crops_tilemap() -> Node:
+	return Crops
+
+
+func get_players_array() -> Array:
+	return [Player1, Player2]
+
 
 # Maps from crop growth stage to atlas sprite coordinate
 func get_crop(stage: int) -> Vector2:
@@ -12,13 +29,20 @@ func get_crop(stage: int) -> Vector2:
 
 
 func get_bounds() -> Rect2:
-	var tilemap = Base
+	if map_bounds: return map_bounds
+	
+	var tilemap: TileMap = $Base
 	var bounds = tilemap.get_used_rect()
 	var cell_to_pixel = Transform2D( \
 			Vector2(tilemap.cell_size.x * tilemap.scale.x, 0), \
 			Vector2(0, tilemap.cell_size.y * tilemap.scale.y), Vector2() \
 			)
-	return Rect2(cell_to_pixel * bounds.position, cell_to_pixel * bounds.size)
+	
+	var global_bounds_extend = TILE_BOUNDS_EXTEND * tilemap.cell_size * tilemap.scale
+	map_bounds = Rect2((cell_to_pixel * bounds.position) - global_bounds_extend, 
+			(cell_to_pixel * bounds.size) + (global_bounds_extend * 2))
+	
+	return map_bounds
 
 
 func update_state(state_num: int, instant_update: bool = false):
@@ -52,7 +76,7 @@ func fill_tilemaps(map: Dictionary):
 						false, get_crop(tile["crop"]["growthTimer"]))
 	
 	# Applies auto-tiling rules
-	$Base.update_bitmask_region()
+	$Base.update_bitmask_region(Vector2(), Vector2(map["mapWidth"], map["mapHeight"]))
 
 
 func _on_Game_paused():

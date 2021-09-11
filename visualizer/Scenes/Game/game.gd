@@ -18,6 +18,7 @@ signal resumed
 func _ready():	
 	update_state(0, true)
 	camera.refresh_bounds()
+	
 
 
 # Using _input because we specifically want to pause specifically when the
@@ -37,6 +38,8 @@ func _input(event: InputEvent):
 
 func update_state(value: int, instant_update: bool = false):
 	if value < len(Global.gamelog["states"]):
+		Global.current_turn = value
+		
 		# Update Map
 		Map.update_state(value, instant_update)
 		
@@ -56,10 +59,8 @@ func _on_GUI_timeline_changed(value):
 
 
 func game_over():
-	# TODO: display some end-of-game thing with gamelog's PlayerEndStates
 	print("GAME OVER")
-	GUI.timeline.value = 0
-	#get_tree().quit()
+	GUI.game_over()
 
 
 # Only allow one "move_completed" to pend a resume at a time

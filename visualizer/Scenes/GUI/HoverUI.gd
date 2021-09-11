@@ -1,7 +1,9 @@
 extends CanvasLayer
 
-export(NodePath) var Crop_Tilemap
-export(Array, NodePath) var Player_Nodes
+export(NodePath) var Map
+
+#export(NodePath) var Crop_Tilemap
+#export(Array, NodePath) var Player_Nodes
 
 const SNAP = Vector2(32, 32)
 const OFFSET = Vector2(25,5)
@@ -11,10 +13,10 @@ const ANIM_EXIT = "Exit"
 
 onready var Anim = $AnimationPlayer
 onready var Box = $Node2D/HBoxContainer
-onready var CropInfo = $Node2D/HBoxContainer/CropPanel/CropInfo
-onready var PlayerInfo = $Node2D/HBoxContainer/PlayerPanel/PlayerInfo
-onready var P1ItemInfo = $Node2D/HBoxContainer/ItemPanel/VBoxContainer/P1ItemInfo
-onready var P2ItemInfo = $Node2D/HBoxContainer/ItemPanel/VBoxContainer/P2ItemInfo
+onready var CropInfo = $Node2D/HBoxContainer/CropPanel/MarginContainer/CropInfo
+onready var PlayerInfo = $Node2D/HBoxContainer/PlayerPanel/MarginContainer/PlayerInfo
+onready var P1ItemInfo = $Node2D/HBoxContainer/ItemPanel/MarginContainer/VBoxContainer/P1ItemInfo
+onready var P2ItemInfo = $Node2D/HBoxContainer/ItemPanel/MarginContainer/VBoxContainer/P2ItemInfo
 onready var CropInfoBox = $Node2D/HBoxContainer/CropPanel
 onready var PlayerInfoBox = $Node2D/HBoxContainer/PlayerPanel
 onready var ItemInfoBox = $Node2D/HBoxContainer/ItemPanel
@@ -32,10 +34,13 @@ var players = []
 
 func _ready():
 	Box.hide()
-	Crops = get_node(Crop_Tilemap)
-	for p in Player_Nodes:
-		players.append(get_node(p))
-	
+	#Crops = get_node(Crop_Tilemap)
+	#for p in Player_Nodes:
+	#	players.append(get_node(p))
+	var map = get_node(Map)
+	Crops = map.get_crops_tilemap()
+	players = map.get_players_array()
+
 
 # Checks what the mouse is hovering over to display their info
 func select_object():
@@ -63,16 +68,18 @@ func select_object():
 	
 	# Finds if a crop is selected
 	var selected_crop = Crops.get_cellv(tilemap_pos)
+	print("CROP SELECTED: ", selected_crop)
 	if selected_crop != -1:
-		CropInfoBox.show()
 		
 		CropInfo.set_name(tile["crop"]["type"].to_lower().capitalize())
 		CropInfo.set_stage(tile["crop"]["growthTimer"])
 		CropInfo.set_price(Global.crop_prices[selected_crop])
 		
+		print(CropInfo.Name)
+		
 		showing = true
 		box_length += CropInfoBox.rect_size.x
-		
+		CropInfoBox.show()
 	
 	# Finds if a player is selected
 	for player in players:
@@ -133,6 +140,8 @@ func select_object():
 func _input(event):
 	if Input.is_action_just_released("lmb"):
 		select_object()
+	elif Input.is_action_just_pressed("lmb"):
+		Box.hide()
 #	elif Box.visible and event is InputEventMouseMotion:
 #		if Positioner.global_position.distance_to(event.position) > appear_radius \
 #			and Anim.current_animation != ANIM_EXIT and Anim.get_queue().size() < 1:
