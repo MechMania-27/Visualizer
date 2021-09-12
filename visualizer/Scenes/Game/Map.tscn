@@ -44,5 +44,4 @@ centered = true
 [node name="Player2" parent="Crops" instance=ExtResource( 7 )]
 animation = "Orange"
 centered = true
-
 [connection signal="move_completed" from="Crops/PlayerController" to="." method="_on_PlayerController_move_completed"]
