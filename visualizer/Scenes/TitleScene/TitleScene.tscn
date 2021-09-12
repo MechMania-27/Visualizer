@@ -251,7 +251,7 @@ custom_colors/font_color = Color( 0.870588, 0.662745, 0.364706, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 4
-text = "Coders 
+text = "Coders
 of the Corn"
 align = 1
 
@@ -313,6 +313,7 @@ margin_left = 50.0
 margin_top = 50.0
 margin_right = 974.0
 margin_bottom = 598.0
+
 [connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_FileDialog_file_selected"]
 [connection signal="gamelog_ready" from="FileDialog" to="." method="_on_FileDialog_gamelog_ready"]
 [connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
