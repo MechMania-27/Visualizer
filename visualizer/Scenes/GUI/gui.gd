@@ -5,7 +5,6 @@ signal timeline_changed(value)
 signal game_over
 signal paused
 signal resumed
-signal event(event)
 
 onready var GameInfo = $Container/HUD/GameInfoUI
 
@@ -40,12 +39,10 @@ func _on_PlayButton_pressed():
 		emit_signal("paused")
 
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if not EscapeMenu.is_visible():
 			EscapeMenu.call_deferred("popup_centered")
-	else:
-		emit_signal("event", event)
 
 
 
