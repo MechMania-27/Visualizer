@@ -18,6 +18,7 @@ script = ExtResource( 2 )
 [node name="Container" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
@@ -206,6 +207,7 @@ margin_right = 476.0
 margin_bottom = 374.0
 size_flags_vertical = 0
 text = "Exit to Desktop"
+
 [connection signal="pressed" from="Container/HUD/Controls/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="value_changed" from="Container/HUD/Controls/Timeline" to="." method="_on_Timeline_value_changed"]
 [connection signal="pressed" from="Container/EscapeMenu/MarginContainer/VBoxContainer/ExitToTitle" to="Container/EscapeMenu" method="_on_ExitToTitle_pressed"]

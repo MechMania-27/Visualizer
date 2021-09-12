@@ -201,8 +201,8 @@ resizable = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json ; JSON files" )
-current_dir = "/Users/sahil/Documents/GitHub/mm27/visualizer/visualizer"
-current_path = "/Users/sahil/Documents/GitHub/mm27/visualizer/visualizer/"
+current_dir = "/Users/Cameron/Documents/GitHub/Visualizer/visualizer"
+current_path = "/Users/Cameron/Documents/GitHub/Visualizer/visualizer/"
 script = ExtResource( 7 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -313,6 +313,7 @@ margin_left = 50.0
 margin_top = 50.0
 margin_right = 974.0
 margin_bottom = 598.0
+
 [connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_FileDialog_file_selected"]
 [connection signal="gamelog_ready" from="FileDialog" to="." method="_on_FileDialog_gamelog_ready"]
 [connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/StartButton" to="." method="_on_StartButton_pressed"]

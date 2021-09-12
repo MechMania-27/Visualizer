@@ -60,7 +60,12 @@ func fill_tilemaps(map: Dictionary):
 			if crop_type == Global.CropType.NONE:
 				$Crops.set_cell(x, y, -1)
 			else:
-				$Crops.set_cell(x, y, crop_type, false, false, \
+				var flip
+				if $Crops.get_cell(x,y) != -1:
+					flip = $Crops.is_cell_x_flipped(x,y)
+				else:
+					flip = true if randf() > 0.5 else false
+				$Crops.set_cell(x, y, crop_type, flip, false, \
 						false, get_crop(tile["crop"]["growthTimer"]))
 	
 	# Applies auto-tiling rules

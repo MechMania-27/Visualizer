@@ -44,8 +44,8 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if not EscapeMenu.is_visible():
 			EscapeMenu.call_deferred("popup_centered")
-	else:
-		emit_signal("event", event)
+#	else:
+#		emit_signal("event", event)
 
 
 
