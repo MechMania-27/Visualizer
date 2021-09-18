@@ -201,8 +201,8 @@ resizable = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json ; JSON files" )
-current_dir = "/Users/Cameron/Documents/GitHub/Visualizer/visualizer"
-current_path = "/Users/Cameron/Documents/GitHub/Visualizer/visualizer/"
+current_dir = "/Users/sahil/Documents/GitHub/mm27/visualizer/visualizer"
+current_path = "/Users/sahil/Documents/GitHub/mm27/visualizer/visualizer/"
 script = ExtResource( 7 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -251,7 +251,7 @@ custom_colors/font_color = Color( 0.870588, 0.662745, 0.364706, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.392157 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 4
-text = "Coders 
+text = "Coders
 of the Corn"
 align = 1
 

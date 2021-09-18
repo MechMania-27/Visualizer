@@ -5,10 +5,21 @@ export var TILE_BOUNDS_EXTEND: Vector2 = Vector2(10, 10)
 onready var Game = get_parent()
 onready var Base = $Base
 onready var PlayerController = $Crops/PlayerController
+onready var Crops = $Crops
+onready var Player1 = $Crops/Player1
+onready var Player2 = $Crops/Player2
 
 var map_bounds
 
 signal move_completed
+
+
+func get_crops_tilemap() -> Node:
+	return Crops
+
+
+func get_players_array() -> Array:
+	return [Player1, Player2]
 
 
 # Maps from crop growth stage to atlas sprite coordinate
@@ -38,6 +49,7 @@ func update_state(state_num: int, instant_update: bool = false):
 	if state_num >= len(Global.gamelog["states"]):
 		return # Should never reach here if timeline max_value is set properly
 	
+	Global.current_turn = state_num
 	var state = Global.gamelog["states"][state_num]
 	fill_tilemaps(state["tileMap"])
 	

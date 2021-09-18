@@ -72,7 +72,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="EscapeMenu" type="PopupPanel" parent="Container"]
-visible = true
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 510.0
@@ -81,6 +80,9 @@ rect_min_size = Vector2( 500, 300 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="Container/EscapeMenu"]
 margin_left = 2.0

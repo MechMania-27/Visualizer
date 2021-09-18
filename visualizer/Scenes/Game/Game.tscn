@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Game/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Game/game.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Game/camera.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/GUI/GUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Images/BlueFarmer.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/GUI/HoverUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/BGShader.tres" type="Material" id=7]
 
 [node name="Game" type="Node2D"]
@@ -24,8 +25,9 @@ centered = false
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
 
+[node name="HoverUI" parent="." instance=ExtResource( 6 )]
+Map = NodePath("../Map")
 [connection signal="move_completed" from="Map" to="." method="_on_Map_move_completed"]
-[connection signal="event" from="GUI" to="Camera" method="_on_GUI_event"]
 [connection signal="game_over" from="GUI" to="." method="_on_GUI_game_over"]
 [connection signal="paused" from="GUI" to="." method="_on_GUI_paused"]
 [connection signal="resumed" from="GUI" to="." method="_on_GUI_resumed"]
