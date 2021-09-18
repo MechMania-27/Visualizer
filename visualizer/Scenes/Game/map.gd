@@ -12,6 +12,7 @@ onready var Player2 = $Crops/Player2
 var map_bounds
 
 signal move_completed
+signal map_updated
 
 
 func get_crops_tilemap() -> Node:
@@ -59,6 +60,8 @@ func update_state(state_num: int, instant_update: bool = false):
 	else:
 		PlayerController.move_smooth(state["p1"]["position"], 
 				state["p2"]["position"])
+	
+	emit_signal("map_updated")
 
 
 func fill_tilemaps(map: Dictionary):

@@ -240,7 +240,7 @@ func valid_tile(tile: Dictionary) -> bool:
 
 
 func valid_crop(crop: Dictionary) -> bool:
-	var keys = ["type", "growthTimer"]
+	var keys = ["type", "growthTimer", "value"]
 	for key in keys:
 		if not crop.keys().has(key):
 			printerr("Crop did not contain key: ", key)
@@ -250,11 +250,12 @@ func valid_crop(crop: Dictionary) -> bool:
 		printerr("Invalid crop type: ", crop["type"])
 		return false
 	
-	# JSON parsing will always interpret numbers as floats/reals
-	if CropType.get(crop["type"]) != CropType.NONE and \
-			(typeof(crop["growthTimer"]) != TYPE_REAL \
-			or int(crop["growthTimer"]) != crop["growthTimer"]):
+	if not is_int(crop["growthTimer"]):
 		printerr("Invalid growthTimer: ", crop["growthTimer"])
+		return false
+	
+	if typeof(crop["value"]) != TYPE_REAL:
+		printerr("Invalid crop value: ", crop["value"])
 		return false
 	
 	return true
@@ -313,4 +314,11 @@ func valid_position(pos: Dictionary, tilemap: Dictionary) -> bool:
 		printerr("Position y out of bounds: ", pos["y"])
 		return false
 	
+	return true
+
+
+func is_int(value):
+	# JSON parsing will always interpret numbers as floats/reals
+	if typeof(value) != TYPE_REAL or int(value) != value:
+		return false
 	return true

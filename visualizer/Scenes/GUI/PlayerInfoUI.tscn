@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/GUI/ItemBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Images/OrangeFarmer.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/GUI/playerInfoUI.gd" type="Script" id=3]
 
@@ -101,91 +100,9 @@ margin_bottom = 345.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CORN" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_right = 95.0
-margin_bottom = 45.0
-
-[node name="GRAPE" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 49.0
-margin_right = 95.0
-margin_bottom = 95.0
-
-[node name="POTATO" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 99.0
-margin_right = 95.0
-margin_bottom = 145.0
-
-[node name="PanelContainer4" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 149.0
-margin_right = 95.0
-margin_bottom = 195.0
-
-[node name="PanelContainer5" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 199.0
-margin_right = 95.0
-margin_bottom = 245.0
-
-[node name="PanelContainer6" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 249.0
-margin_right = 95.0
-margin_bottom = 295.0
-
-[node name="PanelContainer7" parent="Inventory/MarginContainer/HBoxContainer/SeedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 299.0
-margin_right = 95.0
-margin_bottom = 345.0
-
 [node name="HarvestedInventory" type="VBoxContainer" parent="Inventory/MarginContainer/HBoxContainer"]
 margin_left = 99.0
 margin_right = 194.0
 margin_bottom = 345.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="CORN" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_right = 95.0
-margin_bottom = 45.0
-
-[node name="GRAPE" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 49.0
-margin_right = 95.0
-margin_bottom = 95.0
-
-[node name="POTATO" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 99.0
-margin_right = 95.0
-margin_bottom = 145.0
-
-[node name="PanelContainer4" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 149.0
-margin_right = 95.0
-margin_bottom = 195.0
-
-[node name="PanelContainer5" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 199.0
-margin_right = 95.0
-margin_bottom = 245.0
-
-[node name="PanelContainer6" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 249.0
-margin_right = 95.0
-margin_bottom = 295.0
-
-[node name="PanelContainer7" parent="Inventory/MarginContainer/HBoxContainer/HarvestedInventory" instance=ExtResource( 1 )]
-margin_left = 0.0
-margin_top = 299.0
-margin_right = 95.0
-margin_bottom = 345.0

@@ -7,14 +7,14 @@
 script/source = "extends VBoxContainer
 
 onready var Name = $Name
-onready var Price = $HBoxContainer/Price
+onready var Value = $HBoxContainer/Value
 onready var Stage = $HBoxContainer/Stage
 
 func set_name(n):
 	Name.text = str(n)
 
-func set_price(p):
-	Price.text = \"$\" + str(p)
+func set_value(v):
+	Value.text = \"$\" + str(v)
 
 func set_stage(s):
 	Stage.text = \"Growth: \" + str(s)
@@ -142,7 +142,7 @@ margin_bottom = 42.0
 mouse_filter = 2
 custom_constants/separation = 25
 
-[node name="Price" type="Label" parent="Node2D/HBoxContainer/CropPanel/MarginContainer/CropInfo/HBoxContainer"]
+[node name="Value" type="Label" parent="Node2D/HBoxContainer/CropPanel/MarginContainer/CropInfo/HBoxContainer"]
 margin_right = 9.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
@@ -220,5 +220,6 @@ text = "Desc."
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enter = SubResource( 3 )
 anims/Exit = SubResource( 4 )
+
 [connection signal="resized" from="Node2D/HBoxContainer/CropPanel" to="." method="_on_PanelContainer_resized"]
 [connection signal="resized" from="Node2D/HBoxContainer/ItemPanel" to="." method="_on_PanelContainer_resized"]
