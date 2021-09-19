@@ -80,7 +80,14 @@ func fill_tilemaps(map: Dictionary):
 					flip = $Crops.is_cell_x_flipped(x,y)
 				else:
 					flip = true if randf() > 0.5 else false
-				$Crops.set_cell(x, y, crop_type, flip, false, \
+				
+				# Check if crop should be wilted
+				var crop_name = tile["crop"]["type"]
+				if tile["crop"]["value"] == 0 and tile["crop"]["growthTimer"] == 0:
+					crop_name = "WILTED_" + crop_name
+				
+				var tile_id = $Crops.tile_set.find_tile_by_name(crop_name)
+				$Crops.set_cell(x, y, tile_id, flip, false, \
 						false, get_crop(tile["crop"]["growthTimer"]))
 	
 	# Applies auto-tiling rules

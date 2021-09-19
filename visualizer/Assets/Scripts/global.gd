@@ -30,14 +30,14 @@ enum TileType {
 	FENCE_S = 12,
 }
 
-# Values correspond to TileSet index
+
 enum CropType {
 	NONE = -1,
-	CORN = 1,
-	GRAPE = 2,
-	POTATO = 5,
-	JOGAN_FRUIT = 3,
-	PEANUT = 4,
+	CORN,
+	GRAPE,
+	POTATO,
+	JOGAN_FRUIT,
+	PEANUT,
 	QUADROTRITICALE,
 	DUCHAM_FRUIT,
 	GOLDEN_CORN,
