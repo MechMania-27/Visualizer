@@ -2,9 +2,9 @@ extends VBoxContainer
 
 const ItemBox = preload("res://Scenes/GUI/ItemBox.tscn")
 
-onready var SeedInventory = $Inventory/MarginContainer/HBoxContainer/SeedInventory
-onready var HarvestedInventory = $Inventory/MarginContainer/HBoxContainer/HarvestedInventory
-
+onready var SeedInventory = $Inventory/MarginContainer/VBoxContainer/HBoxContainer/SeedInventory
+onready var HarvestedInventory = $Inventory/MarginContainer/VBoxContainer/HBoxContainer/HarvestedInventory
+onready var InventoryValue = $Inventory/MarginContainer/VBoxContainer/InventoryValue
 
 func _ready():
 	for crop in Global.CropType.keys():
@@ -38,3 +38,6 @@ func set_player_info(player_info):
 		# TODO: check only needed while we have extra inventory boxes
 		if player_info["harvestedInventoryTotals"].keys().has(item.name):
 			item.set_text(String(player_info["harvestedInventoryTotals"][item.name]))
+	
+	# Fill in inventory value
+	InventoryValue.text = "Value: $%d" % player_info["inventoryValue"]
