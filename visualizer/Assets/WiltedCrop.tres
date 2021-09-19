@@ -5,7 +5,7 @@ code = "shader_type canvas_item;
 render_mode unshaded;
 
 uniform float GRAY_AMOUNT = 0.6;
-uniform float VALUE = 0.5;
+uniform float VALUE = 0.56;
 
 void fragment(){
 	vec4 c = texture(TEXTURE, UV);
@@ -21,4 +21,4 @@ void fragment(){
 [resource]
 shader = SubResource( 1 )
 shader_param/GRAY_AMOUNT = 0.6
-shader_param/VALUE = 0.5
+shader_param/VALUE = 0.56
