@@ -27,6 +27,8 @@ centered = false
 
 [node name="HoverUI" parent="." instance=ExtResource( 6 )]
 Map = NodePath("../Map")
+
+[connection signal="map_updated" from="Map" to="HoverUI" method="_on_Map_map_updated"]
 [connection signal="move_completed" from="Map" to="." method="_on_Map_move_completed"]
 [connection signal="game_over" from="GUI" to="." method="_on_GUI_game_over"]
 [connection signal="paused" from="GUI" to="." method="_on_GUI_paused"]

@@ -1,7 +1,22 @@
 extends VBoxContainer
 
+const ItemBox = preload("res://Scenes/GUI/ItemBox.tscn")
+
 onready var SeedInventory = $Inventory/MarginContainer/HBoxContainer/SeedInventory
 onready var HarvestedInventory = $Inventory/MarginContainer/HBoxContainer/HarvestedInventory
+
+
+func _ready():
+	for crop in Global.CropType.keys():
+		var seedSlot = ItemBox.instance()
+		seedSlot.name = crop
+		
+		var harvestedSlot = ItemBox.instance()
+		harvestedSlot.name = crop
+		
+		SeedInventory.add_child(seedSlot, true)
+		HarvestedInventory.add_child(harvestedSlot, true)
+
 
 func set_player_info(player_info):
 	# Fill in Player Name text
