@@ -80,9 +80,9 @@ func set_player_info(player_info):
 	$MoneyContainer/Money.set_text("$ %d" % player_info["money"])
 	
 	# Fill in Player Item sprite
-	$AttributeContainer/Item.texture = Items.get(player_info["item"])
+	$AttributeContainer/Item.texture = Items.get(Global.Item.get(player_info["item"]))
 	# Fill in Player Upgrade sprite
-	$AttributeContainer/Upgrade.texture = Upgrades.get(player_info["upgrade"])
+	$AttributeContainer/Upgrade.texture = Upgrades.get(Upgrades.get(player_info["upgrade"]))
 	
 	# Fill in Player Inventory boxes
 	for item in SeedInventory.get_children():
