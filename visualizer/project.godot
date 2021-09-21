@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "VBoxContainer",
+"class": "InfoUI",
+"language": "GDScript",
+"path": "res://Scenes/GUI/playerInfoUI.gd"
+}, {
 "base": "Node",
 "class": "ItemBox",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://Scenes/Game/PlayerSprite.gd"
 } ]
 _global_script_class_icons={
+"InfoUI": "",
 "ItemBox": "",
 "PlayerSprite": ""
 }

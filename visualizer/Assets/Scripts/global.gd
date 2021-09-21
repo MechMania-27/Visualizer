@@ -16,8 +16,8 @@ enum PlayerEndState {
 
 # Values correspond to TileSet index
 enum TileType {
-	GREEN_GROCER = 2,
-	GRASS = 4,
+	GREEN_GROCER,
+	GRASS = 2,
 	ARID = 6,
 	SOIL = 6,
 	F_BAND_OUTER = 5,
@@ -35,22 +35,23 @@ enum CropType {
 	NONE = -1,
 	CORN = 1,
 	GRAPE = 2,
-	POTATO = 5,
 	JOGAN_FRUIT = 3,
 	PEANUT = 4,
-	QUADROTRITICALE,
-	DUCHAM_FRUIT,
-	GOLDEN_CORN,
+	POTATO = 5,
+	QUADROTRITICALE = 6,
+	DUCHAM_FRUIT = 7,
+	GOLDEN_CORN = 8,
 }
 
 enum Item {
-	NONE,
+	NONE = -1,
 	RAIN_TOTEM,
-	FERTILITY_IDOL,
-	PESTICIDE,
-	SCARECROW,
+	FERTILITY_IDOL = 0,
+	PESTICIDE = 1,
+	SCARECROW = 2,
 	DELIVERY_DRONE,
 	COFFEE_THERMOS,
+	GREEN_GROCER = 3,
 }
 
 enum Upgrade {
