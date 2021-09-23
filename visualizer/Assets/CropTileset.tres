@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=7 format=2]
+[gd_resource type="TileSet" load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Crops/Potato.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Crops/Grapes.png" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Assets/Crops/JoganFruit.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Crops/Corn.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Crops/Wheat.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Crops/DuchamFruit.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Crops/GoldenCorn.png" type="Texture" id=8]
 
 [resource]
 1/name = "Corn.png 1"
@@ -134,3 +136,45 @@
 6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
+7/name = "DuchamFruit.png 7"
+7/texture = ExtResource( 7 )
+7/tex_offset = Vector2( 0, -64 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 8, 8, 768, 256 )
+7/tile_mode = 2
+7/autotile/icon_coordinate = Vector2( 0, 0 )
+7/autotile/tile_size = Vector2( 256, 256 )
+7/autotile/spacing = 0
+7/autotile/occluder_map = [  ]
+7/autotile/navpoly_map = [  ]
+7/autotile/priority_map = [  ]
+7/autotile/z_index_map = [  ]
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "GoldenCorn.png 8"
+8/texture = ExtResource( 8 )
+8/tex_offset = Vector2( 0, -64 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 8, 8, 768, 256 )
+8/tile_mode = 2
+8/autotile/icon_coordinate = Vector2( 0, 0 )
+8/autotile/tile_size = Vector2( 256, 256 )
+8/autotile/spacing = 0
+8/autotile/occluder_map = [  ]
+8/autotile/navpoly_map = [  ]
+8/autotile/priority_map = [  ]
+8/autotile/z_index_map = [  ]
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0

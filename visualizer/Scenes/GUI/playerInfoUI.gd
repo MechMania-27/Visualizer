@@ -8,7 +8,7 @@ var crop_keys = Global.CropType.keys()
 const ItemBox = preload("res://Scenes/GUI/ItemBox.tscn")
 
 var Items = {
-	Global.Item.NONE : null, # Missing sprite for no item
+	Global.Item.NONE : preload("res://Assets/Inventory/Items/None.png"),
 	Global.Item.RAIN_TOTEM : preload("res://Assets/Inventory/Items/Rain Totem.png"),
 	Global.Item.FERTILITY_IDOL : preload("res://Assets/Inventory/Items/Fertility Idol.png"),
 	Global.Item.PESTICIDE : preload("res://Assets/Inventory/Items/Pesticide.png"),
@@ -18,7 +18,7 @@ var Items = {
 }
 
 var Upgrades = {
-	"NONE" : null, # Missing sprite for no upgrade
+	"NONE" : preload("res://Assets/Inventory/Items/None.png"),
 	"BACKPACK" : preload("res://Assets/Inventory/Upgrades/Backpack.png"),
 	"GREEN_GROCER_LOYALTY_CARD" : preload("res://Assets/Inventory/Upgrades/Green Grocer Loyalty Card.png"),
 	"MOON_SHOES" : preload("res://Assets/Inventory/Upgrades/Moon Shoes.png"),
@@ -34,7 +34,7 @@ var Seeds = {
 	Global.CropType.GRAPE : preload("res://Assets/Inventory/Seed Packets/GrapePacket.png"),
 	Global.CropType.POTATO : preload("res://Assets/Inventory/Seed Packets/PotatoPacket.png"),
 	Global.CropType.JOGAN_FRUIT : preload("res://Assets/Inventory/Seed Packets/JoganPacket.png"),
-	Global.CropType.DUCHAM_FRUIT : null,#preload(""), Missing Ducham Fruit sprite
+	Global.CropType.DUCHAM_FRUIT : preload("res://Assets/Inventory/Seed Packets/DuchamPacket.png"),
 	Global.CropType.PEANUT : preload("res://Assets/Inventory/Seed Packets/PeanutPacket.png"),
 	Global.CropType.QUADROTRITICALE : preload("res://Assets/Inventory/Seed Packets/WheatPacket.png"),
 	Global.CropType.GOLDEN_CORN : preload("res://Assets/Inventory/Seed Packets/GoldenPacket.png")
@@ -46,7 +46,7 @@ var Harvests = {
 	Global.CropType.GRAPE : preload("res://Assets/Inventory/Harvested Crops/GrapeHarvested.png"),
 	Global.CropType.POTATO : preload("res://Assets/Inventory/Harvested Crops/PotatoHarvested.png"),
 	Global.CropType.JOGAN_FRUIT : preload("res://Assets/Inventory/Harvested Crops/JoganHarvested.png"),
-	Global.CropType.DUCHAM_FRUIT : null,#preload(""), Missing Ducham Fruit sprite
+	Global.CropType.DUCHAM_FRUIT : preload("res://Assets/Inventory/Harvested Crops/DuchamHarvested.png"),
 	Global.CropType.PEANUT : preload("res://Assets/Inventory/Harvested Crops/PeanutHarvested.png"),
 	Global.CropType.QUADROTRITICALE : preload("res://Assets/Inventory/Harvested Crops/WheatHarvested.png"),
 	Global.CropType.GOLDEN_CORN : preload("res://Assets/Inventory/Harvested Crops/GoldenHarvested.png")
