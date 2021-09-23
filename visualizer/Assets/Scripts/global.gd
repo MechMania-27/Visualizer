@@ -5,6 +5,9 @@ extends Node
 var gamelog: Dictionary
 var current_turn: int
 
+# File paths
+var gamelog_paths: PoolStringArray
+
 # HTML5/JS detection
 onready var use_js = OS.get_name() == "HTML5" and OS.has_feature('JavaScript')
 

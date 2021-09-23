@@ -196,9 +196,9 @@ margin_right = 974.0
 margin_bottom = 598.0
 rect_min_size = Vector2( 400, 140 )
 theme = SubResource( 9 )
-window_title = "Open a File"
+window_title = "Open File(s)"
 resizable = true
-mode = 0
+mode = 1
 access = 2
 filters = PoolStringArray( "*.json ; JSON files" )
 current_dir = "/Users/sahil/Documents/GitHub/mm27/visualizer/visualizer"
@@ -315,6 +315,7 @@ margin_right = 974.0
 margin_bottom = 598.0
 
 [connection signal="file_selected" from="FileDialog" to="FileDialog" method="_on_FileDialog_file_selected"]
+[connection signal="files_selected" from="FileDialog" to="FileDialog" method="_on_FileDialog_files_selected"]
 [connection signal="gamelog_ready" from="FileDialog" to="." method="_on_FileDialog_gamelog_ready"]
 [connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]

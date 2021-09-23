@@ -36,7 +36,6 @@ func resize_bg():
 
 func refresh_bounds():
 	tilemap_bounds = map.get_bounds()
-	
 
 
 # Use _unhandled_input so that we don't move camera if mouse-down is on GUI
