@@ -8,7 +8,8 @@ func _on_StartButton_pressed():
 
 
 func _on_QuitButton_pressed():
-	get_tree().quit()
+	Global.quit()
+	
 
 
 func _on_FileDialog_gamelog_ready():

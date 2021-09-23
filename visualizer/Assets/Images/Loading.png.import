@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/OrangeFarmer.png-470350ff23f18115b900ca629986a2a9.stex"
+path="res://.import/Loading.png-fa0d86225819f687d6f3592b1f8fafbb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/OrangeFarmer.png"
-dest_files=[ "res://.import/OrangeFarmer.png-470350ff23f18115b900ca629986a2a9.stex" ]
+source_file="res://Assets/Images/Loading.png"
+dest_files=[ "res://.import/Loading.png-fa0d86225819f687d6f3592b1f8fafbb.stex" ]
 
 [params]
 

@@ -82,6 +82,13 @@ var crop_prices = {
 func _ready():
 	set_process(false)
 
+
+# For cross platform functionality
+func quit():
+	if OS.get_name() == "HTML5" and OS.has_feature('JavaScript'):
+		JavaScript.eval("window.close()")
+	get_tree().quit()
+
 ### Verification functions ###
 
 var gamelog_states: Array

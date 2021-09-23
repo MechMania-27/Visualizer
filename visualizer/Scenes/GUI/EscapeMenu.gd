@@ -19,4 +19,4 @@ func _on_ExitToTitle_pressed():
 
 
 func _on_ExitToDesktop_pressed():
-	get_tree().quit(0)
+	Global.quit()
