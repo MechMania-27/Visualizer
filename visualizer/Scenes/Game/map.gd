@@ -91,7 +91,7 @@ func fill_tilemaps(map: Dictionary):
 						false, get_crop(tile["crop"]["growthTimer"]))
 	
 	# Applies auto-tiling rules
-	$Base.update_bitmask_region(Vector2(), Vector2(map["mapWidth"], map["mapHeight"]))
+	$Base.update_bitmask_region()
 
 
 func _on_Game_paused():

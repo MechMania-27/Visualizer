@@ -5,6 +5,9 @@ extends Node
 var gamelog: Dictionary
 var current_turn: int
 
+# HTML5/JS detection
+onready var use_js = OS.get_name() == "HTML5" and OS.has_feature('JavaScript')
+
 ### Enum Types ###
 
 enum PlayerEndState {
@@ -82,12 +85,6 @@ var crop_prices = {
 func _ready():
 	set_process(false)
 
-
-# For cross platform functionality
-func quit():
-	if OS.get_name() == "HTML5" and OS.has_feature('JavaScript'):
-		JavaScript.eval("window.close()")
-	get_tree().quit()
 
 ### Verification functions ###
 

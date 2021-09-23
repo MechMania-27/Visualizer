@@ -12,10 +12,8 @@ func _notification(notification: int):
 		emit_signal("in_focus")
 
 
-var use_js = OS.get_name() == "HTML5" and OS.has_feature('JavaScript')
-
 func _ready():
-	if use_js:
+	if Global.use_js:
 		_define_js()
 	var _err = Global.connect("gamelog_check_completed",self,"_on_gamelog_valid")
 
@@ -51,14 +49,14 @@ func _read_file(path):
 var default: Rect2
 func popup(_rect: Rect2 = default):
 	# If built for web, FileDialog won't work
-	if use_js:
+	if Global.use_js:
 		load_file()
 	else:
 		.popup()
 
 
 func load_file():
-	if not use_js:
+	if not Global.use_js:
 		return
 	
 	# Call our upload function
