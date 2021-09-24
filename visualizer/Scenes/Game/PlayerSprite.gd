@@ -21,7 +21,7 @@ const SPRITE_RIGHT = 3
 
 # Moves player to new x pos first
 func move_to(new_pos: Vector2):
-	#new_pos += POSITION_OFFSET
+	new_pos += POSITION_OFFSET
 	var x_distance = abs(position.x - new_pos.x) 
 	var y_distance = abs(position.y - new_pos.y)
 	
