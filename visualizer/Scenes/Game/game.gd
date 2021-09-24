@@ -15,7 +15,7 @@ signal paused
 signal resumed
 
 
-func _ready():	
+func _ready():
 	update_state(0, true)
 	camera.refresh_bounds()
 	
@@ -59,7 +59,6 @@ func _on_GUI_timeline_changed(value):
 
 
 func game_over():
-	print("GAME OVER")
 	GUI.game_over()
 
 

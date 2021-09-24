@@ -1,8 +1,14 @@
 extends VBoxContainer
 class_name InfoUI
 
-onready var SeedInventory = $Inventory/MarginContainer/HBoxContainer/SeedInventory
-onready var HarvestedInventory = $Inventory/MarginContainer/HBoxContainer/HarvestedInventory
+onready var SeedInventory = $Inventory/MarginContainer/VBoxContainer/HBoxContainer/SeedInventory
+onready var HarvestedInventory = $Inventory/MarginContainer/VBoxContainer/HBoxContainer/HarvestedInventory
+onready var InventoryValue = $Inventory/MarginContainer/VBoxContainer/InventoryValue
+onready var Name = $NameContainer/Name
+onready var Money = $MoneyContainer/Money
+onready var Item = $MarginContainer/AttributeContainer/Item
+onready var Upgrade = $MarginContainer/AttributeContainer/Upgrade
+
 var item_keys = Global.Item.keys()
 var crop_keys = Global.CropType.keys()
 const ItemBox = preload("res://Scenes/GUI/ItemBox.tscn")
@@ -29,7 +35,7 @@ var Upgrades = {
 }
 
 var Seeds = {
-	Global.CropType.NONE : preload("res://Assets/Images/OrangeFarmer.png"),
+	Global.CropType.NONE : preload("res://Assets/Images/None.png"),
 	Global.CropType.CORN : preload("res://Assets/Inventory/Seed Packets/CornPacket.png"),
 	Global.CropType.GRAPE : preload("res://Assets/Inventory/Seed Packets/GrapePacket.png"),
 	Global.CropType.POTATO : preload("res://Assets/Inventory/Seed Packets/PotatoPacket.png"),
@@ -41,7 +47,7 @@ var Seeds = {
 }
 
 var Harvests = {
-	Global.CropType.NONE : preload("res://Assets/Images/OrangeFarmer.png"),
+	Global.CropType.NONE : preload("res://Assets/Images/None.png"),
 	Global.CropType.CORN : preload("res://Assets/Inventory/Harvested Crops/CornHarvested.png"),
 	Global.CropType.GRAPE : preload("res://Assets/Inventory/Harvested Crops/GrapeHarvested.png"),
 	Global.CropType.POTATO : preload("res://Assets/Inventory/Harvested Crops/PotatoHarvested.png"),
@@ -68,21 +74,19 @@ func _ready():
 		# Set textures of inventory slot
 		seedSlot.set_texture(Seeds.get(Global.CropType.get(crop)))
 		harvestedSlot.set_texture(Harvests.get(Global.CropType.get(crop)))
-		
-	
 
 
 func set_player_info(player_info):
 	# Fill in Player Name text
-	$NameContainer/Name.set_text(player_info["name"])
+	Name.set_text(player_info["name"])
 	
 	# Fill in Player Money text
-	$MoneyContainer/Money.set_text("$ %d" % player_info["money"])
+	Money.set_text("$ %d" % player_info["money"])
 	
 	# Fill in Player Item sprite
-	$AttributeContainer/Item.texture = Items.get(Global.Item.get(player_info["item"]))
+	Item.texture = Items.get(Global.Item.get(player_info["item"]))
 	# Fill in Player Upgrade sprite
-	$AttributeContainer/Upgrade.texture = Upgrades.get(player_info["upgrade"])
+	Upgrade.texture = Upgrades.get(player_info["upgrade"])
 	
 	# Fill in Player Inventory boxes
 	for item in SeedInventory.get_children():
@@ -92,5 +96,6 @@ func set_player_info(player_info):
 	for item in HarvestedInventory.get_children():
 		if player_info["harvestedInventoryTotals"].keys().has(item.name):
 			item.set_text(String(player_info["harvestedInventoryTotals"][item.name]))
-		
 	
+	# Fill in inventory value
+	InventoryValue.text = "Value: $%d" % player_info["inventoryValue"]

@@ -46,6 +46,7 @@ tile_set = ExtResource( 9 )
 cell_size = Vector2( 256, 256 )
 cell_y_sort = true
 format = 1
+tile_data = PoolIntArray( 327684, 1, 2, 393219, 1, 1, 458754, 1, 0 )
 
 [node name="PlayerController" parent="Crops" instance=ExtResource( 6 )]
 p1_node = NodePath("../Player1")
@@ -53,11 +54,10 @@ p2_node = NodePath("../Player2")
 tilemap_node = NodePath("../../Base")
 
 [node name="Player1" parent="Crops" instance=ExtResource( 7 )]
-frame = 2
 centered = true
 
 [node name="Player2" parent="Crops" instance=ExtResource( 7 )]
-animation = "Orange"
+animation = "OrangeIdleDown"
 centered = true
 
 [connection signal="move_completed" from="Crops/PlayerController" to="." method="_on_PlayerController_move_completed"]

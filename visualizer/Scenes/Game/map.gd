@@ -25,6 +25,7 @@ var CropHarvestAnim = preload("res://Scenes/GUI/HarvestedCrop.tscn")
 var map_bounds
 
 signal move_completed
+signal map_updated
 
 
 func get_crops_tilemap() -> Node:
@@ -72,6 +73,8 @@ func update_state(state_num: int, instant_update: bool = false):
 	else:
 		PlayerController.move_smooth(state["p1"]["position"], 
 				state["p2"]["position"])
+	
+	emit_signal("map_updated")
 
 
 func fill_tilemaps(map: Dictionary, instant_update : bool = false):
@@ -108,7 +111,13 @@ func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 				else:
 					flip = true if randf() > 0.5 else false
 				
-				Crops.set_cell(x, y, crop_type, flip, false, \
+				# Check if crop should be wilted
+				var crop_name = tile["crop"]["type"]
+				if tile["crop"]["value"] == 0 and tile["crop"]["growthTimer"] == 0:
+					crop_name = "WILTED_" + crop_name
+				
+				var tile_id = $Crops.tile_set.find_tile_by_name(crop_name)
+				$Crops.set_cell(x, y, tile_id, flip, false, \
 						false, get_crop(tile["crop"]["growthTimer"]))
 			
 			# Place Items on field
@@ -118,7 +127,7 @@ func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 			$Items2.set_cell(x,y,p2_item_type)
 			
 	# Applies auto-tiling rules
-	$Base.update_bitmask_region(Vector2(), Vector2(map["mapWidth"], map["mapHeight"]))
+	$Base.update_bitmask_region()
 
 
 func _on_Game_paused():
