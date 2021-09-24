@@ -87,8 +87,12 @@ func _update_info(tilemap_pos):
 	
 	var box_length = 0
 	
-	var tile = Global.gamelog["states"][Global.current_turn]["tileMap"]["tiles"]
-	tile = tile[tilemap_pos.y][tilemap_pos.x]
+	var tilemap = Global.gamelog["states"][Global.current_turn]["tileMap"]
+	if tilemap_pos.x < 0 or tilemap_pos.y > tilemap["mapWidth"] \
+			or tilemap_pos.y < 0 or tilemap_pos.y > tilemap["mapHeight"]:
+		return box_length
+	
+	var tile = tilemap["tiles"][tilemap_pos.y][tilemap_pos.x]
 	
 	# Finds if a crop is selected
 	var selected_crop = Crops.get_cellv(tilemap_pos)
@@ -126,3 +130,7 @@ func _update_info(tilemap_pos):
 func _on_Map_map_updated():
 	if not Box.visible: return 
 	_update_info(prev_tile_pos)
+
+
+func _on_Camera_began_following(_num):
+	_update_info(Vector2(-1, -1))
