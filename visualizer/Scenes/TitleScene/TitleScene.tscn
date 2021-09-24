@@ -201,8 +201,8 @@ resizable = true
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json ; JSON files" )
-current_dir = "/Users/sahil/Documents/GitHub/mm27/visualizer/visualizer"
-current_path = "/Users/sahil/Documents/GitHub/mm27/visualizer/visualizer/"
+current_dir = "/Users/Fizag/Docs/Extracurriculars/Mechmania/MM27/Visualizer/visualizer"
+current_path = "/Users/Fizag/Docs/Extracurriculars/Mechmania/MM27/Visualizer/visualizer/"
 script = ExtResource( 7 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
