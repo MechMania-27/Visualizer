@@ -23,7 +23,7 @@ func _ready():
 	resize_bg()
 	Background.material.set_shader_param("global_transform", Background.get_global_transform())
 	get_viewport().connect("size_changed",self,"resize_bg")
-	
+
 
 # Changes scale of grass background in uniform with screen size
 func resize_bg():

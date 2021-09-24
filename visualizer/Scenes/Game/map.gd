@@ -15,6 +15,11 @@ signal move_completed
 signal map_updated
 
 
+func _ready():
+	$Base.clear()
+	$Crops.clear()
+
+
 func get_crops_tilemap() -> Node:
 	return Crops
 
@@ -39,9 +44,12 @@ func get_bounds() -> Rect2:
 			Vector2(0, tilemap.cell_size.y * tilemap.scale.y), Vector2() \
 			)
 	
-	var global_bounds_extend = TILE_BOUNDS_EXTEND * tilemap.cell_size * tilemap.scale
-	map_bounds = Rect2((cell_to_pixel * bounds.position) - global_bounds_extend, 
-			(cell_to_pixel * bounds.size) + (global_bounds_extend * 2))
+	# Add buffer around
+	bounds.position -= TILE_BOUNDS_EXTEND
+	bounds.size += 2*TILE_BOUNDS_EXTEND
+	
+	# Convert to global coordinates
+	map_bounds = Rect2(cell_to_pixel * bounds.position, cell_to_pixel * bounds.size)
 	
 	return map_bounds
 
