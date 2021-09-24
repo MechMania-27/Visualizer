@@ -28,6 +28,11 @@ signal move_completed
 signal map_updated
 
 
+func _ready():
+	Base.clear()
+	Crops.clear()
+
+
 func get_crops_tilemap() -> Node:
 	return Crops
 
