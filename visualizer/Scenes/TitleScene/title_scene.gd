@@ -17,13 +17,13 @@ func _ready():
 		$FileDialog.emit_signal("file_selected", path)
 
 
+
 func _on_StartButton_pressed():
 	$FileDialog.popup()
 
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
-	
 
 
 func _on_FileDialog_gamelog_ready():

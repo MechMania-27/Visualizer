@@ -22,8 +22,8 @@ enum PlayerEndState {
 
 # Values correspond to TileSet index
 enum TileType {
+	GRASS = -1,
 	GREEN_GROCER = 2,
-	GRASS = 4,
 	ARID = 6,
 	SOIL = 6,
 	F_BAND_OUTER = 5,
@@ -50,17 +50,26 @@ enum CropType {
 }
 
 enum Item {
-	NONE,
+	NONE = -1,
 	RAIN_TOTEM,
-	FERTILITY_IDOL,
-	PESTICIDE,
-	SCARECROW,
+	FERTILITY_IDOL = 0,
+	PESTICIDE = 1,
+	SCARECROW = 2,
 	DELIVERY_DRONE,
 	COFFEE_THERMOS,
+	GREEN_GROCER = 3,
 }
 
 enum Upgrade {
 	NONE,
+	BACKPACK,
+	LOYALTY_CARD,
+	MOON_SHOES,
+	RABBITS_FOOT,
+	SCYTHE,
+	SEED_A_PULT,
+	SPYGLASS,
+	LONGER_LEGS,
 }
 
 var item_descriptions = {
@@ -299,6 +308,7 @@ func valid_player(player: Dictionary, tilemap: Dictionary) -> bool:
 		player["harvestedInventoryTotals"][key] = 0
 		if not player["seedInventory"].keys().has(key):
 			printerr("Player seedInventory missing key: %s" % key)
+			return false
 	
 	# Validate harversted inventory and collect aggregates
 	for crop in player["harvestedInventory"]:
