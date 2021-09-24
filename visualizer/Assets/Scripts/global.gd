@@ -305,6 +305,7 @@ func valid_player(player: Dictionary, tilemap: Dictionary) -> bool:
 		player["harvestedInventoryTotals"][key] = 0
 		if not player["seedInventory"].keys().has(key):
 			printerr("Player seedInventory missing key: %s" % key)
+			return false
 	
 	# Validate harversted inventory and collect aggregates
 	for crop in player["harvestedInventory"]:
