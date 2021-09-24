@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Theme/ui_theme.tres" type="Theme" id=3]
 [ext_resource path="res://Assets/Fonts/OutlineMenuTitleFont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/Fonts/SolidMenuTitleFont.tres" type="DynamicFont" id=5]
-[ext_resource path="res://Assets/Characters/Front.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Characters/Blue/Front.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/GUI/EscapeMenu.gd" type="Script" id=7]
 
 [sub_resource type="StreamTexture" id=1]

@@ -60,7 +60,6 @@ margin_bottom = 32.0
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/CenterContainer"]
 margin_right = 32.0
 margin_bottom = 32.0
-rect_rotation = 326.15
 rect_pivot_offset = Vector2( 16, 16 )
 texture = ExtResource( 2 )
 
@@ -76,6 +75,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
 margin_right = 327.0
 margin_bottom = 14.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Loading file..."
 
 [node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
