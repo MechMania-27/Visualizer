@@ -28,6 +28,13 @@ func _on_FileDialog_file_selected(path):
 	thread.start(self, "_read_file", path)
 
 
+func _on_FileDialog_files_selected(paths: PoolStringArray):
+	var path: String = paths[0]
+	paths.remove(0)
+	Global.gamelog_paths = paths
+	emit_signal("file_selected", path)
+
+
 func _read_file(path):
 	# Open and read file
 	var file = File.new()

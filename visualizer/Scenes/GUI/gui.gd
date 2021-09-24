@@ -52,3 +52,13 @@ func game_over():
 	
 	if not EscapeMenu.is_visible():
 		EscapeMenu.call_deferred("popup_centered")
+
+
+func _on_Camera_began_following(num):
+	var turn = Global.gamelog["states"][Global.current_turn]
+	if num < 0 or num > 1:
+		GameInfo.set_following("None")
+	elif num == 0:
+		GameInfo.set_following(turn["p1"]["name"])
+	else:
+		GameInfo.set_following(turn["p2"]["name"])
