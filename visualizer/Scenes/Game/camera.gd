@@ -6,9 +6,9 @@ export var MAX_ZOOM_LEVEL = 0.1
 export var MIN_ZOOM_LEVEL = 1.25
 export var ZOOM_INCREMENT = 0.1
 
-
 signal moved
 signal zoomed
+signal began_following(num)
 
 var _current_zoom_level = 1
 var _drag = false
@@ -19,11 +19,25 @@ var initial_scale
 onready var map: Node = get_node("../Map")
 onready var Background = $Background
 
+var following: Node = null
+var following_player: int = -1
+var players = [] # Set by Game
+
 
 func _ready():
 	resize_bg()
 	Background.material.set_shader_param("global_transform", Background.get_global_transform())
 	get_viewport().connect("size_changed",self,"resize_bg")
+
+
+func follow_player(num: int):
+	if num < 0:
+		following = null
+		following_player = -1
+	else:
+		following = players[num % 2]
+		following_player = num % 2
+	emit_signal("began_following", following_player)
 
 
 func _refresh_background():
@@ -35,8 +49,11 @@ func _refresh_background():
 
 func center():
 	var tile_center = tilemap_bounds.position + tilemap_bounds.size / 2
-	var cam_center = get_camera_screen_center()
-	set_offset(Vector2((tile_center - cam_center).x, -150))
+	_center_on_position(Vector2(tile_center.x, 150))
+
+
+func _center_on_position(pos: Vector2):
+	set_offset(pos - get_viewport_rect().size / 2)
 	_refresh_background()
 
 
@@ -64,9 +81,12 @@ func _unhandled_input(event: InputEvent):
 	elif event.is_action_pressed("cam_zoom_out"):
 		_update_zoom(ZOOM_INCREMENT, get_local_mouse_position())
 	elif event is InputEventMouseMotion && _drag:
+		follow_player(-1)
 		set_offset(get_offset() - event.relative * _current_zoom_level)
 		_constrain_view()
 		emit_signal("moved")
+	elif event.is_action_released("ui_focus_next"):
+		follow_player((following_player + 1) % 2)
 
 
 func _update_zoom(incr: float, zoom_anchor: Vector2):
@@ -112,3 +132,8 @@ func _constrain_view():
 			self.offset.y += _map.position.y - view.position.y
 	
 	_refresh_background()
+
+
+func _process(_delta):
+	if following == null: return
+	_center_on_position(following.global_position)
