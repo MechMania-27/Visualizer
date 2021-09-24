@@ -19,10 +19,25 @@ var initial_scale
 onready var map: Node = get_node("../Map")
 onready var Background = $Background
 
+
 func _ready():
 	resize_bg()
 	Background.material.set_shader_param("global_transform", Background.get_global_transform())
 	get_viewport().connect("size_changed",self,"resize_bg")
+
+
+func _refresh_background():
+	# Changes params in background grass shader to work around 
+	# lack of world vertexes in shader language
+	Background.position = self.offset
+	Background.material.set_shader_param("global_transform", Background.get_global_transform())
+
+
+func center():
+	var tile_center = tilemap_bounds.position + tilemap_bounds.size / 2
+	var cam_center = get_camera_screen_center()
+	set_offset(Vector2((tile_center - cam_center).x, -150))
+	_refresh_background()
 
 
 # Changes scale of grass background in uniform with screen size
@@ -96,7 +111,4 @@ func _constrain_view():
 		else:
 			self.offset.y += _map.position.y - view.position.y
 	
-	# Changes params in background grass shader to work around 
-	# lack of world vertexes in shader language
-	Background.position = offset
-	Background.material.set_shader_param("global_transform", Background.get_global_transform())
+	_refresh_background()

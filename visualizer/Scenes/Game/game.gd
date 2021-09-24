@@ -18,6 +18,7 @@ signal resumed
 func _ready():
 	update_state(0, true)
 	camera.refresh_bounds()
+	camera.center()
 
 
 # Using _input because we specifically want to pause specifically when the
