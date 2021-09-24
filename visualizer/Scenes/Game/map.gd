@@ -3,7 +3,7 @@ extends Node2D
 export var TILE_BOUNDS_EXTEND: Vector2 = Vector2(10, 10)
 
 var Harvests = {
-	Global.CropType.NONE : preload("res://Assets/Inventory/Items/None.png"),
+	Global.CropType.NONE : null,
 	Global.CropType.CORN : preload("res://Assets/Inventory/Harvested Crops/CornHarvested.png"),
 	Global.CropType.GRAPE : preload("res://Assets/Inventory/Harvested Crops/GrapeHarvested.png"),
 	Global.CropType.POTATO : preload("res://Assets/Inventory/Harvested Crops/PotatoHarvested.png"),
@@ -84,7 +84,7 @@ func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 			# Set Grocer shelf
 			var base_cell = Global.TileType.get(tile["type"])
 			if base_cell == Global.TileType.GREEN_GROCER:
-				$Items1.set_cell(x,y,Global.Item.GREEN_GROCER, false, false, false, Vector2(grocer_count, 0))
+				$Grocer.set_cell(x,y,Global.Item.GREEN_GROCER, false, false, false, Vector2(grocer_count, 0))
 				$Base.set_cell(x,y,Global.TileType.GRASS)
 				grocer_count = (grocer_count + 1) % 4
 				continue

@@ -8,7 +8,7 @@ var crop_keys = Global.CropType.keys()
 const ItemBox = preload("res://Scenes/GUI/ItemBox.tscn")
 
 var Items = {
-	Global.Item.NONE : preload("res://Assets/Inventory/Items/None.png"),
+	Global.Item.NONE : null,
 	Global.Item.RAIN_TOTEM : preload("res://Assets/Inventory/Items/Rain Totem.png"),
 	Global.Item.FERTILITY_IDOL : preload("res://Assets/Inventory/Items/Fertility Idol.png"),
 	Global.Item.PESTICIDE : preload("res://Assets/Inventory/Items/Pesticide.png"),
@@ -18,7 +18,7 @@ var Items = {
 }
 
 var Upgrades = {
-	"NONE" : preload("res://Assets/Inventory/Items/None.png"),
+	"NONE" : null,
 	"BACKPACK" : preload("res://Assets/Inventory/Upgrades/Backpack.png"),
 	"GREEN_GROCER_LOYALTY_CARD" : preload("res://Assets/Inventory/Upgrades/Green Grocer Loyalty Card.png"),
 	"MOON_SHOES" : preload("res://Assets/Inventory/Upgrades/Moon Shoes.png"),
@@ -29,7 +29,7 @@ var Upgrades = {
 }
 
 var Seeds = {
-	Global.CropType.NONE : preload("res://Assets/Images/OrangeFarmer.png"),
+	Global.CropType.NONE : null,
 	Global.CropType.CORN : preload("res://Assets/Inventory/Seed Packets/CornPacket.png"),
 	Global.CropType.GRAPE : preload("res://Assets/Inventory/Seed Packets/GrapePacket.png"),
 	Global.CropType.POTATO : preload("res://Assets/Inventory/Seed Packets/PotatoPacket.png"),
@@ -41,7 +41,7 @@ var Seeds = {
 }
 
 var Harvests = {
-	Global.CropType.NONE : preload("res://Assets/Images/OrangeFarmer.png"),
+	Global.CropType.NONE : null,
 	Global.CropType.CORN : preload("res://Assets/Inventory/Harvested Crops/CornHarvested.png"),
 	Global.CropType.GRAPE : preload("res://Assets/Inventory/Harvested Crops/GrapeHarvested.png"),
 	Global.CropType.POTATO : preload("res://Assets/Inventory/Harvested Crops/PotatoHarvested.png"),

@@ -24,7 +24,12 @@ scale = Vector2( 0.125, 0.125 )
 tile_set = ExtResource( 8 )
 cell_size = Vector2( 256, 256 )
 format = 1
-tile_data = PoolIntArray( 196604, 0, 0 )
+
+[node name="Grocer" type="TileMap" parent="."]
+scale = Vector2( 0.125, 0.125 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 256, 256 )
+format = 1
 
 [node name="Items1" type="TileMap" parent="."]
 position = Vector2( -6, -6 )
@@ -53,11 +58,8 @@ p2_node = NodePath("../Player2")
 tilemap_node = NodePath("../../Base")
 
 [node name="Player1" parent="Crops" instance=ExtResource( 7 )]
-frame = 2
-centered = true
 
 [node name="Player2" parent="Crops" instance=ExtResource( 7 )]
-animation = "Orange"
-centered = true
+color = "Orange"
 
 [connection signal="move_completed" from="Crops/PlayerController" to="." method="_on_PlayerController_move_completed"]
