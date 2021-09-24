@@ -12,10 +12,8 @@ func _notification(notification: int):
 		emit_signal("in_focus")
 
 
-var use_js = OS.get_name() == "HTML5" and OS.has_feature('JavaScript')
-
 func _ready():
-	if use_js:
+	if Global.use_js:
 		_define_js()
 	var _err = Global.connect("gamelog_check_completed",self,"_on_gamelog_valid")
 
@@ -51,14 +49,14 @@ func _read_file(path):
 var default: Rect2
 func popup(_rect: Rect2 = default):
 	# If built for web, FileDialog won't work
-	if use_js:
+	if Global.use_js:
 		load_file()
 	else:
 		.popup()
 
 
 func load_file():
-	if not use_js:
+	if not Global.use_js:
 		return
 	
 	# Call our upload function
@@ -66,12 +64,11 @@ func load_file():
 	# Wait for prompt to close and for async data load 
 	yield(self, "in_focus")
 	while not (JavaScript.eval("done;", true)):
-		yield(get_tree().create_timer(1.0), "timeout")
-	
-	# Check that upload wasn't canceled
-	if JavaScript.eval("canceled;", true):
-		return
-		
+		yield(get_tree().create_timer(1), "timeout")
+		# Check that upload wasn't canceled
+		if JavaScript.eval("canceled;", true):
+			return
+			
 	
 	# Wait until full data has loaded
 	var file_data: PoolByteArray
@@ -121,14 +118,14 @@ func _define_js():
 			fileData = null;
 			fileType = null;
 			fileName = null;
-			canceled = true;
+			canceled = false;
 			done = false;
 			var input = document.createElement('INPUT'); 
 			input.setAttribute("type", "file");
 			input.click();
 			input.addEventListener('change', event => {
-				if (event.target.files.length > 0){
-					canceled = false;
+				if (event.target.files.length < 0){
+					canceled = true;
 				}
 				var file = event.target.files[0];
 				var reader = new FileReader();

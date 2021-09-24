@@ -3,7 +3,10 @@ extends Node
 
 # gamelog used to udpate visualization
 var gamelog: Dictionary
+var current_turn: int
 
+# HTML5/JS detection
+onready var use_js = OS.get_name() == "HTML5" and OS.has_feature('JavaScript')
 
 ### Enum Types ###
 
@@ -16,33 +19,73 @@ enum PlayerEndState {
 
 # Values correspond to TileSet index
 enum TileType {
-	GREEN_GROCER = 5,
-	GRASS = 4,
-	ARID = 3,
-	SOIL = 3,
-	F_BAND_OUTER = 2,
-	F_BAND_MID = 1,
-	F_BAND_INNER = 0,
+	GRASS = -1,
+	GREEN_GROCER = 2,
+	ARID = 6,
+	SOIL = 6,
+	F_BAND_OUTER = 5,
+	F_BAND_MID = 4,
+	F_BAND_INNER = 3,
+	FENCE_CORNER_N = 8,
+	FENCE_MID = 9,
+	FENCE_CORNER_S = 10,
+	FENCE_SIDE = 11,
+	FENCE_S = 12,
 }
 
-# Values correspond to TileSet index
+
 enum CropType {
 	NONE = -1,
 	CORN,
 	GRAPE,
-	POTATO
+	POTATO,
+	JOGAN_FRUIT,
+	PEANUT,
+	QUADROTRITICALE,
+	DUCHAM_FRUIT,
+	GOLDEN_CORN,
 }
 
 enum Item {
-	NONE,
+	NONE = -1,
+	RAIN_TOTEM,
+	FERTILITY_IDOL = 0,
+	PESTICIDE = 1,
+	SCARECROW = 2,
+	DELIVERY_DRONE,
+	COFFEE_THERMOS,
+	GREEN_GROCER = 3,
 }
 
 enum Upgrade {
 	NONE,
 }
 
+var item_descriptions = {
+	Item.NONE : "",
+	Item.RAIN_TOTEM : "Causes each crop in a 5x5 square centered on the farmer’s position to grow up to three times this turn only.",
+	Item.FERTILITY_IDOL : "Doubles the fertility of all tiles within radius 2 for the next growth step.",
+	Item.PESTICIDE : "Decrease the current value of all crops within 1 radius by 20%.",
+	Item.SCARECROW : "Protects tiles within radius 2 from harvest or planting by the opponent.(5x5)",
+	Item.DELIVERY_DRONE : "Allows the farmer to buy and sell crops and seeds from anywhere on the farm for one turn.",
+	Item.COFFEE_THERMOS : "Triples the farmer’s MAX_MOVEMENT for the next turn",
+}
+
+var crop_prices = {
+	CropType.NONE : 0,
+	CropType.CORN : 5,
+	CropType.GRAPE : 15,
+	CropType.POTATO : 5,
+	CropType.JOGAN_FRUIT : 20,
+	CropType.PEANUT : 5,
+	CropType.QUADROTRITICALE : 30,
+	CropType.DUCHAM_FRUIT : 100,
+	CropType.GOLDEN_CORN : 1000,
+}
+
 func _ready():
 	set_process(false)
+
 
 ### Verification functions ###
 
@@ -202,7 +245,7 @@ func valid_tile(tile: Dictionary) -> bool:
 
 
 func valid_crop(crop: Dictionary) -> bool:
-	var keys = ["type", "growthTimer"]
+	var keys = ["type", "growthTimer", "value"]
 	for key in keys:
 		if not crop.keys().has(key):
 			printerr("Crop did not contain key: ", key)
@@ -212,18 +255,20 @@ func valid_crop(crop: Dictionary) -> bool:
 		printerr("Invalid crop type: ", crop["type"])
 		return false
 	
-	# JSON parsing will always interpret numbers as floats/reals
-	if CropType.get(crop["type"]) != CropType.NONE and \
-			(typeof(crop["growthTimer"]) != TYPE_REAL \
-			or int(crop["growthTimer"]) != crop["growthTimer"]):
+	if not is_int(crop["growthTimer"]):
 		printerr("Invalid growthTimer: ", crop["growthTimer"])
+		return false
+	
+	if typeof(crop["value"]) != TYPE_REAL:
+		printerr("Invalid crop value: ", crop["value"])
 		return false
 	
 	return true
 
 
 func valid_player(player: Dictionary, tilemap: Dictionary) -> bool:
-	var keys = ["name", "position", "item", "upgrade", "money"]
+	var keys = ["name", "position", "item", "upgrade", "money", 
+				"seedInventory", "harvestedInventory"]
 	for key in keys:
 		if not player.keys().has(key):
 			printerr("Player missing key: ", key)
@@ -244,6 +289,24 @@ func valid_player(player: Dictionary, tilemap: Dictionary) -> bool:
 		printerr("Invalid player upgrade: ", player["upgrade"])
 		return false
 	
+	# Validate seed inventory
+	# Because of pass-by-reference, we can add some aggregate data here
+	player["harvestedInventoryTotals"] = Dictionary()
+	player["inventoryValue"] = 0
+	for key in CropType.keys():
+		player["harvestedInventoryTotals"][key] = 0
+		if not player["seedInventory"].keys().has(key):
+			printerr("Player seedInventory missing key: %s" % key)
+	
+	# Validate harversted inventory and collect aggregates
+	for crop in player["harvestedInventory"]:
+		player["inventoryValue"] += crop["value"]
+		if not valid_crop(crop):
+			printerr("Invalid crop in player harvestedInventory: %s" % crop)
+			return false
+		
+		player["harvestedInventoryTotals"][crop["type"]] += 1 
+	
 	return true
 
 
@@ -258,4 +321,11 @@ func valid_position(pos: Dictionary, tilemap: Dictionary) -> bool:
 		printerr("Position y out of bounds: ", pos["y"])
 		return false
 	
+	return true
+
+
+func is_int(value):
+	# JSON parsing will always interpret numbers as floats/reals
+	if typeof(value) != TYPE_REAL or int(value) != value:
+		return false
 	return true

@@ -1,8 +1,9 @@
 extends Control
 
-
 func _ready():
-	pass
+	if Global.use_js:
+		$MarginContainer/Menu/CenterRow/Buttons/QuitButton.visible = false
+
 
 func _on_StartButton_pressed():
 	$FileDialog.popup()

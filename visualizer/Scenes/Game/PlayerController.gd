@@ -29,9 +29,9 @@ func _ready():
 	assert(tilemap_node and get_node(tilemap_node) is TileMap)
 	
 	p1 = get_node(p1_node)
-	p1.connect("move_completed", self, "p1_move_completed")
+	var _err = p1.connect("move_completed", self, "p1_move_completed")
 	p2 = get_node(p2_node)
-	p2.connect("move_completed", self, "p2_move_completed")
+	_err = p2.connect("move_completed", self, "p2_move_completed")
 	tilemap = get_node(tilemap_node)
 	
 	# Initialize player speed based on cell size
@@ -64,7 +64,19 @@ func move_instant(p1_pos: Dictionary, p2_pos: Dictionary):
 func snap_to():
 	for p in [p1, p2]:
 		p.tween.remove_all()
-		p.position = p.next_pos
+		p.playing = false
+		var a = p.next_pos - p.position
+		var anim_name = p.color + "Idle"
+		if abs(a.x) > abs(a.y):
+			#p.frame = p.SPRITE_LEFT if a.x < 0 else p.SPRITE_RIGHT
+			anim_name += "Left" if a.x < 0 else "Right"
+			p.animation = anim_name
+		else:
+			#p.frame = p.SPRITE_BACK if a.y < 0 else p.SPRITE_FRONT
+			anim_name += "Up" if a.y < 0 else "Down"
+			p.animation = anim_name
+		
+		p.position = p.next_pos + p.POSITION_OFFSET
 	
 	emit_signal("move_completed")
 

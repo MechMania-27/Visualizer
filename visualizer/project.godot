@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "VBoxContainer",
+"class": "InfoUI",
+"language": "GDScript",
+"path": "res://Scenes/GUI/playerInfoUI.gd"
+}, {
 "base": "Node",
 "class": "ItemBox",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://Scenes/Game/PlayerSprite.gd"
 } ]
 _global_script_class_icons={
+"InfoUI": "",
 "ItemBox": "",
 "PlayerSprite": ""
 }
@@ -29,6 +35,7 @@ _global_script_class_icons={
 config/name="MechMania27"
 run/main_scene="res://Scenes/TitleScene/TitleScene.tscn"
 config/icon="res://Assets/Images/icon.png"
+config/windows_native_icon="res://Assets/Images/icon.ico"
 run/main_loop_type="SceneTree"
 
 [autoload]
@@ -84,6 +91,11 @@ cam_drag={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+lmb={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [rendering]
 
@@ -91,4 +103,3 @@ quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0.227451, 0.262745, 0.317647, 1 )
-environment/default_environment="res://default_env.tres"
