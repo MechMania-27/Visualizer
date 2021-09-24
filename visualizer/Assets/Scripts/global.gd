@@ -59,6 +59,14 @@ enum Item {
 
 enum Upgrade {
 	NONE,
+	BACKPACK,
+	LOYALTY_CARD,
+	MOON_SHOES,
+	RABBITS_FOOT,
+	SCYTHE,
+	SEED_A_PULT,
+	SPYGLASS,
+	LONGER_LEGS,
 }
 
 var item_descriptions = {

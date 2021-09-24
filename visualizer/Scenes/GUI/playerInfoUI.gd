@@ -24,14 +24,15 @@ var Items = {
 }
 
 var Upgrades = {
-	"NONE" : preload("res://Assets/Inventory/Items/None.png"),
-	"BACKPACK" : preload("res://Assets/Inventory/Upgrades/Backpack.png"),
-	"GREEN_GROCER_LOYALTY_CARD" : preload("res://Assets/Inventory/Upgrades/Green Grocer Loyalty Card.png"),
-	"MOON_SHOES" : preload("res://Assets/Inventory/Upgrades/Moon Shoes.png"),
-	"RABBIT'S_FOOT" : preload("res://Assets/Inventory/Upgrades/Rabbit_s Foot.png"),
-	"SCYTHE" : preload("res://Assets/Inventory/Upgrades/Scythe.png"),
-	"SEED-A-PULT" : preload("res://Assets/Inventory/Upgrades/Seed-a-Pult.png"),
-	"SPYGLASS" : preload("res://Assets/Inventory/Upgrades/Spyglass.png"),
+	Global.Upgrade.NONE: preload("res://Assets/Inventory/Items/None.png"),
+	Global.Upgrade.BACKPACK : preload("res://Assets/Inventory/Upgrades/Backpack.png"),
+	Global.Upgrade.LOYALTY_CARD : preload("res://Assets/Inventory/Upgrades/Green Grocer Loyalty Card.png"),
+	# TODO: why do we have moon shoes????
+	Global.Upgrade.LONGER_LEGS: preload("res://Assets/Inventory/Upgrades/Moon Shoes.png"),
+	Global.Upgrade.RABBITS_FOOT : preload("res://Assets/Inventory/Upgrades/Rabbit_s Foot.png"),
+	Global.Upgrade.SCYTHE : preload("res://Assets/Inventory/Upgrades/Scythe.png"),
+	Global.Upgrade.SEED_A_PULT : preload("res://Assets/Inventory/Upgrades/Seed-a-Pult.png"),
+	Global.Upgrade.SPYGLASS : preload("res://Assets/Inventory/Upgrades/Spyglass.png"),
 }
 
 var Seeds = {
@@ -85,8 +86,9 @@ func set_player_info(player_info):
 	
 	# Fill in Player Item sprite
 	Item.texture = Items.get(Global.Item.get(player_info["item"]))
+	
 	# Fill in Player Upgrade sprite
-	Upgrade.texture = Upgrades.get(player_info["upgrade"])
+	Upgrade.texture = Upgrades.get(Global.Upgrade.get(player_info["upgrade"]))
 	
 	# Fill in Player Inventory boxes
 	for item in SeedInventory.get_children():
