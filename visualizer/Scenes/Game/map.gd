@@ -80,6 +80,7 @@ func update_state(state_num: int, instant_update: bool = false):
 func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 	# Fill in base layer
 	var grocer_count = 0;
+	var grocer_shelves = $Crops.tile_set.find_tile_by_name("GREEN_GROCER")
 	for x in range(0, map["mapWidth"]):
 		for y in range(0, map["mapHeight"]):
 			var tile: Dictionary = map["tiles"][y][x]
@@ -87,8 +88,8 @@ func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 			# Set Grocer shelf
 			var base_cell = Global.TileType.get(tile["type"])
 			if base_cell == Global.TileType.GREEN_GROCER:
-				$Items1.set_cell(x,y,Global.Item.GREEN_GROCER, false, false, false, Vector2(grocer_count, 0))
-				$Base.set_cell(x,y,Global.TileType.GRASS)
+				$Crops.set_cell(x,y, grocer_shelves, false, false, false, Vector2(grocer_count, 0))
+				$Base.set_cell(x,y, Global.TileType.GREEN_GROCER)
 				grocer_count = (grocer_count + 1) % 4
 				continue
 			

@@ -10,7 +10,7 @@
 [ext_resource path="res://Assets/Tiles/Grocer Shelves 1.png" type="Texture" id=8]
 
 [resource]
-2/name = "GREEN_GROCER"
+2/name = "Gravel.png 2"
 2/texture = ExtResource( 1 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
@@ -33,7 +33,7 @@
 2/shape_one_way_margin = 0.0
 2/shapes = [  ]
 2/z_index = 0
-3/name = "F_BAND_OUTER"
+3/name = "1.png 3"
 3/texture = ExtResource( 2 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
