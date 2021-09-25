@@ -36,7 +36,6 @@ func move_to(new_pos: Vector2):
 	next_pos = new_pos
 	
 	
-	
 	if tween.interpolate_property(self, 'position', 
 			position, Vector2(new_pos.x, position.y), x_duration, 
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT):
@@ -54,6 +53,7 @@ func move_to(new_pos: Vector2):
 			tween.connect("tween_all_completed", self, "_secondary", 
 					[new_pos, y_duration], CONNECT_ONESHOT + CONNECT_DEFERRED)
 		tween.start()
+		if x_duration == 0: return
 		var anim_name = color
 		anim_name += "Left" if position.x - new_pos.x > 0 else "Right"
 		animation = anim_name
@@ -75,6 +75,7 @@ func _secondary(new_pos: Vector2, duration: float):
 		var anim_name = color
 		anim_name += "Up" if position.y - new_pos.y > 0 else "Down"
 		animation = anim_name
+		playing = true
 	else:
 		# Y delta is ~0, we're done
 		emit_signal("move_completed")
