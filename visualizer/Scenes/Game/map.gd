@@ -73,14 +73,16 @@ func update_state(state_num: int, instant_update: bool = false):
 	
 	Global.current_turn = state_num
 	var state = Global.gamelog["states"][state_num]
-	fill_tilemaps(state["tileMap"], instant_update)
 	
 	if instant_update:
 		PlayerController.move_instant(state["p1"]["position"], 
 				state["p2"]["position"])
+		fill_tilemaps(state["tileMap"], instant_update)
 	else:
 		PlayerController.move_smooth(state["p1"]["position"], 
 				state["p2"]["position"])
+		yield(PlayerController, "move_completed")
+		fill_tilemaps(state["tileMap"], instant_update)
 	
 	emit_signal("map_updated")
 
@@ -108,10 +110,11 @@ func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 			if crop_type == Global.CropType.NONE:
 				var crop_cell = Crops.get_cell(x,y)
 				if crop_cell != -1 and !instant_update:
+					var past_crop_type = Crops.tile_set.tile_get_name(crop_cell)
 					var harvested_crop = CropHarvestAnim.instance()
 					harvested_crop.position = Crops.map_to_world(Vector2(x,y)) * Crops.scale
 					harvested_crop.position += Vector2(16 + rand_range(-8,8),16 + rand_range(-8,8))
-					harvested_crop.texture = Harvests.get(crop_cell)
+					harvested_crop.texture = Harvests.get(Global.CropType.get(past_crop_type))
 					add_child(harvested_crop)
 				Crops.set_cell(x, y, -1)
 			else:
