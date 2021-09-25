@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Game/Background.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/map.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/Tiles/3_small.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Tiles/4_small.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Tiles/5_small.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Game/ItemRadius.gd" type="Script" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "F_BAND_INNER"
@@ -117,12 +118,28 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 256, 256 )
 format = 1
 
+[node name="ItemRadius" type="TileMap" parent="Items1"]
+modulate = Color( 0, 0.529412, 1, 0.0980392 )
+position = Vector2( 48, 48 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 256, 256 )
+format = 1
+script = ExtResource( 13 )
+
 [node name="Items2" type="TileMap" parent="."]
 position = Vector2( 6, 6 )
 scale = Vector2( 0.125, 0.125 )
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 256, 256 )
 format = 1
+
+[node name="ItemRadius2" type="TileMap" parent="Items2"]
+modulate = Color( 1, 0, 0, 0.0980392 )
+position = Vector2( -48, -48 )
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 256, 256 )
+format = 1
+script = ExtResource( 13 )
 
 [node name="Crops" type="TileMap" parent="."]
 scale = Vector2( 0.125, 0.125 )
@@ -139,10 +156,50 @@ tilemap_node = NodePath("../../Base")
 
 [node name="Player1" parent="Crops" instance=ExtResource( 7 )]
 centered = true
+radius_color = Color( 0, 0.529412, 1, 0.0980392 )
+protection_tilemap_path = NodePath("../Node2D/P1Radius")
+harvest_tilemap_path = NodePath("../Node2D/P1Radius2")
+plant_tilemap_path = NodePath("../Node2D/P1Radius3")
 
 [node name="Player2" parent="Crops" instance=ExtResource( 7 )]
 animation = "OrangeIdleDown"
 centered = true
 color = "Orange"
+radius_color = Color( 1, 0, 0, 0.0980392 )
+protection_tilemap_path = NodePath("../Node2D/P2Radius")
+harvest_tilemap_path = NodePath("../Node2D/P2Radius2")
+plant_tilemap_path = NodePath("../Node2D/P2Radius3")
+
+[node name="Node2D" type="Node2D" parent="Crops"]
+
+[node name="P1Radius" type="TileMap" parent="Crops/Node2D"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 256, 256 )
+format = 1
+
+[node name="P1Radius2" type="TileMap" parent="Crops/Node2D"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 256, 256 )
+format = 1
+
+[node name="P1Radius3" type="TileMap" parent="Crops/Node2D"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 256, 256 )
+format = 1
+
+[node name="P2Radius" type="TileMap" parent="Crops/Node2D"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 256, 256 )
+format = 1
+
+[node name="P2Radius2" type="TileMap" parent="Crops/Node2D"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 256, 256 )
+format = 1
+
+[node name="P2Radius3" type="TileMap" parent="Crops/Node2D"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 256, 256 )
+format = 1
 
 [connection signal="move_completed" from="Crops/PlayerController" to="." method="_on_PlayerController_move_completed"]

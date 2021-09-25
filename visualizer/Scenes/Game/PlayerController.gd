@@ -116,6 +116,18 @@ func change_speed(new: float):
 		p.tween.playback_speed = new
 
 
+# Highlight protectionRadius, harvestRadius, plantRadius
+const PROTECTION_RADIUS = "protectionRadius"
+const HARVEST_RADIUS = "harvestRadius"
+const PLANT_RADIUS = "plantRadius"
+func indicate_radius(p1_info : Dictionary, p2_info : Dictionary, bounds: Rect2):
+	p1.highlight_radius(Vector2(p1_info["position"]["x"], p1_info["position"]["y"]), bounds,
+	p1_info[PROTECTION_RADIUS], p1_info[HARVEST_RADIUS], p1_info[PLANT_RADIUS])
+	
+	p2.highlight_radius(Vector2(p2_info["position"]["x"], p2_info["position"]["y"]), bounds,
+	p2_info[PROTECTION_RADIUS], p2_info[HARVEST_RADIUS], p2_info[PLANT_RADIUS])
+
+
 func pause():
 	for p in [p1, p2]:
 		p.tween.stop_all()

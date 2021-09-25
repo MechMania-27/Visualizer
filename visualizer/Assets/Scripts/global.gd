@@ -34,6 +34,7 @@ enum TileType {
 	FENCE_CORNER_S = 10,
 	FENCE_SIDE = 11,
 	FENCE_S = 12,
+	RADIUS = 14,
 }
 
 

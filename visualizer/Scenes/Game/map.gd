@@ -82,6 +82,8 @@ func update_state(state_num: int, instant_update: bool = false):
 		PlayerController.move_smooth(state["p1"]["position"], 
 				state["p2"]["position"])
 	
+	PlayerController.indicate_radius(state["p1"], state["p2"], Base.get_used_rect())
+	
 	emit_signal("map_updated")
 
 
@@ -89,6 +91,8 @@ func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 	# Fill in base layer
 	var grocer_count = 0;
 	var grocer_shelves = $Crops.tile_set.find_tile_by_name("GREEN_GROCER")
+	$Items1/ItemRadius.clear()
+	$Items2/ItemRadius2.clear()
 	for x in range(0, map["mapWidth"]):
 		for y in range(0, map["mapHeight"]):
 			var tile: Dictionary = map["tiles"][y][x]
@@ -136,6 +140,11 @@ func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 			$Items1.set_cell(x,y,p1_item_type)
 			$Items2.set_cell(x,y,p2_item_type)
 			
+			$Items1/ItemRadius.draw_radius(Vector2(x,y),
+			Base.get_used_rect(),p1_item_type, false if p1_item_type == Global.Item.FERTILITY_IDOL else true)
+			$Items2/ItemRadius2.draw_radius(Vector2(x,y),
+			Base.get_used_rect(),p2_item_type, false if p1_item_type == Global.Item.FERTILITY_IDOL else true)
+			
 	# Applies auto-tiling rules
 	$Base.update_bitmask_region()
 
@@ -143,9 +152,15 @@ func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 func _on_Game_paused():
 	PlayerController.pause()
 
+
 func _on_Game_resumed():
 	PlayerController.resume()
 
 
 func _on_PlayerController_move_completed():
 	emit_signal("move_completed")
+
+
+func _input(event):
+	if event.is_action_pressed("toggle_radius"):
+		$Crops/Node2D.visible = !$Crops/Node2D.visible

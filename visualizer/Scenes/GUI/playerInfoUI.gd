@@ -130,7 +130,6 @@ func _ready():
 func set_player_info(player_info):
 	# Fill in Player Name text
 	Name.set_text(player_info["name"])
-	
 	# Fill in Player Money text
 	Money.set_text("$ %d" % player_info["money"])
 	
@@ -155,3 +154,4 @@ func set_player_info(player_info):
 	
 	# Fill in inventory value
 	InventoryValue.text = "Value: $%d" % player_info["inventoryValue"]
+	
