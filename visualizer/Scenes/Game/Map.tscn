@@ -1,12 +1,89 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Game/Background.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Game/map.gd" type="Script" id=2]
 [ext_resource path="res://Assets/ItemTileset.tres" type="TileSet" id=3]
+[ext_resource path="res://Assets/Tiles/1_small.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Tiles/2_small.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Game/PlayerController.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Game/PlayerSprite.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/FieldTileset.tres" type="TileSet" id=8]
 [ext_resource path="res://Assets/CropTileset.tres" type="TileSet" id=9]
+[ext_resource path="res://Assets/Tiles/3_small.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Tiles/4_small.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Tiles/5_small.png" type="Texture" id=12]
+
+[sub_resource type="TileSet" id=1]
+0/name = "F_BAND_INNER"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( -25.6, -25.6 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 307, 307 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "F_BAND_MID"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( -25.6, -25.6 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 307, 307 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "F_BAND_OUTER"
+2/texture = ExtResource( 10 )
+2/tex_offset = Vector2( -25.6, -25.6 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 307, 307 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "SOIL"
+3/texture = ExtResource( 11 )
+3/tex_offset = Vector2( -25.6, -25.6 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 307, 307 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "ARID"
+4/texture = ExtResource( 12 )
+4/tex_offset = Vector2( -25.6, -25.6 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 307, 307 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 2 )
@@ -19,12 +96,19 @@ format = 1
 script = ExtResource( 1 )
 Base_Node = NodePath("../Base")
 
+[node name="Fringe" type="TileMap" parent="."]
+scale = Vector2( 0.125, 0.125 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 256, 256 )
+format = 1
+tile_data = PoolIntArray( 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 393232, 0, 0 )
+
 [node name="Base" type="TileMap" parent="."]
 scale = Vector2( 0.125, 0.125 )
 tile_set = ExtResource( 8 )
 cell_size = Vector2( 256, 256 )
 format = 1
-tile_data = PoolIntArray( 196604, 0, 0 )
+tile_data = PoolIntArray( 196604, 0, 0, 196617, 4, 65537, 196618, 4, 65537, 196619, 4, 65537, 196620, 4, 65537, 196621, 4, 65537, 196622, 4, 65537, 262153, 3, 65537, 262154, 3, 65537, 262155, 3, 65537, 262156, 3, 65537, 262157, 3, 65537, 262158, 3, 65537, 327689, 4, 65537, 327690, 4, 65537, 327691, 4, 65537, 327692, 4, 65537, 327693, 4, 65537, 327694, 4, 65537, 393225, 5, 65537, 393226, 5, 65537, 393227, 5, 65537, 393228, 5, 65537, 393229, 5, 65537, 393230, 5, 65537, 458761, 5, 65537, 458762, 5, 65537, 458763, 5, 65537, 458764, 5, 65537, 458765, 5, 65537, 458766, 5, 65537, 524297, 6, 65537, 524298, 6, 65537, 524299, 6, 65537, 524300, 6, 65537, 524301, 6, 65537, 524302, 6, 65537, 589833, 6, 65537, 589834, 6, 65537, 589835, 6, 65537, 589836, 6, 65537, 589837, 6, 65537, 589838, 6, 65537, 655369, 7, 65537, 655370, 7, 65537, 655371, 7, 65537, 655372, 7, 65537, 655373, 7, 65537, 655374, 7, 65537, 720905, 7, 65537, 720906, 7, 65537, 720907, 7, 65537, 720908, 7, 65537, 720909, 7, 65537, 720910, 7, 65537 )
 
 [node name="Items1" type="TileMap" parent="."]
 position = Vector2( -6, -6 )

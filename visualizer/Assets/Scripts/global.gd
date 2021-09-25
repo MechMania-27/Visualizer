@@ -24,7 +24,7 @@ enum PlayerEndState {
 enum TileType {
 	GRASS = -1,
 	GREEN_GROCER = 2,
-	ARID = 6,
+	ARID = 7,
 	SOIL = 6,
 	F_BAND_OUTER = 5,
 	F_BAND_MID = 4,

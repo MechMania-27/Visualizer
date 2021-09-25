@@ -102,6 +102,7 @@ func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 				continue
 			
 			$Base.set_cell(x, y, base_cell)
+			$Fringe.set_cell(x, y, $Fringe.tile_set.find_tile_by_name(tile["type"]))
 			
 			var crop_type = Global.CropType.get(tile["crop"]["type"])
 			if crop_type == Global.CropType.NONE:

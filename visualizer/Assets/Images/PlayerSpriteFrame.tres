@@ -203,49 +203,9 @@
 
 [resource]
 animations = [ {
-"frames": [ ExtResource( 157 ), ExtResource( 183 ), ExtResource( 179 ), ExtResource( 155 ), ExtResource( 171 ), ExtResource( 174 ), ExtResource( 166 ), ExtResource( 152 ), ExtResource( 173 ), ExtResource( 160 ), ExtResource( 167 ), ExtResource( 158 ), ExtResource( 149 ), ExtResource( 146 ), ExtResource( 180 ), ExtResource( 147 ), ExtResource( 161 ), ExtResource( 148 ), ExtResource( 181 ), ExtResource( 162 ), ExtResource( 172 ), ExtResource( 159 ), ExtResource( 184 ), ExtResource( 151 ) ],
+"frames": [ ExtResource( 200 ) ],
 "loop": true,
-"name": "OrangeUp",
-"speed": 32.0
-}, {
-"frames": [ ExtResource( 199 ) ],
-"loop": true,
-"name": "BlueIdleLeft",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 198 ) ],
-"loop": true,
-"name": "BlueIdleDown",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 195 ) ],
-"loop": true,
-"name": "OrangeIdleRight",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 194 ) ],
-"loop": true,
-"name": "OrangeIdleLeft",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 94 ), ExtResource( 68 ), ExtResource( 66 ), ExtResource( 69 ), ExtResource( 67 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 79 ), ExtResource( 80 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 71 ), ExtResource( 84 ), ExtResource( 70 ), ExtResource( 76 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 77 ), ExtResource( 86 ), ExtResource( 81 ), ExtResource( 78 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 85 ) ],
-"loop": true,
-"name": "BlueUp",
-"speed": 32.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 39 ), ExtResource( 24 ), ExtResource( 34 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 19 ), ExtResource( 9 ), ExtResource( 22 ), ExtResource( 63 ), ExtResource( 41 ), ExtResource( 49 ), ExtResource( 2 ), ExtResource( 59 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 51 ), ExtResource( 6 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 45 ), ExtResource( 50 ) ],
-"loop": true,
-"name": "BlueLeft",
-"speed": 32.0
-}, {
-"frames": [ ExtResource( 193 ) ],
-"loop": true,
-"name": "OrangeIdleDown",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 197 ) ],
-"loop": true,
-"name": "BlueIdleRight",
+"name": "BlueIdleUp",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 196 ) ],
@@ -253,33 +213,73 @@ animations = [ {
 "name": "OrangeIdleUp",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 168 ), ExtResource( 185 ), ExtResource( 164 ), ExtResource( 156 ), ExtResource( 186 ), ExtResource( 188 ), ExtResource( 175 ), ExtResource( 189 ), ExtResource( 145 ), ExtResource( 191 ), ExtResource( 190 ), ExtResource( 153 ), ExtResource( 154 ), ExtResource( 192 ), ExtResource( 176 ), ExtResource( 163 ), ExtResource( 165 ), ExtResource( 177 ), ExtResource( 170 ), ExtResource( 187 ), ExtResource( 182 ), ExtResource( 178 ), ExtResource( 150 ), ExtResource( 169 ) ],
+"frames": [ ExtResource( 52 ), ExtResource( 36 ), ExtResource( 3 ), ExtResource( 10 ), ExtResource( 38 ), ExtResource( 5 ), ExtResource( 33 ), ExtResource( 23 ), ExtResource( 53 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 62 ), ExtResource( 46 ), ExtResource( 15 ), ExtResource( 12 ), ExtResource( 48 ), ExtResource( 54 ), ExtResource( 7 ), ExtResource( 55 ), ExtResource( 13 ), ExtResource( 56 ), ExtResource( 61 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
-"name": "OrangeRight",
+"name": "BlueRight",
 "speed": 32.0
 }, {
-"frames": [ ExtResource( 200 ) ],
+"frames": [ ExtResource( 193 ) ],
 "loop": true,
-"name": "BlueIdleUp",
+"name": "OrangeIdleDown",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 123 ), ExtResource( 136 ), ExtResource( 129 ), ExtResource( 103 ), ExtResource( 108 ), ExtResource( 111 ), ExtResource( 112 ), ExtResource( 115 ), ExtResource( 113 ), ExtResource( 116 ), ExtResource( 118 ), ExtResource( 117 ), ExtResource( 119 ), ExtResource( 122 ), ExtResource( 131 ), ExtResource( 134 ), ExtResource( 135 ), ExtResource( 137 ), ExtResource( 138 ), ExtResource( 139 ), ExtResource( 140 ), ExtResource( 144 ), ExtResource( 143 ), ExtResource( 142 ) ],
-"loop": true,
-"name": "OrangeLeft",
-"speed": 32.0
 }, {
 "frames": [ ExtResource( 92 ), ExtResource( 95 ), ExtResource( 93 ), ExtResource( 96 ), ExtResource( 91 ), ExtResource( 90 ), ExtResource( 87 ), ExtResource( 89 ), ExtResource( 88 ), ExtResource( 44 ), ExtResource( 20 ), ExtResource( 42 ), ExtResource( 18 ), ExtResource( 43 ), ExtResource( 14 ), ExtResource( 60 ), ExtResource( 28 ), ExtResource( 1 ), ExtResource( 47 ), ExtResource( 8 ), ExtResource( 30 ), ExtResource( 40 ), ExtResource( 11 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "BlueDown",
 "speed": 32.0
 }, {
-"frames": [ ExtResource( 52 ), ExtResource( 36 ), ExtResource( 3 ), ExtResource( 10 ), ExtResource( 38 ), ExtResource( 5 ), ExtResource( 33 ), ExtResource( 23 ), ExtResource( 53 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 62 ), ExtResource( 46 ), ExtResource( 15 ), ExtResource( 12 ), ExtResource( 48 ), ExtResource( 54 ), ExtResource( 7 ), ExtResource( 55 ), ExtResource( 13 ), ExtResource( 56 ), ExtResource( 61 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"frames": [ ExtResource( 198 ) ],
 "loop": true,
-"name": "BlueRight",
+"name": "BlueIdleDown",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 157 ), ExtResource( 183 ), ExtResource( 179 ), ExtResource( 155 ), ExtResource( 171 ), ExtResource( 174 ), ExtResource( 166 ), ExtResource( 152 ), ExtResource( 173 ), ExtResource( 160 ), ExtResource( 167 ), ExtResource( 158 ), ExtResource( 149 ), ExtResource( 146 ), ExtResource( 180 ), ExtResource( 147 ), ExtResource( 161 ), ExtResource( 148 ), ExtResource( 181 ), ExtResource( 162 ), ExtResource( 172 ), ExtResource( 159 ), ExtResource( 184 ), ExtResource( 151 ) ],
+"loop": true,
+"name": "OrangeUp",
 "speed": 32.0
 }, {
 "frames": [ ExtResource( 99 ), ExtResource( 100 ), ExtResource( 141 ), ExtResource( 128 ), ExtResource( 97 ), ExtResource( 105 ), ExtResource( 120 ), ExtResource( 130 ), ExtResource( 121 ), ExtResource( 106 ), ExtResource( 104 ), ExtResource( 132 ), ExtResource( 98 ), ExtResource( 124 ), ExtResource( 114 ), ExtResource( 101 ), ExtResource( 109 ), ExtResource( 125 ), ExtResource( 102 ), ExtResource( 110 ), ExtResource( 126 ), ExtResource( 127 ), ExtResource( 107 ), ExtResource( 133 ) ],
 "loop": true,
 "name": "OrangeDown",
 "speed": 32.0
+}, {
+"frames": [ ExtResource( 123 ), ExtResource( 136 ), ExtResource( 129 ), ExtResource( 103 ), ExtResource( 108 ), ExtResource( 111 ), ExtResource( 112 ), ExtResource( 115 ), ExtResource( 113 ), ExtResource( 116 ), ExtResource( 118 ), ExtResource( 117 ), ExtResource( 119 ), ExtResource( 122 ), ExtResource( 131 ), ExtResource( 134 ), ExtResource( 135 ), ExtResource( 137 ), ExtResource( 138 ), ExtResource( 139 ), ExtResource( 140 ), ExtResource( 144 ), ExtResource( 143 ), ExtResource( 142 ) ],
+"loop": true,
+"name": "OrangeLeft",
+"speed": 32.0
+}, {
+"frames": [ ExtResource( 194 ) ],
+"loop": true,
+"name": "OrangeIdleLeft",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 168 ), ExtResource( 185 ), ExtResource( 164 ), ExtResource( 156 ), ExtResource( 186 ), ExtResource( 188 ), ExtResource( 175 ), ExtResource( 189 ), ExtResource( 145 ), ExtResource( 191 ), ExtResource( 190 ), ExtResource( 153 ), ExtResource( 154 ), ExtResource( 192 ), ExtResource( 176 ), ExtResource( 163 ), ExtResource( 165 ), ExtResource( 177 ), ExtResource( 170 ), ExtResource( 187 ), ExtResource( 182 ), ExtResource( 178 ), ExtResource( 150 ), ExtResource( 169 ) ],
+"loop": true,
+"name": "OrangeRight",
+"speed": 32.0
+}, {
+"frames": [ ExtResource( 199 ) ],
+"loop": true,
+"name": "BlueIdleLeft",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 39 ), ExtResource( 24 ), ExtResource( 34 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 19 ), ExtResource( 9 ), ExtResource( 22 ), ExtResource( 63 ), ExtResource( 41 ), ExtResource( 49 ), ExtResource( 2 ), ExtResource( 59 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 51 ), ExtResource( 6 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 45 ), ExtResource( 50 ) ],
+"loop": true,
+"name": "BlueLeft",
+"speed": 32.0
+}, {
+"frames": [ ExtResource( 94 ), ExtResource( 68 ), ExtResource( 66 ), ExtResource( 69 ), ExtResource( 67 ), ExtResource( 64 ), ExtResource( 65 ), ExtResource( 79 ), ExtResource( 80 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 71 ), ExtResource( 84 ), ExtResource( 70 ), ExtResource( 76 ), ExtResource( 74 ), ExtResource( 75 ), ExtResource( 77 ), ExtResource( 86 ), ExtResource( 81 ), ExtResource( 78 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 85 ) ],
+"loop": true,
+"name": "BlueUp",
+"speed": 32.0
+}, {
+"frames": [ ExtResource( 195 ) ],
+"loop": true,
+"name": "OrangeIdleRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 197 ) ],
+"loop": true,
+"name": "BlueIdleRight",
+"speed": 5.0
 } ]
