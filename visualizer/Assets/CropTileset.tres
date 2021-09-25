@@ -336,9 +336,9 @@
 15/z_index = 0
 16/name = "GOLDEN_CORN"
 16/texture = ExtResource( 10 )
-16/tex_offset = Vector2( 0, 0 )
+16/tex_offset = Vector2( 0, -64 )
 16/modulate = Color( 1, 1, 1, 1 )
-16/region = Rect2( 8, 8, 768, 256 )
+16/region = Rect2( 0, 0, 768, 256 )
 16/tile_mode = 2
 16/autotile/icon_coordinate = Vector2( 0, 0 )
 16/autotile/tile_size = Vector2( 256, 256 )
@@ -357,10 +357,10 @@
 16/z_index = 0
 17/name = "WILTED_GOLDEN_CORN"
 17/texture = ExtResource( 10 )
-17/tex_offset = Vector2( 0, 0 )
+17/tex_offset = Vector2( 0, -64 )
 17/material = ExtResource( 7 )
 17/modulate = Color( 1, 1, 1, 1 )
-17/region = Rect2( 8, 8, 768, 256 )
+17/region = Rect2( 0, 0, 768, 256 )
 17/tile_mode = 2
 17/autotile/icon_coordinate = Vector2( 0, 0 )
 17/autotile/tile_size = Vector2( 256, 256 )

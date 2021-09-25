@@ -24,7 +24,6 @@ var fence_bounds
 
 
 func _ready():
-	print("background _ready")
 	randomize()
 	#print(randi())
 	noise.seed = randi()
@@ -49,7 +48,6 @@ func _ready():
 
 
 func generate_background():
-	print("generating background")
 	if !Base: return
 	
 	_create_fence()
@@ -59,7 +57,6 @@ func generate_background():
 
 # Places fence tiles surrounding the field
 func _create_fence():
-	print("Creating fence")
 	set_cell(fence_bounds.position.x, fence_bounds.size.y, Global.TileType.FENCE_CORNER_S)
 	set_cell(fence_bounds.size.x, fence_bounds.size.y, Global.TileType.FENCE_CORNER_S, true)
 	set_cell(fence_bounds.position.x, fence_bounds.position.y, Global.TileType.FENCE_CORNER_N)
