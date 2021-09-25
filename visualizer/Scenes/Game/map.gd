@@ -73,14 +73,16 @@ func update_state(state_num: int, instant_update: bool = false):
 	
 	Global.current_turn = state_num
 	var state = Global.gamelog["states"][state_num]
-	fill_tilemaps(state["tileMap"], instant_update)
 	
 	if instant_update:
 		PlayerController.move_instant(state["p1"]["position"], 
 				state["p2"]["position"])
+		fill_tilemaps(state["tileMap"], instant_update)
 	else:
 		PlayerController.move_smooth(state["p1"]["position"], 
 				state["p2"]["position"])
+		yield(PlayerController, "move_completed")
+		fill_tilemaps(state["tileMap"], instant_update)
 	
 	emit_signal("map_updated")
 
