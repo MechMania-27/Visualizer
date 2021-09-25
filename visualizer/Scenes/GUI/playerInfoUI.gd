@@ -23,16 +23,36 @@ var Items = {
 	Global.Item.COFFEE_THERMOS : preload("res://Assets/Inventory/Items/Coffee Thermos.png"),
 }
 
+var ItemNames = {
+	Global.Item.NONE: "No Item",
+	Global.Item.RAIN_TOTEM: "Rain Totem",
+	Global.Item.FERTILITY_IDOL: "Fertility Idol",
+	Global.Item.PESTICIDE: "Pesticide",
+	Global.Item.SCARECROW: "Scarecrow",
+	Global.Item.DELIVERY_DRONE: "Delivery Drone",
+	Global.Item.COFFEE_THERMOS: "Coffee Thermos",
+}
+
 var Upgrades = {
 	Global.Upgrade.NONE: preload("res://Assets/Inventory/Items/None.png"),
 	Global.Upgrade.BACKPACK : preload("res://Assets/Inventory/Upgrades/Backpack.png"),
 	Global.Upgrade.LOYALTY_CARD : preload("res://Assets/Inventory/Upgrades/Green Grocer Loyalty Card.png"),
-	# TODO: why do we have moon shoes????
 	Global.Upgrade.LONGER_LEGS: preload("res://Assets/Inventory/Upgrades/Moon Shoes.png"),
 	Global.Upgrade.RABBITS_FOOT : preload("res://Assets/Inventory/Upgrades/Rabbit_s Foot.png"),
 	Global.Upgrade.SCYTHE : preload("res://Assets/Inventory/Upgrades/Scythe.png"),
 	Global.Upgrade.SEED_A_PULT : preload("res://Assets/Inventory/Upgrades/Seed-a-Pult.png"),
 	Global.Upgrade.SPYGLASS : preload("res://Assets/Inventory/Upgrades/Spyglass.png"),
+}
+
+var UpgradeNames = {
+	Global.Upgrade.NONE: "No Upgrade",
+	Global.Upgrade.BACKPACK: "Backpack",
+	Global.Upgrade.LOYALTY_CARD: "Green Grocer Loyalty Card",
+	Global.Upgrade.LONGER_LEGS: "Longer Legs",
+	Global.Upgrade.RABBITS_FOOT: "Rabbit's Foot",
+	Global.Upgrade.SCYTHE: "Scythe",
+	Global.Upgrade.SEED_A_PULT: " Seed-a-Pult",
+	Global.Upgrade.SPYGLASS: "Spyglass"
 }
 
 var Seeds = {
@@ -47,6 +67,18 @@ var Seeds = {
 	Global.CropType.GOLDEN_CORN : preload("res://Assets/Inventory/Seed Packets/GoldenPacket.png")
 }
 
+var SeedNames = {
+	Global.CropType.NONE: "No Seed",
+	Global.CropType.CORN: "Corn Seeds",
+	Global.CropType.GRAPE: "Grape Seeds",
+	Global.CropType.POTATO: "Potato Seeds",
+	Global.CropType.JOGAN_FRUIT: "Jogan Fruit Seeds",
+	Global.CropType.DUCHAM_FRUIT: "Ducham Fruit Seeds",
+	Global.CropType.PEANUT: "Peanut Seeds",
+	Global.CropType.QUADROTRITICALE: "Quadrotricale Seeds",
+	Global.CropType.GOLDEN_CORN: "Golden Corn Seeds",
+}
+
 var Harvests = {
 	Global.CropType.NONE : preload("res://Assets/Images/None.png"),
 	Global.CropType.CORN : preload("res://Assets/Inventory/Harvested Crops/CornHarvested.png"),
@@ -59,9 +91,23 @@ var Harvests = {
 	Global.CropType.GOLDEN_CORN : preload("res://Assets/Inventory/Harvested Crops/GoldenHarvested.png")
 }
 
+var HarvestedNames = {
+	Global.CropType.NONE: "No Crop",
+	Global.CropType.CORN: "Corn",
+	Global.CropType.GRAPE: "Grape",
+	Global.CropType.POTATO: "Potato",
+	Global.CropType.JOGAN_FRUIT: "Jogan Fruit",
+	Global.CropType.DUCHAM_FRUIT: "Ducham Fruit",
+	Global.CropType.PEANUT: "Peanut",
+	Global.CropType.QUADROTRITICALE: "Quadrotricale",
+	Global.CropType.GOLDEN_CORN: "Golden Corn",
+}
+
+
 func _ready():
 	for crop in crop_keys:
-		if Global.CropType.get(crop) == Global.CropType.NONE: continue
+		var crop_type = Global.CropType.get(crop)
+		if crop_type == Global.CropType.NONE: continue
 		
 		var seedSlot = ItemBox.instance()
 		seedSlot.name = crop
@@ -73,8 +119,12 @@ func _ready():
 		HarvestedInventory.add_child(harvestedSlot, true)
 		
 		# Set textures of inventory slot
-		seedSlot.set_texture(Seeds.get(Global.CropType.get(crop)))
-		harvestedSlot.set_texture(Harvests.get(Global.CropType.get(crop)))
+		seedSlot.set_texture(Seeds.get(crop_type))
+		harvestedSlot.set_texture(Harvests.get(crop_type))
+		
+		# Set tooltips
+		seedSlot.set_hint(SeedNames.get(crop_type))
+		harvestedSlot.set_hint(HarvestedNames.get(crop_type))
 
 
 func set_player_info(player_info):
@@ -85,10 +135,14 @@ func set_player_info(player_info):
 	Money.set_text("$ %d" % player_info["money"])
 	
 	# Fill in Player Item sprite
-	Item.texture = Items.get(Global.Item.get(player_info["item"]))
+	var item_id = Global.Item.get(player_info["item"])
+	Item.texture = Items.get(item_id)
+	Item.hint_tooltip = ItemNames.get(item_id)
 	
 	# Fill in Player Upgrade sprite
-	Upgrade.texture = Upgrades.get(Global.Upgrade.get(player_info["upgrade"]))
+	var upgrade_id = Global.Upgrade.get(player_info["upgrade"])
+	Upgrade.texture = Upgrades.get(upgrade_id)
+	Upgrade.hint_tooltip = UpgradeNames.get(upgrade_id)
 	
 	# Fill in Player Inventory boxes
 	for item in SeedInventory.get_children():
