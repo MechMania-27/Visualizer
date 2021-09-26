@@ -52,6 +52,7 @@ func update_state(value: int, instant_update: bool = false):
 		# TODO: Should I use the GameState["turn"]?
 		GUI.GameInfo.set_turn(value + 1)
 	else:
+		update_state(len(Global.gamelog["states"]) - 1, true)
 		game_over()
 
 
@@ -69,9 +70,9 @@ func game_over():
 
 
 
-# Only allow one "move_completed" to pend a resume at a time
+# Only allow one "update_completed" to pend a resume at a time
 var pause_locked: bool = false
-func _on_Map_move_completed():
+func _on_Map_update_completed():
 	# Check pause state before and after any yields
 	if paused:
 		if !pause_locked:
@@ -106,9 +107,11 @@ func _on_Map_move_completed():
 
 func _on_GUI_paused():
 	paused = true
+	pause_cache = true
 	emit_signal("paused")
 
 
 func _on_GUI_resumed():
 	paused = false
+	pause_cache = false
 	emit_signal("resumed")

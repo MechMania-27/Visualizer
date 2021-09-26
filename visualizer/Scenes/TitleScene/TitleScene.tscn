@@ -303,7 +303,7 @@ margin_top = 529.0
 margin_right = 924.0
 margin_bottom = 548.0
 custom_colors/font_color = Color( 0.968627, 0.968627, 0.968627, 1 )
-text = "MechMania 27 | Version 2.3.0"
+text = "MechMania 27 | Version 2.3.1"
 align = 1
 
 [node name="LoadProgress" parent="MarginContainer" instance=ExtResource( 8 )]

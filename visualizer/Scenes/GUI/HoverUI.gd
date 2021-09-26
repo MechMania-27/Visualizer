@@ -127,10 +127,10 @@ func _update_info(tilemap_pos):
 	return box_length
 
 
-func _on_Map_map_updated():
-	if not Box.visible: return 
-	_update_info(prev_tile_pos)
-
-
 func _on_Camera_began_following(_num):
 	_update_info(Vector2(-1, -1))
+
+
+func _on_Map_update_completed():
+	if not Box.visible: return 
+	_update_info(prev_tile_pos)

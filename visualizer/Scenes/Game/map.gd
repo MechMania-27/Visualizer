@@ -24,8 +24,7 @@ var CropHarvestAnim = preload("res://Scenes/GUI/HarvestedCrop.tscn")
 
 var map_bounds
 
-signal move_completed
-signal map_updated
+signal update_completed
 
 
 func _ready():
@@ -84,7 +83,7 @@ func update_state(state_num: int, instant_update: bool = false):
 		yield(PlayerController, "move_completed")
 		fill_tilemaps(state["tileMap"], instant_update)
 	
-	emit_signal("map_updated")
+	emit_signal("update_completed")
 
 
 func fill_tilemaps(map: Dictionary, instant_update : bool = false):
@@ -148,7 +147,3 @@ func _on_Game_paused():
 
 func _on_Game_resumed():
 	PlayerController.resume()
-
-
-func _on_PlayerController_move_completed():
-	emit_signal("move_completed")

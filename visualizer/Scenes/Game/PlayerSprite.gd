@@ -26,7 +26,9 @@ func move_to(new_pos: Vector2):
 	var y_distance = abs(position.y - new_pos.y)
 	
 	if y_distance + x_distance == 0:
-		emit_signal("move_completed")
+		# Must call deferred so that caller has a chance to yield on the signal
+		# before it is emitted
+		call_deferred("emit_signal", "move_completed")
 		return
 	
 	var x_duration = x_distance / base_speed
