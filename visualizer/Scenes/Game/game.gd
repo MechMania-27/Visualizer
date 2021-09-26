@@ -31,12 +31,9 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("cam_drag"):
 		pause_cache = paused
 		paused = true
-		print("cam dragging pressed")
 		emit_signal("paused")
 	elif event.is_action_released("cam_drag"):
 		paused = pause_cache
-		print("cam dragging released")
-		print("resuming: ", !paused)
 		if !paused:
 			emit_signal("resumed")
 
@@ -55,6 +52,7 @@ func update_state(value: int, instant_update: bool = false):
 		# TODO: Should I use the GameState["turn"]?
 		GUI.GameInfo.set_turn(value + 1)
 	else:
+		update_state(len(Global.gamelog["states"]) - 1, true)
 		game_over()
 
 
@@ -109,9 +107,11 @@ func _on_Map_update_completed():
 
 func _on_GUI_paused():
 	paused = true
+	pause_cache = true
 	emit_signal("paused")
 
 
 func _on_GUI_resumed():
 	paused = false
+	pause_cache = false
 	emit_signal("resumed")

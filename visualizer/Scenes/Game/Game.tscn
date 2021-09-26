@@ -28,8 +28,8 @@ centered = false
 [node name="HoverUI" parent="." instance=ExtResource( 6 )]
 Map = NodePath("../Map")
 
-[connection signal="began_following" from="Camera" to="HoverUI" method="_on_Camera_began_following"]
 [connection signal="began_following" from="Camera" to="GUI" method="_on_Camera_began_following"]
+[connection signal="began_following" from="Camera" to="HoverUI" method="_on_Camera_began_following"]
 [connection signal="update_completed" from="Map" to="HoverUI" method="_on_Map_update_completed"]
 [connection signal="update_completed" from="Map" to="." method="_on_Map_update_completed"]
 [connection signal="game_over" from="GUI" to="." method="_on_GUI_game_over"]
