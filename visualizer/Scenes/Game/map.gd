@@ -24,8 +24,7 @@ var CropHarvestAnim = preload("res://Scenes/GUI/HarvestedCrop.tscn")
 
 var map_bounds
 
-signal move_completed
-signal map_updated
+signal update_completed
 
 
 func _ready():
@@ -67,6 +66,7 @@ func get_bounds() -> Rect2:
 	return map_bounds
 
 
+var tmp_move_completed: bool
 func update_state(state_num: int, instant_update: bool = false):
 	if state_num >= len(Global.gamelog["states"]):
 		return # Should never reach here if timeline max_value is set properly
@@ -79,12 +79,25 @@ func update_state(state_num: int, instant_update: bool = false):
 				state["p2"]["position"])
 		fill_tilemaps(state["tileMap"], instant_update)
 	else:
+		# move_smooth may return immediately before we get a chance to set up a yield
+		# This is a hacky way to set that up before hand
+		# To be less hacky we would need to have the move_smooth function
+		# not use signals to indicate completion but have an internal yield
+		# to do so. Since it's signals-all-the-way-down right now that would be
+		# a lot of work!
+		tmp_move_completed = false
+		PlayerController.connect("move_completed", self, "_on_PlayerController_move_completed", [], CONNECT_ONESHOT)
 		PlayerController.move_smooth(state["p1"]["position"], 
 				state["p2"]["position"])
-		yield(PlayerController, "move_completed")
+		if !tmp_move_completed:
+			yield(PlayerController, "move_completed")
 		fill_tilemaps(state["tileMap"], instant_update)
 	
-	emit_signal("map_updated")
+	emit_signal("update_completed")
+
+
+func _on_PlayerController_move_completed():
+	tmp_move_completed = true
 
 
 func fill_tilemaps(map: Dictionary, instant_update : bool = false):
@@ -148,7 +161,3 @@ func _on_Game_paused():
 
 func _on_Game_resumed():
 	PlayerController.resume()
-
-
-func _on_PlayerController_move_completed():
-	emit_signal("move_completed")

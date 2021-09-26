@@ -31,9 +31,12 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("cam_drag"):
 		pause_cache = paused
 		paused = true
+		print("cam dragging pressed")
 		emit_signal("paused")
 	elif event.is_action_released("cam_drag"):
 		paused = pause_cache
+		print("cam dragging released")
+		print("resuming: ", !paused)
 		if !paused:
 			emit_signal("resumed")
 
@@ -69,9 +72,9 @@ func game_over():
 
 
 
-# Only allow one "move_completed" to pend a resume at a time
+# Only allow one "update_completed" to pend a resume at a time
 var pause_locked: bool = false
-func _on_Map_move_completed():
+func _on_Map_update_completed():
 	# Check pause state before and after any yields
 	if paused:
 		if !pause_locked:
