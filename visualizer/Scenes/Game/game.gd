@@ -42,15 +42,16 @@ func update_state(value: int, instant_update: bool = false):
 	if value < len(Global.gamelog["states"]):
 		Global.current_turn = value
 		
+		# TODO: Should I use the GameState["turn"]?
+		GUI.GameInfo.set_turn(value)
+		
 		# Update Map
 		Map.update_state(value, instant_update)
+		yield(Map, "update_completed")
 		
 		# Update GUI
 		GUI.set_player_info(1, Global.gamelog["states"][value]["p1"])
 		GUI.set_player_info(2, Global.gamelog["states"][value]["p2"])
-		
-		# TODO: Should I use the GameState["turn"]?
-		GUI.GameInfo.set_turn(value + 1)
 	else:
 		update_state(len(Global.gamelog["states"]) - 1, true)
 		game_over()

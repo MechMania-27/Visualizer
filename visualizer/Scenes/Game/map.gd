@@ -42,7 +42,10 @@ func get_players_array() -> Array:
 
 # Maps from crop growth stage to atlas sprite coordinate
 func get_crop(stage: int) -> Vector2:
-	# TODO: This will have to be changed for the final sprite sheet
+	# TODO: Would be nice to evenly spread out first two stages. Currently sits
+	# at first stage until the very end
+	if stage > 2: stage = 2
+	elif stage < 0: stage = -1
 	return Vector2(2 - stage, 0)
 
 
@@ -83,7 +86,8 @@ func update_state(state_num: int, instant_update: bool = false):
 		yield(PlayerController, "move_completed")
 		fill_tilemaps(state["tileMap"], instant_update)
 	
-	emit_signal("update_completed")
+	# This function may be instant, so we need to trigger our signal deferred
+	call_deferred("emit_signal", "update_completed")
 
 
 func fill_tilemaps(map: Dictionary, instant_update : bool = false):
@@ -107,6 +111,8 @@ func fill_tilemaps(map: Dictionary, instant_update : bool = false):
 			
 			var crop_type = Global.CropType.get(tile["crop"]["type"])
 			if crop_type == Global.CropType.NONE:
+				
+				# If there is a crop here we are deleting, play harvest animation
 				var crop_cell = Crops.get_cell(x,y)
 				if crop_cell != -1 and !instant_update:
 					var past_crop_type = Crops.tile_set.tile_get_name(crop_cell)
